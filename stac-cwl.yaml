@@ -1,0 +1,16 @@
+- name: Link
+  type: record
+  fields:
+    rel: string
+    href: string
+    type: string
+    title: string
+- name: STACCatalog
+  type: record
+  fields:
+    id: string
+    description: string
+    links: Link[]
+    catalog_directory:
+      type: Directory?
+      doc: "Optional: Directory containing the STAC catalog.json and other items."
