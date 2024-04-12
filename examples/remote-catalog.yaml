@@ -1,0 +1,8 @@
+stac_catalog:
+  id: catalog-id
+  description: catalog description
+  links: 
+  - rel: "self"
+    href: "http://example.com/catalog.json"
+    type: "application/json"
+    title: "This catalog"

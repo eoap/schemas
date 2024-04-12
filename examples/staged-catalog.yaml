@@ -1,0 +1,11 @@
+stac_catalog:
+  id: catalog-id
+  description: a catalog description
+  links: 
+  - rel: "self"
+    href: "http://example.com/catalog.json" # this is ignored
+    type: "application/json"
+    title: "This catalog"
+  catalog_directory: 
+    class: Directory
+    path: staged-stac-catalog

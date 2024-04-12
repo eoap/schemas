@@ -1,0 +1,12 @@
+stac_catalog:
+  id: catalog-id
+  description: a catalog description
+  links: 
+  - rel: "self"
+    href: "http://example.com/catalog.json"
+    type: "application/json"
+    title: "This catalog"
+  - rel: item
+    href: "https://earth-search.aws.element84.com/v0/collections/sentinel-s2-l2a-cogs/items/S2A_10TFK_20220524_0_L2A"
+    type: "application/json"
+    title: "This is the input item"
