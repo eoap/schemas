@@ -2,6 +2,13 @@
 
 The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/stac-cwl.yaml
 
+The schema defines: 
+
+- A `STACCatalog` record
+- A `Link` record used by the `STACCatalog`
+
+The `STACCAtalog` is a STAC Catalog but for allowing mounting the directory for a staged catalog, it includes an optional field of type `Directory` named `catalog_directory`.
+
 ## How to use this schema
 
 Import the schema in the CWL description:
