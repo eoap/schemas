@@ -103,3 +103,19 @@ stac_catalog:
     type: "application/json"
     title: "This is the input item"
 ```
+
+This can be processed with: 
+
+```yaml
+...
+arguments:
+  - valueFrom: |
+      ${
+        // Return the href of the link where rel='item'
+        return inputs.stac_catalog.links.filter(function(link) {
+          return link.rel === 'item';
+        })[0].href;
+      }
+    position: 1
+...
+```
