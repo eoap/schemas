@@ -65,7 +65,7 @@ arguments:
 
 ## Input examples
 
-### Remote STAC Catalog
+### STAC Catalog
 
 ```yaml
 stac_catalog:
@@ -94,7 +94,7 @@ stac_catalog:
     path: staged-stac-catalog
 ```
 
-### Remote STAC Catalog with a STAC Item
+### STAC Catalog with a STAC Item
 
 ```yaml
 stac_catalog:
