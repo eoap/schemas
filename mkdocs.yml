@@ -53,3 +53,7 @@ extra_javascript:
 
 nav:
   - Introduction: 'index.md'
+  - Schemas:
+    - STAC: 'stac.md'
+    - OGC: 'ogc.md'
+    
