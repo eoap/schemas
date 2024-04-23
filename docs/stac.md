@@ -1,5 +1,9 @@
 # STAC custom types for CWL
 
+!!! note
+
+    This is Work in Progress
+
 The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/stac-cwl.yaml
 
 The schema defines: 
