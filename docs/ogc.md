@@ -6,6 +6,8 @@ The schema defines:
 
 - An `OGCObject` record for a bounding box
 
+to support https://docs.ogc.org/is/18-062r2/18-062r2.html#bounding-box-value
+
 ## How to use this schema
 
 Import the schema in the CWL description:
