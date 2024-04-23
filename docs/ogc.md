@@ -40,6 +40,8 @@ inputs:
     doc: "Area of interest defined as a bounding box"
 ```
 
+## Input example
+
 A complete example:
 
 ```yaml
