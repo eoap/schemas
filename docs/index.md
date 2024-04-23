@@ -86,7 +86,7 @@ stac_catalog:
   description: a catalog description
   links: 
   - rel: "self"
-    href: "http://example.com/catalog.json" # this is ignored
+    href: "./catalog.json"
     type: "application/json"
     title: "This catalog"
   catalog_directory: 
