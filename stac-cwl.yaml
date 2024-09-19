@@ -1,16 +1,153 @@
-- name: Link
-  type: record
-  fields:
-    rel: string
-    href: string
-    type: string
-    title: string
 - name: STACCatalog
   type: record
+  doc: |
+    "STAC Catalog"
   fields:
-    id: string
-    description: string
-    links: Link[]
-    catalog_directory:
-      type: Directory?
-      doc: "Optional: Directory containing the STAC catalog.json and other items."
+    class:
+      type: string
+      doc: "Always 'STAC Catalog'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    stac_version:
+      type: string
+      doc: |
+        "STAC version"
+    stac_extensions:
+      type: string[]
+      doc: |
+        "STAC extensions"
+    type:
+      type: string
+      doc: |
+        "Type of STAC entity, `Catalog` as constant"
+    id:
+      type: string
+      doc: |
+        "Identifier"
+    title:
+      type: string
+      doc: |
+        "Title"
+    description:
+      type: string
+      doc: |
+        "Description"
+    links:
+      type: Link[]
+      doc: |
+        "Links"
+
+- name: Link
+  type: record
+  doc: |
+    ""
+  fields:
+    class:
+      type: string
+      doc: "Always '$definition.value.title'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    href:
+      type: string
+      doc: |
+        "Link reference"
+    rel:
+      type: string
+      doc: |
+        "Link relation type"
+    type:
+      type: string
+      doc: |
+        "Link type"
+    title:
+      type: string
+      doc: |
+        "Link title"
+
+- name: STACCollection
+  type: record
+  doc: |
+    "STAC Collection"
+  fields:
+    class:
+      type: string
+      doc: "Always 'STAC Collection'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    stac_version:
+      type: string
+      doc: |
+        "STAC version"
+    stac_extensions:
+      type: string[]
+      doc: |
+        "STAC extensions"
+    type:
+      type: string
+      doc: |
+        "Type of STAC entity, `Collection` as constant"
+    id:
+      type: string
+      doc: |
+        "Identifier"
+    title:
+      type: string
+      doc: |
+        "Title"
+    description:
+      type: string
+      doc: |
+        "Description"
+    keywords:
+      type: string[]
+      doc: |
+        "Keywords"
+    license:
+      type: string
+      doc: |
+        "Collection License Name"
+    providers:
+      type: array
+      doc: |
+        "$property.value.title"
+    extent:
+      type: object
+      doc: |
+        "Extents"
+    assets:
+      type: $property.value.type
+      doc: |
+        "$property.value.title"
+    links:
+      type: Link[]
+      doc: |
+        "Links"
+    summaries:
+      type:
+        - string[]
+        - Range
+      doc: |
+        "$property.value.title"
+
+- name: Range
+  type: record
+  doc: |
+    ""
+  fields:
+    class:
+      type: string
+      doc: "Always '$definition.value.title'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    minimum:
+      type: [int, string]
+      doc: |
+        "Minimum value"
+    maximum:
+      type: [int, string]
+      doc: |
+        "Maximum value"

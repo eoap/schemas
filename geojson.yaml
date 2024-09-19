@@ -1,0 +1,116 @@
+- name: GeoJSON Point
+  type: record
+  fields:
+    class:
+      type: string
+      doc: "Always 'STAC Catalog'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    type:
+      type: string
+      enum:
+      - Point
+    coordinates:
+      type: array
+      minItems: 2
+      items:
+        type: number
+    bbox:
+      type: array
+      minItems: 4
+      items:
+        type: number
+
+- name: GeoJSON LineString
+  type: record
+  fields:
+    class:
+      type: string
+      doc: "Always 'STAC Catalog'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    type:
+      type: enum
+      symbols:
+      - LineString
+    coordinates:
+      type: double[]
+    bbox:
+      type: double[]
+
+- name: GeoJSON Polygon
+  type: record
+  fields:
+    class:
+      type: string
+      doc: "Always 'STAC Catalog'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    type:
+      type: enum
+      symbols:
+      - Polygon
+    coordinates:
+      type: double[][]
+    bbox:
+      type: double[]
+
+- name: GeoJSON MultiPoint
+  type: record
+  fields:
+    class:
+      type: string
+      doc: "Always 'STAC Catalog'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    type:
+      type: enum
+      symbols:
+      - MultiPoint
+    coordinates:
+      type: double[]
+    bbox:
+      type: double[]
+
+- name: GeoJSON MultiLineString
+  type: record
+  fields:
+    class:
+      type: string
+      doc: "Always 'STAC Catalog'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    type:
+      type: enum
+      symbols:
+      - MultiLineString
+    coordinates:
+      type: double[][][]
+    bbox:
+      type: array
+      minItems: 4
+      items:
+        type: number
+
+- name: GeoJSON MultiPolygon
+  type: record
+  fields:
+    class:
+      type: string
+      doc: "Always 'STAC Catalog'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    type:
+      type: enum
+      symbols:
+      - MultiPolygon
+    coordinates:
+      type: double[][][][]
+    bbox:
+      type: double[]
