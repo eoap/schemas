@@ -12,15 +12,9 @@
       enum:
       - Point
     coordinates:
-      type: array
-      minItems: 2
-      items:
-        type: number
+      type: double[]
     bbox:
-      type: array
-      minItems: 4
-      items:
-        type: number
+      type: double[]
 
 - name: GeoJSONLineString
   type: record
