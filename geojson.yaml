@@ -1,9 +1,9 @@
-- name: GeoJSON Point
+- name: GeoJSONPoint
   type: record
   fields:
     class:
       type: string
-      doc: "Always 'STAC Catalog'"
+      doc: "Always 'GeoJSON Point'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
@@ -22,12 +22,12 @@
       items:
         type: number
 
-- name: GeoJSON LineString
+- name: GeoJSONLineString
   type: record
   fields:
     class:
       type: string
-      doc: "Always 'STAC Catalog'"
+      doc: "Always 'GeoJSON LineString'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
@@ -40,12 +40,12 @@
     bbox:
       type: double[]
 
-- name: GeoJSON Polygon
+- name: GeoJSONPolygon
   type: record
   fields:
     class:
       type: string
-      doc: "Always 'STAC Catalog'"
+      doc: "Always 'GeoJSON Polygon'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
@@ -58,12 +58,12 @@
     bbox:
       type: double[]
 
-- name: GeoJSON MultiPoint
+- name: GeoJSONMultiPoint
   type: record
   fields:
     class:
       type: string
-      doc: "Always 'STAC Catalog'"
+      doc: "Always 'GeoJSON MultiPoint'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
@@ -76,12 +76,12 @@
     bbox:
       type: double[]
 
-- name: GeoJSON MultiLineString
+- name: GeoJSONMultiLineString
   type: record
   fields:
     class:
       type: string
-      doc: "Always 'STAC Catalog'"
+      doc: "Always 'GeoJSON MultiLineString'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
@@ -97,12 +97,12 @@
       items:
         type: number
 
-- name: GeoJSON MultiPolygon
+- name: GeoJSONMultiPolygon
   type: record
   fields:
     class:
       type: string
-      doc: "Always 'STAC Catalog'"
+      doc: "Always 'GeoJSON MultiPolygon'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
