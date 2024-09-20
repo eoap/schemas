@@ -66,6 +66,85 @@
       doc: |
         "Link title"
 
+- name: Role
+  type: enum
+  symbols:
+  - "producer"
+  - "licensor"
+  - "processor"
+  - "host"
+
+- name: Provider
+  type: record
+  doc: |
+    "STAC Collection"
+  fields:
+    class:
+      type: string
+      doc: "Always 'Provider'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    name:
+      type: string
+      doc: "Organization name"
+    description:
+      type: string
+      doc: "Organization description"
+    roles:
+      type: Role[]
+      doc: "Organization roles"
+    url:
+      type: string
+      doc: "Organization homepage"
+
+- name: Spatial
+  type: record
+  doc: |
+    "Spatial extent object"
+  fields:
+    class:
+      type: string
+      doc: "Always 'Spatial'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    bbox:
+      type: double[][]
+      doc: "Spatial extents"
+
+- name: Temporal
+  type: record
+  doc: "Temporal extent object"
+  fields:
+    class:
+      type: string
+      doc: "Always 'Temporal'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    interval:
+      type: string[][]
+      doc: "Temporal extents"
+
+- name: Extents
+  type: record
+  doc: |
+    "Extents"
+  fields:
+    class:
+      type: string
+      doc: "Always 'Extents'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    spatial:
+      type: Spatial
+      doc: "Spatial extent object"
+    temporal:
+      type: Temporal
+      doc: "Temporal extent object"
+
 - name: STACCollection
   type: record
   doc: |
@@ -110,11 +189,11 @@
       doc: |
         "Collection License Name"
     providers:
-      type: array
+      type: Provider[]
       doc: |
         "$property.value.title"
     extent:
-      type: object
+      type: Extents
       doc: |
         "Extents"
     assets:
