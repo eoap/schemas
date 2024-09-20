@@ -8,7 +8,7 @@ The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/o
 
 The schema defines: 
 
-- An `OGCObject` record for a bounding box
+- An `OGCBBox` record for a bounding box
 
 to support https://docs.ogc.org/is/18-062r2/18-062r2.html#bounding-box-value
 
@@ -26,7 +26,7 @@ requirements:
     - $import: https://raw.githubusercontent.com/eoap/schemas/main/ogc-bbox.yaml
 ```
 
-Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/ogc-bbox.yaml#OGCObject`:
+Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/ogc-bbox.yaml#OGCBBox`:
 
 ```yaml
 cwlVersion: v1.2
@@ -39,7 +39,7 @@ requirements:
 
 inputs:
   aoi:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/ogc-bbox.yaml#OGCObject
+    type: https://raw.githubusercontent.com/eoap/schemas/main/ogc-bbox.yaml#OGCBBox
     label: "Area of interest"
     doc: "Area of interest defined as a bounding box"
 ```
@@ -62,7 +62,7 @@ requirements:
 
 inputs:
   aoi:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/ogc-bbox.yaml#OGCObject
+    type: https://raw.githubusercontent.com/eoap/schemas/main/ogc-bbox.yaml#OGCBBox
     label: "Area of interest"
     doc: "Area of interest defined as a bounding box"
     inputBinding:
