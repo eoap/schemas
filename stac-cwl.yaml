@@ -1,7 +1,44 @@
-- name: STACCatalog
+$base: https://eoepca.org#
+$namespaces:
+  geojson: "https://geojson.org#"
+$graph:
+- $import: geojson.yaml
+
+# STAC Catalog
+
+- name: Link
   type: record
   doc: |
-    "STAC Catalog"
+    ""
+  fields:
+    class:
+      type: string
+      doc: "Always '$definition.value.title'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    href:
+      type: string
+      doc: |
+        "Link reference"
+    rel:
+      type: string
+      doc: |
+        "Link relation type"
+    type:
+      type: string
+      doc: |
+        "Link type"
+    title:
+      type: string
+      doc: |
+        "Link title"
+
+- name: Catalog
+  type: record
+  documentRoot: true
+  doc: |
+    "This object represents Catalogs in a SpatioTemporal Asset Catalog"
   fields:
     class:
       type: string
@@ -38,33 +75,7 @@
       doc: |
         "Links"
 
-- name: Link
-  type: record
-  doc: |
-    ""
-  fields:
-    class:
-      type: string
-      doc: "Always '$definition.value.title'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    href:
-      type: string
-      doc: |
-        "Link reference"
-    rel:
-      type: string
-      doc: |
-        "Link relation type"
-    type:
-      type: string
-      doc: |
-        "Link type"
-    title:
-      type: string
-      doc: |
-        "Link title"
+# STAC Collection
 
 - name: Role
   type: enum
@@ -145,10 +156,36 @@
       type: Temporal
       doc: "Temporal extent object"
 
-- name: STACCollection
+- name: Asset
   type: record
+  extends: [BasicDescriptiveFields, DateTime, Instrument, Licensing, Provider]
   doc: |
-    "STAC Collection"
+    "This object represents Collections in a SpatioTemporal Asset Catalog"
+  fields:
+    class:
+      type: string
+      doc: "Always 'STAC Collection'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    href:
+      type: string
+      doc: |
+        "Asset reference"
+    type:
+      type: string
+      doc: |
+        "Asset type"
+    roles:
+      type: string[]
+      doc: |
+        "Asset roles"
+
+- name: Collection
+  type: record
+  documentRoot: true
+  doc: |
+    "This object represents Collections in a SpatioTemporal Asset Catalog"
   fields:
     class:
       type: string
@@ -197,9 +234,9 @@
       doc: |
         "Extents"
     assets:
-      type: $property.value.type
+      type: Asset[]
       doc: |
-        "$property.value.title"
+        "Links to assets"
     links:
       type: Link[]
       doc: |
@@ -230,3 +267,147 @@
       type: [int, string]
       doc: |
         "Maximum value"
+
+# STAC Item
+
+- name: BasicDescriptiveFields
+  type: record
+  doc: |
+    "Basic Descriptive Fields"
+  fields:
+    class:
+      type: string
+      doc: "Always 'BasicDescriptiveFields'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    title:
+      type: string
+      doc: |
+        "A human-readable title describing the Item."
+    description:
+      type: string {
+      "title": "Item Description"
+      doc: |
+        "Detailed multi-line description to fully explain the Item."
+
+- name: DateTime
+  type: record
+  doc: |
+    "Date and Time Fields"
+  fields:
+    class:
+      type: string
+      doc: "Always 'DateTime'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    datetime:
+      type: string
+      doc: |
+        "The searchable date/time of the assets, in UTC (Formatted in RFC 3339)"
+    start_datetime:
+      type: string
+      doc: |
+        "The searchable start date/time of the assets, in UTC (Formatted in RFC 3339)"
+    end_datetime:
+      type: string
+      doc: |
+        "The searchable end date/time of the assets, in UTC (Formatted in RFC 3339)"
+    created:
+      type: string
+      doc: |
+        "Creation Time"
+    updated:
+      type: string
+      doc: |
+        "Last Update Time"
+
+- name: Instrument
+  type: record
+  doc: |
+    "Instrument Fields"
+  fields:
+    class:
+      type: string
+      doc: "Always 'Instrument'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    platform:
+      type: string
+      doc: |
+        "Platform"
+    instruments:
+      type: string[]
+      doc: |
+        "Instruments"
+    constellation:
+      type: string
+      doc: |
+        "Constellation"
+    mission:
+      type: string
+      doc: |
+        "Mission"
+    gsd:
+      type: int
+      doc: |
+        "Ground Sample Distance"
+
+- name: Licensing
+  type: record
+  doc: |
+    "Licensing Fields"
+  fields:
+    class:
+      type: string
+      doc: "Always 'Licensing'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    license:
+      type: string
+      doc: |
+        "License"
+
+- name: Item
+  type: record
+  extends: [geojson:Feature, BasicDescriptiveFields, DateTime, Instrument, Licensing, Provider]
+  documentRoot: true
+  doc: |
+    "This object represents the metadata for an item in a SpatioTemporal Asset Catalog"
+  fields:
+    class:
+      type: string
+      doc: "Always 'STAC Item'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    geometry:
+      type: [geojson:Point, geojson:LineString, geojson:Polygon, geojson:MultiPoint, geojson:MultiLineString, geojson:MultiPolygon]
+    bbox:
+      type: double[]
+    stac_version:
+      type: string
+      doc: |
+        "STAC version"
+    stac_extensions:
+      type: string[]
+      doc: |
+        "STAC extensions"
+    id:
+      type: string
+      doc: |
+        "Identifier"
+    collection:
+      type: string
+      doc: |
+        "The ID of the STAC Collection this Item references to."
+    links:
+      type: Link[]
+      doc: |
+        "Links"
+    assets:
+      type: Asset[]
+    
