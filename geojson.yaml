@@ -1,3 +1,6 @@
+$base: 'https://geojson.org'
+$graph:
+
 # Geometry
 # https://geojson.org/schema/Geometry.json
 
