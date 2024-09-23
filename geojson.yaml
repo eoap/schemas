@@ -1,12 +1,12 @@
 # Geometry
 # https://geojson.org/schema/Geometry.json
 
-- name: GeoJSONPoint
+- name: Point
   type: record
   fields:
     class:
       type: string
-      doc: "Always 'GeoJSON Point'"
+      doc: "Always ' Point'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
@@ -19,12 +19,12 @@
     bbox:
       type: double[]
 
-- name: GeoJSONLineString
+- name: LineString
   type: record
   fields:
     class:
       type: string
-      doc: "Always 'GeoJSON LineString'"
+      doc: "Always ' LineString'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
@@ -37,12 +37,12 @@
     bbox:
       type: double[]
 
-- name: GeoJSONPolygon
+- name: Polygon
   type: record
   fields:
     class:
       type: string
-      doc: "Always 'GeoJSON Polygon'"
+      doc: "Always ' Polygon'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
@@ -55,12 +55,12 @@
     bbox:
       type: double[]
 
-- name: GeoJSONMultiPoint
+- name: MultiPoint
   type: record
   fields:
     class:
       type: string
-      doc: "Always 'GeoJSON MultiPoint'"
+      doc: "Always ' MultiPoint'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
@@ -73,12 +73,12 @@
     bbox:
       type: double[]
 
-- name: GeoJSONMultiLineString
+- name: MultiLineString
   type: record
   fields:
     class:
       type: string
-      doc: "Always 'GeoJSON MultiLineString'"
+      doc: "Always ' MultiLineString'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
@@ -91,12 +91,12 @@
     bbox:
       type: double[]
 
-- name: GeoJSONMultiPolygon
+- name: MultiPolygon
   type: record
   fields:
     class:
       type: string
-      doc: "Always 'GeoJSON MultiPolygon'"
+      doc: "Always ' MultiPolygon'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
@@ -112,12 +112,12 @@
 # Feature
 # https://geojson.org/schema/Feature.json
 
-- name: GeoJSONFeature
+- name: Feature
   type: record
   fields:
     class:
       type: string
-      doc: "Always 'GeoJSON Feature'"
+      doc: "Always ' Feature'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
@@ -130,16 +130,16 @@
       doc: |
         "Identifier"
     geometry:
-      type: [GeoJSONPoint, GeoJSONLineString, GeoJSONPolygon, GeoJSONMultiPoint, GeoJSONMultiLineString, GeoJSONMultiPolygon]
+      type: [Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon]
     bbox:
       type: double[]
 
-- name: GeoJSONGeometryCollection
+- name: GeometryCollection
   type: record
   fields:
     class:
       type: string
-      doc: "Always 'GeoJSON GeometryCollection'"
+      doc: "Always ' GeometryCollection'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
@@ -150,7 +150,7 @@
     geometries:
       type: array
       items:
-        type: [GeoJSONPoint, GeoJSONLineString, GeoJSONPolygon, GeoJSONMultiPoint, GeoJSONMultiLineString, GeoJSONMultiPolygon]
+        type: [Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon]
       doc: |
         "Identifier"
     bbox:
