@@ -1,3 +1,6 @@
+# Geometry
+# https://geojson.org/schema/Geometry.json
+
 - name: GeoJSONPoint
   type: record
   fields:
@@ -86,10 +89,7 @@
     coordinates:
       type: double[][][]
     bbox:
-      type: array
-      minItems: 4
-      items:
-        type: number
+      type: double[]
 
 - name: GeoJSONMultiPolygon
   type: record
@@ -106,5 +106,52 @@
       - MultiPolygon
     coordinates:
       type: double[][][][]
+    bbox:
+      type: double[]
+
+# Feature
+# https://geojson.org/schema/Feature.json
+
+- name: GeoJSONFeature
+  type: record
+  fields:
+    class:
+      type: string
+      doc: "Always 'GeoJSON Feature'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    type:
+      type: enum
+      symbols:
+      - Feature
+    id:
+      type: [string, int]
+      doc: |
+        "Identifier"
+    geometry:
+      type: [GeoJSONPoint, GeoJSONLineString, GeoJSONPolygon, GeoJSONMultiPoint, GeoJSONMultiLineString, GeoJSONMultiPolygon]
+    bbox:
+      type: double[]
+
+- name: GeoJSONGeometryCollection
+  type: record
+  fields:
+    class:
+      type: string
+      doc: "Always 'GeoJSON GeometryCollection'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    type:
+      type: enum
+      symbols:
+      - GeometryCollection
+    geometries:
+      type: array
+      items:
+        type: [GeoJSONPoint, GeoJSONLineString, GeoJSONPolygon, GeoJSONMultiPoint, GeoJSONMultiLineString, GeoJSONMultiPolygon]
+      doc: |
+        "Identifier"
     bbox:
       type: double[]
