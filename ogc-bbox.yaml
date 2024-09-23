@@ -1,3 +1,6 @@
+$base: 'https://www.ogc.org/'
+$graph:
+
 - name: OGCBBox
   type: record
   fields:
