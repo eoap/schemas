@@ -1,7 +1,7 @@
 $base: 'https://www.ogc.org/'
 $graph:
 
-- name: OGCBBox
+- name: BBox
   type: record
   fields:
     class:
