@@ -392,10 +392,6 @@ $graph:
       type: string[]
       doc: |
         "STAC extensions"
-    id:
-      type: string
-      doc: |
-        "Identifier"
     collection:
       type: string
       doc: |
@@ -406,4 +402,3 @@ $graph:
         "Links"
     assets:
       type: Asset[]
-    
