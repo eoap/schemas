@@ -1,4 +1,4 @@
-$base: 'https://www.ogc.org/'
+$base: "https://www.ogc.org/schema#"
 $graph:
 
 - name: BBox
@@ -6,7 +6,7 @@ $graph:
   fields:
     class:
       type: string
-      doc: "Always 'OGCBBox'"
+      doc: "Always 'BBox'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"

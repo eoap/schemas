@@ -1,4 +1,4 @@
-$base: 'https://geojson.org'
+$base: "https://geojson.org/schema#"
 $graph:
 
 # Geometry

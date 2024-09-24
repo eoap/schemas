@@ -1,8 +1,8 @@
-$base: https://eoepca.org#
+$base: "https://eoepca.org/schema#"
 $namespaces:
-  geojson: "https://geojson.org#"
+  geojson: "https://geojson.org/schema#"
 $graph:
-- $import: geojson.yaml
+- $import: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/geojson.yaml
 
 # STAC Catalog
 
