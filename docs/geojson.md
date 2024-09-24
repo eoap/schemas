@@ -451,6 +451,7 @@ Then create an input:
 aoi:
   type: "Feature"
   id: "3f4fd03e-ce04-4946-90c2-8f10bbc8cb32"
+  bbox: [73.958, - 40.8003, 73.9737, - 40.7648]
   geometry:
     type: MultiPolygon
     coordinates:
@@ -534,6 +535,7 @@ Then create an input:
 aoi:
   type: "GeometryCollection"
   id: "3f4fd03e-ce04-4946-90c2-8f10bbc8cb32"
+  bbox: [73.958, - 40.8003, 73.9737, - 40.7648]
   geometries:
     - type: MultiPolygon
       coordinates:
