@@ -1,0 +1,165 @@
+$base: "https://www.ogc.org/schema#"
+$graph:
+
+- name: AdditionalParameter
+  type: record
+  fields:
+    class:
+      type: string
+      doc: "Always 'AdditionalParameter'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    name:
+      type:
+        type: string
+    value:
+      type: array
+      items:
+        - string
+        - integer
+        - double
+        - Any[]
+        - Any
+
+- name: BBox
+  type: record
+  fields:
+    class:
+      type: string
+      doc: "Always 'BBox'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    bbox:
+      type: double[]
+    crs: 
+      type: enum
+      symbols:
+      - "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+      - "http://www.opengis.net/def/crs/OGC/0/CRS84h"
+
+- name: DescriptionType
+  type: record
+  fields:
+    class:
+      type: string
+      doc: "Always 'DescriptionType'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    title:
+      type: string
+    description:
+      type: string
+    keywords:
+      type: string[]
+    metadata:
+      type: Metadata[]
+
+- name: Execute
+  type: record
+  fields:
+    class:
+      type: string
+      doc: "Always 'Execute'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    inputs:
+      type:
+        - string
+        - integer
+        - double
+        - boolean
+        - Any[]
+        - File
+        - BBox
+    outputs:
+      type: Output
+    subscriber:
+      type: Subscriber
+
+- name: Format
+  type: record
+  fields:
+    class:
+      type: string
+      doc: "Always 'Format'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    mediaType:
+      type: string
+    encoding:
+      type: string
+    schema:
+      type: [string, Any]
+
+- name: Link
+  type: record
+  fields:
+    class:
+      type: string
+      doc: "Always 'Link'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    href:
+      type: string
+    rel:
+      type: string
+    type:
+      type: string
+    hreflang:
+      type: string
+    title:
+      type: string
+
+- name: Metadata
+  type: record
+  extends: Link
+  fields:
+    class:
+      type: string
+      doc: "Always 'Metadata'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    role:
+      type: string
+    title:
+      type: string
+    lang:
+      type: string
+    value:
+      type: [string, Any]
+
+- name: Output
+  type: record
+  fields:
+    class:
+      type: string
+      doc: "Always 'Output'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    format:
+      type: Format
+
+- name: Subscriber
+  type: record
+  fields:
+    class:
+      type: string
+      doc: "Always 'Subscriber'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    successUri:
+      type: string
+    inProgressUri:
+      type: string
+    failedUri:
+      type: string
+ 
