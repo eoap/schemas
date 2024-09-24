@@ -384,10 +384,6 @@ $graph:
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
-    geometry:
-      type: [geojson:Point, geojson:LineString, geojson:Polygon, geojson:MultiPoint, geojson:MultiLineString, geojson:MultiPolygon]
-    bbox:
-      type: double[]
     stac_version:
       type: string
       doc: |
