@@ -4,16 +4,16 @@
 
     This is Work in Progress
 
-The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml and 1:1 reflects the GeoJSON.org [schema](https://geojson.org/schema/Geometry.json).
+The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml and 1:1 reflects the .org [schema](https://geojson.org/schema/Geometry.json).
 
 The schema defines: 
 
-- A `GeoJSONPoint` which describes specifies a GeoJSON [Point](https://tools.ietf.org/html/rfc7946#section-3.1.2);
-- A `GeoJSONLineString` which describes specifies a GeoJSON [LineString](https://tools.ietf.org/html/rfc7946#section-3.1.4);
-- A `GeoJSONPolygon` which describes specifies a GeoJSON [Polygon](https://tools.ietf.org/html/rfc7946#section-3.1.6);
-- A `GeoJSONMultiPoint` which describes specifies a GeoJSON [MultiPoint](https://tools.ietf.org/html/rfc7946#section-3.1.3);
-- A `GeoJSONMultiLineString` which describes specifies a GeoJSON [LineString](https://tools.ietf.org/html/rfc7946#section-3.1.5);
-- A `GeoJSONMultiPolygon` which describes specifies a GeoJSON [MultiPolygon](https://tools.ietf.org/html/rfc7946#section-3.1.7).
+- A `Point` which describes specifies a  [Point](https://tools.ietf.org/html/rfc7946#section-3.1.2);
+- A `LineString` which describes specifies a  [LineString](https://tools.ietf.org/html/rfc7946#section-3.1.4);
+- A `Polygon` which describes specifies a  [Polygon](https://tools.ietf.org/html/rfc7946#section-3.1.6);
+- A `MultiPoint` which describes specifies a  [MultiPoint](https://tools.ietf.org/html/rfc7946#section-3.1.3);
+- A `MultiLineString` which describes specifies a  [LineString](https://tools.ietf.org/html/rfc7946#section-3.1.5);
+- A `MultiPolygon` which describes specifies a  [MultiPolygon](https://tools.ietf.org/html/rfc7946#section-3.1.7).
 
 ## How to use this schema
 
@@ -29,9 +29,9 @@ requirements:
     - $import: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml
 ```
 
-### GeoJSON Point
+###  Point
 
-Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeoJSONPoint`:
+Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Point`:
 
 ```yaml
 cwlVersion: v1.2
@@ -44,7 +44,7 @@ requirements:
 
 inputs:
   poi:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeoJSONPoint
+    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Point
     label: "Point of interest"
     doc: "Point of interest"
 ```
@@ -56,7 +56,7 @@ A complete example:
 ```yaml
 cwlVersion: v1.2
 class: CommandLineTool
-label: "Echo GeoJSON Point"
+label: "Echo  Point"
 baseCommand: echo
 
 requirements:
@@ -67,7 +67,7 @@ requirements:
 
 inputs:
   aoi:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeoJSONPoint
+    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Point
     label: "Point of interest"
     doc: "Point of interest"
     inputBinding:
@@ -93,9 +93,9 @@ poi:
   - 5
 ```
 
-### GeoJSON Polygon
+###  Polygon
 
-Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeoJSONPolygon`:
+Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Polygon`:
 
 ```yaml
 cwlVersion: v1.2
@@ -108,7 +108,7 @@ requirements:
 
 inputs:
   aoi:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeoJSONPolygon
+    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Polygon
     label: "Area of interest"
     doc: "Area of interest defined as a Polygon"
 ```
@@ -120,7 +120,7 @@ A complete example:
 ```yaml
 cwlVersion: v1.2
 class: CommandLineTool
-label: "Echo GeoJSON Polygon"
+label: "Echo  Polygon"
 baseCommand: echo
 
 requirements:
@@ -131,7 +131,7 @@ requirements:
 
 inputs:
   aoi:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeoJSONPolygon
+    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Polygon
     label: "Area of interest"
     doc: "Area of interest defined as a Polygon"
     inputBinding:
@@ -163,9 +163,9 @@ aoi:
       - 0
 ```
 
-### GeoJSON MultiPoint
+###  MultiPoint
 
-Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeoJSONMultiPoint`:
+Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#MultiPoint`:
 
 ```yaml
 cwlVersion: v1.2
@@ -178,7 +178,7 @@ requirements:
 
 inputs:
   aoi:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeoJSONMultiPoint
+    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#MultiPoint
     label: "Area of interest"
     doc: "Area of interest defined as a MultiPoint"
 ```
@@ -190,7 +190,7 @@ A complete example:
 ```yaml
 cwlVersion: v1.2
 class: CommandLineTool
-label: "Echo GeoJSON MultiPoint"
+label: "Echo  MultiPoint"
 baseCommand: echo
 
 requirements:
@@ -201,7 +201,7 @@ requirements:
 
 inputs:
   aoi:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeoJSONMultiPoint
+    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#MultiPoint
     label: "Area of interest"
     doc: "Area of interest defined as a MultiPoint"
     inputBinding:
@@ -233,9 +233,9 @@ aoi:
     - 40.7681
 ```
 
-### GeoJSON MultiLineString
+###  MultiLineString
 
-Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeoJSONMultiLineString`:
+Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#MultiLineString`:
 
 ```yaml
 cwlVersion: v1.2
@@ -248,7 +248,7 @@ requirements:
 
 inputs:
   aoi:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeoJSONMultiLineString
+    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#MultiLineString
     label: "Area of interest"
     doc: "Area of interest defined as a MultiLineString"
 ```
@@ -260,7 +260,7 @@ A complete example:
 ```yaml
 cwlVersion: v1.2
 class: CommandLineTool
-label: "Echo GeoJSON MultiLineString"
+label: "Echo  MultiLineString"
 baseCommand: echo
 
 requirements:
@@ -271,7 +271,7 @@ requirements:
 
 inputs:
   aoi:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeoJSONMultiLineString
+    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#MultiLineString
     label: "Area of interest"
     doc: "Area of interest defined as a MultiLineString"
     inputBinding:
@@ -311,9 +311,9 @@ aoi:
       - 40.76811
 ```
 
-### GeoJSON MultiPolygon
+###  MultiPolygon
 
-Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeoJSONMultiPolygon`:
+Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#MultiPolygon`:
 
 ```yaml
 cwlVersion: v1.2
@@ -326,7 +326,7 @@ requirements:
 
 inputs:
   aoi:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeoJSONMultiPolygon
+    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#MultiPolygon
     label: "Area of interest"
     doc: "Area of interest defined as a MultiPolygon"
 ```
@@ -338,7 +338,7 @@ A complete example:
 ```yaml
 cwlVersion: v1.2
 class: CommandLineTool
-label: "Echo GeoJSON MultiPolygon"
+label: "Echo  MultiPolygon"
 baseCommand: echo
 
 requirements:
@@ -349,7 +349,7 @@ requirements:
 
 inputs:
   aoi:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeoJSONMultiPolygon
+    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#MultiPolygon
     label: "Area of interest"
     doc: "Area of interest defined as a MultiPolygon"
     inputBinding:
