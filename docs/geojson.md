@@ -390,3 +390,169 @@ aoi:
       - - -73.958
         - 40.8003
 ```
+
+###  Feature
+
+Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Feature`:
+
+```yaml
+cwlVersion: v1.2
+class: CommandLineTool
+requirements:
+  ...
+  SchemaDefRequirement:
+    types:
+    - $import: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml
+
+inputs:
+  aoi:
+    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Feature
+    label: "Area of interest"
+    doc: "Area of interest defined as a Feature"
+```
+
+#### Input example
+
+A complete example:
+
+```yaml
+cwlVersion: v1.2
+class: CommandLineTool
+label: "Echo Feature"
+baseCommand: echo
+
+requirements:
+  InlineJavascriptRequirement: {}
+  SchemaDefRequirement:
+    types:
+    - $import: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml
+
+inputs:
+  aoi:
+    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Feature
+    label: "Area of interest"
+    doc: "Area of interest defined as a Feature"
+    inputBinding:
+      valueFrom: |
+        ${
+          TBD
+        }
+
+outputs:
+  echo_output:
+    type: stdout
+
+stdout: echo_output.txt
+```
+
+Then create an input: 
+
+```
+aoi:
+  type: "Feature"
+  id: "3f4fd03e-ce04-4946-90c2-8f10bbc8cb32"
+  geometry:
+    type: MultiPolygon
+    coordinates:
+    - - - - -73.958
+          - 40.8003
+        - - -73.9498
+          - 40.7968
+        - - -73.9737
+          - 40.7648
+        - - -73.9814
+          - 40.7681
+        - - -73.958
+          - 40.8003
+    - - - - -73.958
+          - 40.8003
+        - - -73.9498
+          - 40.7968
+        - - -73.9737
+          - 40.7648
+        - - -73.958
+          - 40.8003
+```
+
+###  GeometryCollection
+
+Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeometryCollection`:
+
+```yaml
+cwlVersion: v1.2
+class: CommandLineTool
+requirements:
+  ...
+  SchemaDefRequirement:
+    types:
+    - $import: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml
+
+inputs:
+  aoi:
+    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeometryCollection
+    label: "Area of interest"
+    doc: "Area of interest defined as a GeometryCollection"
+```
+
+#### Input example
+
+A complete example:
+
+```yaml
+cwlVersion: v1.2
+class: CommandLineTool
+label: "Echo Feature"
+baseCommand: echo
+
+requirements:
+  InlineJavascriptRequirement: {}
+  SchemaDefRequirement:
+    types:
+    - $import: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml
+
+inputs:
+  aoi:
+    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeometryCollection
+    label: "Area of interest"
+    doc: "Area of interest defined as a Feature"
+    inputBinding:
+      valueFrom: |
+        ${
+          TBD
+        }
+
+outputs:
+  echo_output:
+    type: stdout
+
+stdout: echo_output.txt
+```
+
+Then create an input: 
+
+```
+aoi:
+  type: "GeometryCollection"
+  id: "3f4fd03e-ce04-4946-90c2-8f10bbc8cb32"
+  geometries:
+    - type: MultiPolygon
+      coordinates:
+      - - - - -73.958
+            - 40.8003
+          - - -73.9498
+            - 40.7968
+          - - -73.9737
+            - 40.7648
+          - - -73.9814
+            - 40.7681
+          - - -73.958
+            - 40.8003
+      - - - - -73.958
+            - 40.8003
+          - - -73.9498
+            - 40.7968
+          - - -73.9737
+            - 40.7648
+          - - -73.958
+            - 40.8003
+```
