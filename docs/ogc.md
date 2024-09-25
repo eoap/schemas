@@ -8,9 +8,7 @@ The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/o
 
 The schema defines: 
 
-- An `BBox` record for a bounding box
-
-to support https://docs.ogc.org/is/18-062r2/18-062r2.html#bounding-box-value
+- A `BBox` record to support a [bounding-box-value](https://docs.ogc.org/is/18-062r2/18-062r2.html#bounding-box-value).
 
 ## How to use this schema
 
