@@ -4,11 +4,11 @@
 
     This is Work in Progress
 
-The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/ogc-bbox.yaml
+The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml
 
 The schema defines: 
 
-- An `OGCBBox` record for a bounding box
+- An `BBox` record for a bounding box
 
 to support https://docs.ogc.org/is/18-062r2/18-062r2.html#bounding-box-value
 
@@ -23,10 +23,10 @@ requirements:
   ...
   SchemaDefRequirement:
     types:
-    - $import: https://raw.githubusercontent.com/eoap/schemas/main/ogc-bbox.yaml
+    - $import: https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml
 ```
 
-Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/ogc-bbox.yaml#OGCBBox`:
+Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox`:
 
 ```yaml
 cwlVersion: v1.2
@@ -35,11 +35,11 @@ requirements:
   ...
   SchemaDefRequirement:
     types:
-    - $import: https://raw.githubusercontent.com/eoap/schemas/main/ogc-bbox.yaml
+    - $import: https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml
 
 inputs:
   aoi:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/ogc-bbox.yaml#OGCBBox
+    type: https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox
     label: "Area of interest"
     doc: "Area of interest defined as a bounding box"
 ```
@@ -58,11 +58,11 @@ requirements:
   InlineJavascriptRequirement: {}
   SchemaDefRequirement:
     types:
-    - $import: https://raw.githubusercontent.com/eoap/schemas/main/ogc-bbox.yaml
+    - $import: https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml
 
 inputs:
   aoi:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/ogc-bbox.yaml#OGCBBox
+    type: https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox
     label: "Area of interest"
     doc: "Area of interest defined as a bounding box"
     inputBinding:
