@@ -1,5 +1,8 @@
 $base: "https://www.ogc.org/schema#"
+$namespaces:
+  cwl: "https://w3id.org/cwl/cwl#"
 $graph:
+- $import: https://w3id.org/cwl/CommonWorkflowLanguage.yml
 
 - name: AdditionalParameter
   type: record
@@ -19,8 +22,8 @@ $graph:
         - string
         - integer
         - double
-        - Any[]
-        - Any
+        - cwl:Any[]
+        - cwl:Any
 
 - name: BBox
   type: record
@@ -72,7 +75,7 @@ $graph:
         - integer
         - double
         - boolean
-        - Any[]
+        - cwl:Any[]
         - File
         - BBox
     outputs:
@@ -94,7 +97,7 @@ $graph:
     encoding:
       type: string
     schema:
-      type: [string, Any]
+      type: [string, cwl:Any]
 
 - name: Link
   type: record
@@ -133,7 +136,7 @@ $graph:
     lang:
       type: string
     value:
-      type: [string, Any]
+      type: [string, cwl:Any]
 
 - name: Output
   type: record
