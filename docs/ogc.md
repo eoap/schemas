@@ -4,11 +4,11 @@
 
     This is Work in Progress
 
-The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml
+The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml to support a [Bounding Box value](https://docs.ogc.org/is/18-062r2/18-062r2.html#bounding-box-value).
 
 The schema defines: 
 
-- A `BBox` record to support a [bounding-box-value](https://docs.ogc.org/is/18-062r2/18-062r2.html#bounding-box-value).
+- A `BBox` record,  which describes a [bbox](https://github.com/opengeospatial/ogcapi-processes/blob/master/openapi/schemas/processes-core/bbox.yaml).
 
 ## How to use this schema
 
