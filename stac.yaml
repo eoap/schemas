@@ -5,6 +5,7 @@ $graph:
 - $import: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/geojson.yaml
 
 # STAC Catalog
+# https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/catalog-spec/json-schema/catalog.json
 
 - name: Link
   type: record
@@ -76,6 +77,7 @@ $graph:
         "Links"
 
 # STAC Collection
+# https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/collection-spec/json-schema/collection.json
 
 - name: Role
   type: enum
@@ -269,6 +271,7 @@ $graph:
         "Maximum value"
 
 # STAC Item
+# https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/item.json
 
 - name: BasicDescriptiveFields
   type: record
