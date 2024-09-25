@@ -54,6 +54,7 @@ extra_javascript:
 nav:
   - Introduction: 'index.md'
   - Schemas:
+    - GeoJSON: 'geojson.md'
     - STAC: 'stac.md'
     - OGC API Processes bounding box: 'ogc.md'
     
