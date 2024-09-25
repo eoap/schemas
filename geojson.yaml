@@ -162,8 +162,7 @@ $graph:
       - GeometryCollection
     geometries:
       type: array
-      items:
-        type: [Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon]
+      items: [Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon]
       doc: |
         "Identifier"
     bbox:
