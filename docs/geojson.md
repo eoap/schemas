@@ -56,7 +56,7 @@ A complete example:
 ```yaml
 cwlVersion: v1.2
 class: CommandLineTool
-label: "Echo  Point"
+label: "Echo Point"
 baseCommand: echo
 
 requirements:
@@ -120,7 +120,7 @@ A complete example:
 ```yaml
 cwlVersion: v1.2
 class: CommandLineTool
-label: "Echo  Polygon"
+label: "Echo Polygon"
 baseCommand: echo
 
 requirements:
@@ -190,7 +190,7 @@ A complete example:
 ```yaml
 cwlVersion: v1.2
 class: CommandLineTool
-label: "Echo  MultiPoint"
+label: "Echo MultiPoint"
 baseCommand: echo
 
 requirements:
@@ -260,7 +260,7 @@ A complete example:
 ```yaml
 cwlVersion: v1.2
 class: CommandLineTool
-label: "Echo  MultiLineString"
+label: "Echo MultiLineString"
 baseCommand: echo
 
 requirements:
@@ -338,7 +338,7 @@ A complete example:
 ```yaml
 cwlVersion: v1.2
 class: CommandLineTool
-label: "Echo  MultiPolygon"
+label: "Echo MultiPolygon"
 baseCommand: echo
 
 requirements:
@@ -502,7 +502,7 @@ A complete example:
 ```yaml
 cwlVersion: v1.2
 class: CommandLineTool
-label: "Echo Feature"
+label: "Echo GeometryCollection"
 baseCommand: echo
 
 requirements:
