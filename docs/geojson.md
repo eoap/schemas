@@ -4,16 +4,18 @@
 
     This is Work in Progress
 
-The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml and 1:1 reflects the .org [schema](https://geojson.org/schema/Geometry.json).
+The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml and 1:1 reflects the geojson.org [Geometry](https://geojson.org/schema/Geometry.json) and [Feature](https://geojson.org/schema/Feature.json) schemas.
 
 The schema defines: 
 
-- A `Point` which describes specifies a  [Point](https://tools.ietf.org/html/rfc7946#section-3.1.2);
-- A `LineString` which describes specifies a  [LineString](https://tools.ietf.org/html/rfc7946#section-3.1.4);
-- A `Polygon` which describes specifies a  [Polygon](https://tools.ietf.org/html/rfc7946#section-3.1.6);
-- A `MultiPoint` which describes specifies a  [MultiPoint](https://tools.ietf.org/html/rfc7946#section-3.1.3);
-- A `MultiLineString` which describes specifies a  [LineString](https://tools.ietf.org/html/rfc7946#section-3.1.5);
-- A `MultiPolygon` which describes specifies a  [MultiPolygon](https://tools.ietf.org/html/rfc7946#section-3.1.7).
+- A `Point` which describes specifies a [Point](https://tools.ietf.org/html/rfc7946#section-3.1.2);
+- A `LineString` which describes specifies a [LineString](https://tools.ietf.org/html/rfc7946#section-3.1.4);
+- A `Polygon` which describes specifies a [Polygon](https://tools.ietf.org/html/rfc7946#section-3.1.6);
+- A `MultiPoint` which describes specifies a [MultiPoint](https://tools.ietf.org/html/rfc7946#section-3.1.3);
+- A `MultiLineString` which describes specifies a [LineString](https://tools.ietf.org/html/rfc7946#section-3.1.5);
+- A `MultiPolygon` which describes specifies a [MultiPolygon](https://tools.ietf.org/html/rfc7946#section-3.1.7);
+- A `Feature` which describes specifies a [Feature](https://datatracker.ietf.org/doc/html/rfc7946#section-3.2);
+- A `GeometryCollection` which describes specifies a [GeometryCollection](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.8).
 
 ## How to use this schema
 
