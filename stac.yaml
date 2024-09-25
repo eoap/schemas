@@ -13,7 +13,7 @@ $graph:
   fields:
     class:
       type: string
-      doc: "Always '$definition.value.title'"
+      doc: "Always 'Link"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
@@ -255,7 +255,7 @@ $graph:
   fields:
     class:
       type: string
-      doc: "Always '$definition.value.title'"
+      doc: "Always 'Range'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
