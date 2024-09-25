@@ -15,6 +15,7 @@ theme:
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
+
 plugins:
   - search
   - mermaid2:
@@ -42,14 +43,14 @@ markdown_extensions:
       base_path: './'
   - pymdownx.highlight:
       line_spans: __span
+
 extra_css:
   - styles/css/app.css
-  
+
 extra_javascript:
   - javascripts/config.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  
 
 nav:
   - Introduction: 'index.md'
@@ -57,4 +58,3 @@ nav:
     - GeoJSON: 'geojson.md'
     - STAC: 'stac.md'
     - OGC API Processes bounding box: 'ogc.md'
-    
