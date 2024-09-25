@@ -16,7 +16,7 @@ $graph:
     type:
       type: string
       enum:
-      - Point
+      - "Point"
     coordinates:
       type: double[]
     bbox:
@@ -34,7 +34,7 @@ $graph:
     type:
       type: enum
       symbols:
-      - LineString
+      - "LineString"
     coordinates:
       type: double[]
     bbox:
@@ -52,7 +52,7 @@ $graph:
     type:
       type: enum
       symbols:
-      - Polygon
+      - "Polygon"
     coordinates:
       type: array
       items: double[]
@@ -71,7 +71,7 @@ $graph:
     type:
       type: enum
       symbols:
-      - MultiPoint
+      - "MultiPoint"
     coordinates:
       type: array
       items: double[]
@@ -90,7 +90,7 @@ $graph:
     type:
       type: enum
       symbols:
-      - MultiLineString
+      - "MultiLineString"
     coordinates:
       type: array
       items:
@@ -111,7 +111,7 @@ $graph:
     type:
       type: enum
       symbols:
-      - MultiPolygon
+      - "MultiPolygon"
     coordinates:
       type: array
       items:
@@ -137,7 +137,7 @@ $graph:
     type:
       type: enum
       symbols:
-      - Feature
+      - "Feature"
     id:
       type: [string, int]
       doc: |
@@ -159,7 +159,7 @@ $graph:
     type:
       type: enum
       symbols:
-      - GeometryCollection
+      - "GeometryCollection"
     geometries:
       type: array
       items: [Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon]
