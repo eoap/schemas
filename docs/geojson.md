@@ -85,7 +85,7 @@ stdout: echo_output.txt
 
 Then create an input: 
 
-```
+```yaml
 poi:
   type: Point
   coordinates:
@@ -149,7 +149,7 @@ stdout: echo_output.txt
 
 Then create an input: 
 
-```
+```yaml
 aoi:
   type: Polygon
   coordinates:
@@ -219,7 +219,7 @@ stdout: echo_output.txt
 
 Then create an input: 
 
-```
+```yaml
 aoi:
   type: MultiPoint
   coordinates:
@@ -289,7 +289,7 @@ stdout: echo_output.txt
 
 Then create an input: 
 
-```
+```yaml
 aoi:
   type: MultiLineString
   coordinates:
@@ -367,7 +367,7 @@ stdout: echo_output.txt
 
 Then create an input: 
 
-```
+```yaml
 aoi:
   type: MultiPolygon
   coordinates:
@@ -447,7 +447,7 @@ stdout: echo_output.txt
 
 Then create an input: 
 
-```
+```yaml
 aoi:
   type: "Feature"
   id: "3f4fd03e-ce04-4946-90c2-8f10bbc8cb32"
@@ -531,7 +531,7 @@ stdout: echo_output.txt
 
 Then create an input: 
 
-```
+```yaml
 aoi:
   type: "GeometryCollection"
   id: "3f4fd03e-ce04-4946-90c2-8f10bbc8cb32"
