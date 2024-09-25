@@ -1,4 +1,4 @@
-$base: "https://eoepca.org/schema#"
+$base: "https://stacspec.org/schema#"
 $namespaces:
   geojson: "https://geojson.org/schema#"
 $graph:
