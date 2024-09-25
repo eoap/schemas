@@ -4,15 +4,13 @@
 
     This is Work in Progress
 
-The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml
+The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml and 1:1 reflects the stacspec.org schemas.
 
 The schema defines: 
 
-- A `Catalog` record;
-- A `Collection` record;
-- An `Item` record.
-
-The `CAtalog` is a  Catalog but for allowing mounting the directory for a staged catalog, it includes an optional field of type `Directory` named `catalog_directory`.
+- A `Catalog` record,  which describes a [Catalog](https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/catalog-spec/json-schema/catalog.json);
+- A `Collection` record,  which describes a [Collection](https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/collection-spec/json-schema/collection.json);
+- An `Item` record,  which describes an [Item](https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/item.json).
 
 ## How to use this schema
 
@@ -29,6 +27,8 @@ requirements:
 ```
 
 ### Catalog
+
+The `Catalog` is a  Catalog but for allowing mounting the directory for a staged catalog, it includes an optional field of type `Directory` named `catalog_directory`.
 
 Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml#Catalog`:
 
