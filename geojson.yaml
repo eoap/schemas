@@ -54,7 +54,8 @@ $graph:
       symbols:
       - Polygon
     coordinates:
-      type: double[][]
+      type: array
+      items: double[]
     bbox:
       type: double[]
 
@@ -72,7 +73,8 @@ $graph:
       symbols:
       - MultiPoint
     coordinates:
-      type: double[]
+      type: array
+      items: double[]
     bbox:
       type: double[]
 
@@ -90,7 +92,10 @@ $graph:
       symbols:
       - MultiLineString
     coordinates:
-      type: double[][][]
+      type: array
+      items:
+        type: array
+        items: double[]
     bbox:
       type: double[]
 
@@ -108,7 +113,12 @@ $graph:
       symbols:
       - MultiPolygon
     coordinates:
-      type: double[][][][]
+      type: array
+      items:
+        type: array
+        items:
+          type: array
+          items: double[]
     bbox:
       type: double[]
 
