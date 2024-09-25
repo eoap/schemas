@@ -163,7 +163,5 @@ $graph:
     geometries:
       type: array
       items: [Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon]
-      doc: |
-        "Identifier"
     bbox:
       type: double[]
