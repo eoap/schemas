@@ -8,14 +8,14 @@ The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/g
 
 The schema defines: 
 
-- A `Point` which describes specifies a [Point](https://tools.ietf.org/html/rfc7946#section-3.1.2);
-- A `LineString` which describes specifies a [LineString](https://tools.ietf.org/html/rfc7946#section-3.1.4);
-- A `Polygon` which describes specifies a [Polygon](https://tools.ietf.org/html/rfc7946#section-3.1.6);
-- A `MultiPoint` which describes specifies a [MultiPoint](https://tools.ietf.org/html/rfc7946#section-3.1.3);
-- A `MultiLineString` which describes specifies a [LineString](https://tools.ietf.org/html/rfc7946#section-3.1.5);
-- A `MultiPolygon` which describes specifies a [MultiPolygon](https://tools.ietf.org/html/rfc7946#section-3.1.7);
-- A `Feature` which describes specifies a [Feature](https://datatracker.ietf.org/doc/html/rfc7946#section-3.2);
-- A `GeometryCollection` which describes specifies a [GeometryCollection](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.8).
+- A `Point`,  which describes a [Point](https://tools.ietf.org/html/rfc7946#section-3.1.2);
+- A `LineString`,  which describes a [LineString](https://tools.ietf.org/html/rfc7946#section-3.1.4);
+- A `Polygon`,  which describes a [Polygon](https://tools.ietf.org/html/rfc7946#section-3.1.6);
+- A `MultiPoint`,  which describes a [MultiPoint](https://tools.ietf.org/html/rfc7946#section-3.1.3);
+- A `MultiLineString`,  which describes a [LineString](https://tools.ietf.org/html/rfc7946#section-3.1.5);
+- A `MultiPolygon`,  which describes a [MultiPolygon](https://tools.ietf.org/html/rfc7946#section-3.1.7);
+- A `Feature`,  which describes a [Feature](https://datatracker.ietf.org/doc/html/rfc7946#section-3.2);
+- A `GeometryCollection`,  which describes a [GeometryCollection](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.8).
 
 ## How to use this schema
 
