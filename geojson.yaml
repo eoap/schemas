@@ -14,6 +14,7 @@ $graph:
 
 - name: Point
   type: record
+  documentRoot: true
   fields:
     class:
       type: string
@@ -32,6 +33,7 @@ $graph:
 
 - name: LineString
   type: record
+  documentRoot: true
   fields:
     class:
       type: string
@@ -50,6 +52,7 @@ $graph:
 
 - name: Polygon
   type: record
+  documentRoot: true
   fields:
     class:
       type: string
@@ -69,6 +72,7 @@ $graph:
 
 - name: MultiPoint
   type: record
+  documentRoot: true
   fields:
     class:
       type: string
@@ -88,6 +92,7 @@ $graph:
 
 - name: MultiLineString
   type: record
+  documentRoot: true
   fields:
     class:
       type: string
@@ -109,6 +114,7 @@ $graph:
 
 - name: MultiPolygon
   type: record
+  documentRoot: true
   fields:
     class:
       type: string
@@ -135,6 +141,7 @@ $graph:
 
 - name: Feature
   type: record
+  documentRoot: true
   fields:
     class:
       type: string
@@ -157,6 +164,7 @@ $graph:
 
 - name: GeometryCollection
   type: record
+  documentRoot: true
   fields:
     class:
       type: string
