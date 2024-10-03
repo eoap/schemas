@@ -2,19 +2,19 @@
 
 Defining new Input/Output is a smooth process:
 
-- Define a `*.yaml` file first that will contain the new input/Output data schema/format, i.e.`geojson.yaml` and edit it;
+- Define a `*.yaml` file that will contain the new Input/Output data schema/format, i.e.`geojson.yaml`;
 - Namespace needs to be defined in order to qualify elements inside the schema:
 
 ```yaml
 $base: "https://stacspec.org/schema#"
 ```
 
-- New objects format have to be defined inside the `$graph` element, which is an array of elements;
+- New objects format has to be defined inside the `$graph` element, which is an array of elements;
 - Each new type has few fields that have to be fulfilled:
-    * `name` is the new element name to unambiguously identify it inside the new schema;
+    * `name` is the new element name to uniquely identify it inside the new schema;
     * `type` is a self-explanatory field, for the native supported type please refer to the official [documentation](https://www.commonwl.org/user_guide/topics/inputs.html);
-    * `documentRoot` (optional) to help the documentation generator identify this is the root element;
-    * `fields` where itemize the new fields; please take note: there is a mandatory `class` field that needs to be defined.
+    * `documentRoot` (optional) to help the documentation generator identify this as the root element;
+    * `fields` here is where new fields are itemized; please take note: there is a mandatory `class` field that needs to be defined.
 
 ```yaml
 - name: Point
@@ -29,9 +29,9 @@ $base: "https://stacspec.org/schema#"
         "_type": "@vocab"
 ```
 
-- If there is the need to reuse elements from other schema(s), there's a simple way to import the elements:
+- If there is the need to reuse elements from other schema(s), there's a simple way to import them with the following steps:
     * Define first the namespace to qualify the imported elements, in the dedicated `$namespaces` field;
-    * import the schema via the URL pointing to the physical file containing the elements, inside the `$graph.$import` field, i.e.:
+    * import the schema via the URL pointing to the physical file that contains the elements inside the `$graph.$import` field, i.e.:
 
 ```yaml
 $namespaces:
@@ -43,27 +43,6 @@ $graph:
 - Users can now define their own types:
 
 ```yaml
-- name: BasicDescriptiveFields
-  ...
-
-- name: DateTime
-  ...
-
-- name: Instrument
-  ...
-
-- name: Licensing
-  ...
-
-- name: Provider
-  ...
-
-- name: Link
-  ...
-
-- name: Asset
-  ...
-
 - name: Item
   type: record
   extends: [geojson:Feature, BasicDescriptiveFields, DateTime, Instrument, Licensing, Provider]
@@ -97,6 +76,31 @@ $graph:
       type: Asset[]
 ```
 
+where fields can be defined as complex types:
+
+```yaml
+- name: BasicDescriptiveFields
+  ...
+
+- name: DateTime
+  ...
+
+- name: Instrument
+  ...
+
+- name: Licensing
+  ...
+
+- name: Provider
+  ...
+
+- name: Link
+  ...
+
+- name: Asset
+  ...
+```
+
 - Users can now use the new defined type as a validated input, importing first the schema in the CWL description;
 - Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml#Item`:
 
@@ -116,7 +120,7 @@ inputs:
     doc: "Input is an Item."
 ```
 
-- Users can now describe their input:
+- Users can now describe their Input:
 
 ```yaml
 stac_item:
