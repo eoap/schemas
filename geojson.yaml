@@ -181,3 +181,66 @@ $graph:
       items: [Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon]
     bbox:
       type: double[]
+
+# from https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/link.yaml
+
+- name: Link
+  type: record
+  doc: |
+    ""
+  fields:
+    class:
+      type: string
+      doc: "Always 'Link"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    href:
+      type: string
+      doc: |
+        "i.e. http://data.example.com/buildings/123"
+    rel:
+      type: string
+      doc: |
+        "i.e. alternate"
+    type:
+      type: string
+      doc: |
+        "i.e. application/geo+json"
+    hreflang:
+      type: string
+      doc: |
+        "i.e. en"
+    title:
+      type: string
+      doc: |
+        "i.e. Trierer Strasse 70, 53115 Bonn"
+    length:
+      type: integer
+
+# from https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/featureCollectionGeoJSON.yaml
+
+- name: FeatureCollection
+  type: record
+  documentRoot: true
+  fields:
+    class:
+      type: string
+      doc: "Always ' FeatureCollection'"
+      jsonldPredicate:
+        "_id": "@type"
+        "_type": "@vocab"
+    type:
+      type: enum
+      symbols:
+      - "FeatureCollection"
+    features:
+      type: Feature[]
+    links:
+      type: Link[]
+    timeStamp:
+      type: string
+    numberMatched:
+      type: integer
+    numberReturned:
+      type: integer
