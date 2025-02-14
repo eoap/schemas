@@ -174,7 +174,7 @@ $graph:
   fields:
     class:
       type: string
-      doc: "Always 'STAC Collection'"
+      doc: "Always 'Asset'"
       jsonldPredicate:
         "_id": "@type"
         "_type": "@vocab"
