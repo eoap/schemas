@@ -8,11 +8,11 @@ requirements:
   InlineJavascriptRequirement: {}
   SchemaDefRequirement:
     types:
-    - $import: https://raw.githubusercontent.com/eoap/schemas/main/stac-cwl.yaml
+    - $import: https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml
 
 inputs:
   stac_catalog:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/stac-cwl.yaml#STACCatalog
+    type: https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml#STACCatalog
     label: "STAC Catalog Input"
     doc: "Input is a STAC catalog, though the directory is optional."
 
