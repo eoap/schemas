@@ -1,4 +1,4 @@
-# EOAP Schemas (c) 2024
+# EOAP Schemas (c) 2024-2025
 # 
 # EOAP Schemas is licensed under
 # Creative Commons Attribution-ShareAlike 4.0 International.
@@ -6,241 +6,237 @@
 # You should have received a copy of the license along with this work.
 # If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 
-$base: "https://geojson.org/schema#"
-$graph:
-
 # Geometry
 # https://geojson.org/schema/Geometry.json
 
-- name: Point
-  type: record
-  documentRoot: true
-  fields:
-    class:
-      type: string
-      doc: "Always ' Point'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    type:
-      type: string
-      enum:
-      - "Point"
-    coordinates:
-      type: double[]
-    bbox:
-      type: double[]
+- type: enum
+  name: PointType
+  symbols:
+  - Point
 
-- name: LineString
-  type: record
-  documentRoot: true
+- type: record
+  name: Point
   fields:
-    class:
-      type: string
-      doc: "Always ' LineString'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    type:
-      type: enum
-      symbols:
-      - "LineString"
-    coordinates:
-      type: double[]
-    bbox:
-      type: double[]
+  - type: PointType
+    name: type
+  - type:
+    - type: array
+      items: double
+    name: coordinates
+  - type:
+    - type: array
+      items: double
+    name: bbox
 
-- name: Polygon
-  type: record
-  documentRoot: true
-  fields:
-    class:
-      type: string
-      doc: "Always ' Polygon'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    type:
-      type: enum
-      symbols:
-      - "Polygon"
-    coordinates:
-      type: array
-      items: double[]
-    bbox:
-      type: double[]
+- type: enum
+  name: LineStringType
+  symbols:
+  - LineString
 
-- name: MultiPoint
-  type: record
-  documentRoot: true
+- type: record
+  name: LineString
   fields:
-    class:
-      type: string
-      doc: "Always ' MultiPoint'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    type:
-      type: enum
-      symbols:
-      - "MultiPoint"
-    coordinates:
-      type: array
-      items: double[]
-    bbox:
-      type: double[]
+  - type: LineStringType
+    name: type
+  - type:
+    - type: array
+      items: double
+    name: coordinates
+  - type:
+    - type: array
+      items: double
+    name: bbox
 
-- name: MultiLineString
-  type: record
-  documentRoot: true
+- type: enum
+  name: PolygonType
+  symbols:
+  - Polygon
+
+- type: record
+  name: Polygon
   fields:
-    class:
-      type: string
-      doc: "Always ' MultiLineString'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    type:
-      type: enum
-      symbols:
-      - "MultiLineString"
-    coordinates:
-      type: array
+  - type: PolygonType
+    name: type
+  - type:
+    - type: array
       items:
-        type: array
-        items: double[]
-    bbox:
-      type: double[]
+      - type: array
+        items: double
+    name: coordinates
+  - type:
+    - type: array
+      items: double
+    name: bbox
 
-- name: MultiPolygon
-  type: record
-  documentRoot: true
+- type: enum
+  name: MultiPointType
+  symbols:
+  - MultiPoint
+
+- type: record
+  name: MultiPoint
   fields:
-    class:
-      type: string
-      doc: "Always ' MultiPolygon'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    type:
-      type: enum
-      symbols:
-      - "MultiPolygon"
-    coordinates:
-      type: array
+  - type: MultiPointType
+    name: type
+  - type:
+    - type: array
       items:
-        type: array
+      - type: array
+        items: double
+    name: coordinates
+  - type:
+    - type: array
+      items: double
+    name: bbox
+
+- type: enum
+  name: MultiLineStringType
+  symbols:
+  - MultiLineString
+
+- type: record
+  name: MultiLineString
+  fields:
+  - type: MultiLineStringType
+    name: type
+  - type:
+    - type: array
+      items:
+      - type: array
         items:
-          type: array
-          items: double[]
-    bbox:
-      type: double[]
+        - type: array
+          items: double
+    name: coordinates
+  - type:
+    - type: array
+      items: double
+    name: bbox
+
+- type: enum
+  name: MultiPolygonType
+  symbols:
+  - MultiPolygon
+
+- type: record
+  name: MultiPolygon
+  fields:
+  - type: MultiPolygonType
+    name: type
+  - type:
+    - type: array
+      items:
+      - type: array
+        items:
+        - type: array
+          items:
+          - type: array
+            items: double
+    name: coordinates
+  - type:
+    - type: array
+      items: double
+    name: bbox
 
 # Feature
 # https://geojson.org/schema/Feature.json
 
-- name: Feature
-  type: record
-  documentRoot: true
-  fields:
-    class:
-      type: string
-      doc: "Always ' Feature'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    type:
-      type: enum
-      symbols:
-      - "Feature"
-    id:
-      type: [string, int]
-      doc: |
-        "Identifier"
-    geometry:
-      type: [Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon]
-    bbox:
-      type: double[]
+- type: enum
+  name: FeatureType
+  symbols:
+  - Feature
 
-- name: GeometryCollection
-  type: record
-  documentRoot: true
+- type: record
+  name: Feature
   fields:
-    class:
-      type: string
-      doc: "Always ' GeometryCollection'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    type:
-      type: enum
-      symbols:
-      - "GeometryCollection"
-    geometries:
-      type: array
-      items: [Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon]
-    bbox:
-      type: double[]
+  - type: Feature
+    name: type
+  - name: id
+    type: string
+    doc: "Identifier"
+  - type: 
+    - Point
+    - LineString
+    - Polygon
+    - MultiPoint
+    - MultiLineString
+    - MultiPolygon
+    name: geometry
+  - type:
+    - type: array
+      items: double
+    name: bbox
+
+- type: enum
+  name: GeometryCollectionType
+  symbols:
+  - GeometryCollection
+
+- type: record
+  name: GeometryCollection
+  fields:
+  - type: GeometryCollectionType
+    name: type
+#  - type: array
+#    items:
+#    - type: Point
+#    - type: LineString
+#    - type: Polygon
+#    - type: MultiPoint
+#    - type: MultiLineString
+#    - type: MultiPolygon
+#    name: geometries
+  - type:
+    - type: array
+      items: double
+    name: bbox
+
 
 # from https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/link.yaml
 
-- name: Link
-  type: record
-  doc: |
-    ""
+- type: record
+  name: Link
   fields:
-    class:
-      type: string
-      doc: "Always 'Link"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    href:
-      type: string
-      doc: |
-        "i.e. http://data.example.com/buildings/123"
-    rel:
-      type: string
-      doc: |
-        "i.e. alternate"
-    type:
-      type: string
-      doc: |
-        "i.e. application/geo+json"
-    hreflang:
-      type: string
-      doc: |
-        "i.e. en"
-    title:
-      type: string
-      doc: |
-        "i.e. Trierer Strasse 70, 53115 Bonn"
-    length:
-      type: integer
+  - type: string
+    name: href
+    doc: "i.e. http://data.example.com/buildings/123"
+  - type: string
+    name: rel
+    doc: "i.e. alternate"
+  - type: string
+    name: type
+    doc: "i.e. application/geo+json"
+  - type: string
+    name: hreflang
+    doc: "i.e. en"
+  - type: string
+    name: title
+    doc: "i.e. Trierer Strasse 70, 53115 Bonn"
+  - type: int
+    name: length
 
 # from https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/featureCollectionGeoJSON.yaml
 
-- name: FeatureCollection
-  type: record
-  documentRoot: true
+- type: enum
+  name: FeatureCollectionType
+  symbols:
+  - FeatureCollection
+
+- type: record
+  name: FeatureCollection
   fields:
-    class:
-      type: string
-      doc: "Always ' FeatureCollection'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    type:
-      type: enum
-      symbols:
-      - "FeatureCollection"
-    features:
-      type: Feature[]
-    links:
-      type: Link[]
-    timeStamp:
-      type: string
-    numberMatched:
-      type: integer
-    numberReturned:
-      type: integer
+  - type: FeatureCollectionType
+    name: type
+  - type:
+    - type: array
+      items: Feature
+    name: features
+  - type:
+    - type: array
+      items: Link
+    name: links
+  - type: string
+    name: timeStamp
+  - type: int
+    name: numberMatched
+  - type: int
+    name: numberReturned

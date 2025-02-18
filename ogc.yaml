@@ -15,7 +15,9 @@
 - type: record
   name: BBox
   fields:
-  - type: double[]
+  - type:
+    - type: array
+      items: double
     name: bbox
   - type: CRS
     name: crs
