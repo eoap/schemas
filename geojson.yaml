@@ -20,11 +20,11 @@
   - type: PointType
     name: type
   - type:
-    - type: array
+      type: array
       items: double
     name: coordinates
   - type:
-    - type: array
+      type: array
       items: double
     name: bbox
 
