@@ -39,11 +39,11 @@
   - type: LineStringType
     name: type
   - type:
-    - type: array
+      type: array
       items: double
     name: coordinates
   - type:
-    - type: array
+      type: array
       items: double
     name: bbox
 
@@ -58,13 +58,13 @@
   - type: PolygonType
     name: type
   - type:
-    - type: array
+      type: array
       items:
-      - type: array
+        type: array
         items: double
     name: coordinates
   - type:
-    - type: array
+      type: array
       items: double
     name: bbox
 
@@ -79,13 +79,13 @@
   - type: MultiPointType
     name: type
   - type:
-    - type: array
+      type: array
       items:
-      - type: array
+        type: array
         items: double
     name: coordinates
   - type:
-    - type: array
+      type: array
       items: double
     name: bbox
 
@@ -100,15 +100,15 @@
   - type: MultiLineStringType
     name: type
   - type:
-    - type: array
+      type: array
       items:
-      - type: array
+        type: array
         items:
-        - type: array
+          type: array
           items: double
     name: coordinates
   - type:
-    - type: array
+      type: array
       items: double
     name: bbox
 
@@ -123,17 +123,17 @@
   - type: MultiPolygonType
     name: type
   - type:
-    - type: array
+      type: array
       items:
-      - type: array
+        type: array
         items:
-        - type: array
+          type: array
           items:
-          - type: array
+            type: array
             items: double
     name: coordinates
   - type:
-    - type: array
+      type: array
       items: double
     name: bbox
 
@@ -162,7 +162,7 @@
     - MultiPolygon
     name: geometry
   - type:
-    - type: array
+      type: array
       items: double
     name: bbox
 
@@ -176,7 +176,7 @@
   fields:
   - type: GeometryCollectionType
     name: type
-#  - type: array
+#    type: array
 #    items:
 #    - type: Point
 #    - type: LineString
@@ -186,7 +186,7 @@
 #    - type: MultiPolygon
 #    name: geometries
   - type:
-    - type: array
+      type: array
       items: double
     name: bbox
 
@@ -227,11 +227,11 @@
   - type: FeatureCollectionType
     name: type
   - type:
-    - type: array
+      type: array
       items: Feature
     name: features
   - type:
-    - type: array
+      type: array
       items: Link
     name: links
   - type: string
