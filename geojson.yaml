@@ -148,7 +148,7 @@
 - type: record
   name: Feature
   fields:
-  - type: Feature
+  - type: FeatureType
     name: type
   - name: id
     type: string
