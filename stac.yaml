@@ -43,6 +43,74 @@
       type: array
       items: Link
 
+# STAC Item
+# https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/item.json
+
+- type: record
+  name: BasicDescriptiveFields
+  fields:
+  - name: title
+    type: string
+  - name: description
+    type: string
+
+- type: record
+  name: DateTime
+  fields:
+  - name: datetime
+    type: string
+  - name: start_datetime
+    type: string
+  - name: end_datetime
+    type: string
+  - name: created
+    type: string
+  - name: updated
+    type: string
+
+- type: record
+  name: Instrument
+  fields:
+  - name: platform
+    type: string
+  - name: instruments
+    type:
+      type: array
+      items: string
+  - name: constellation
+    type: string
+  - name: mission
+    type: string
+  - name: gsd
+    type: int
+
+- type: record
+  name: Licensing
+  fields:
+  - name: license
+    type: string
+
+#- type: record
+#  name: Item
+#  extends: [https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/geojson.yaml#Feature, BasicDescriptiveFields, DateTime, Instrument, Licensing, Provider]
+#  fields:
+#  - name: stac_version
+#    type: string
+#  - name: stac_extensions
+#    type:
+#      type: array
+#      items: string
+#  - name: collection
+#    type: string
+#  - name: links
+#    type:
+#      type: array
+#      items: Link
+#  - name: assets
+#    type:
+#      type: array
+#      items: Asset
+
 # STAC Collection
 # https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/collection-spec/json-schema/collection.json
 
@@ -160,71 +228,3 @@
     type: [int, string]
   - name: maximum
     type: [int, string]
-
-# STAC Item
-# https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/item.json
-
-- type: record
-  name: BasicDescriptiveFields
-  fields:
-  - name: title
-    type: string
-  - name: description
-    type: string
-
-- type: record
-  name: DateTime
-  fields:
-  - name: datetime
-    type: string
-  - name: start_datetime
-    type: string
-  - name: end_datetime
-    type: string
-  - name: created
-    type: string
-  - name: updated
-    type: string
-
-- type: record
-  name: Instrument
-  fields:
-  - name: platform
-    type: string
-  - name: instruments
-    type:
-      type: array
-      items: string
-  - name: constellation
-    type: string
-  - name: mission
-    type: string
-  - name: gsd
-    type: int
-
-- type: record
-  name: Licensing
-  fields:
-  - name: license
-    type: string
-
-#- type: record
-#  name: Item
-#  extends: [https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/geojson.yaml#Feature, BasicDescriptiveFields, DateTime, Instrument, Licensing, Provider]
-#  fields:
-#  - name: stac_version
-#    type: string
-#  - name: stac_extensions
-#    type:
-#      type: array
-#      items: string
-#  - name: collection
-#    type: string
-#  - name: links
-#    type:
-#      type: array
-#      items: Link
-#  - name: assets
-#    type:
-#      type: array
-#      items: Asset
