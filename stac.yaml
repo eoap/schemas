@@ -166,8 +166,51 @@
 
 - type: record
   name: Asset
-  extends: [BasicDescriptiveFields, DateTime, Instrument, Licensing, Provider]
   fields:
+  # BasicDescriptiveFields
+  - name: title
+    type: string
+  - name: description
+    type: string
+  # DateTime
+  - name: datetime
+    type: string
+  - name: start_datetime
+    type: string
+  - name: end_datetime
+    type: string
+  - name: created
+    type: string
+  - name: updated
+    type: string
+  # Instrument
+  - name: platform
+    type: string
+  - name: instruments
+    type:
+      type: array
+      items: string
+  - name: constellation
+    type: string
+  - name: mission
+    type: string
+  - name: gsd
+    type: int
+  # Licensing
+  - name: license
+    type: string
+  # Provider
+  - name: name
+    type: string
+  - name: description
+    type: string
+  - name: roles
+    type:
+      type: array
+      items: Role
+  - name: url
+    type: string
+  # Asset
   - name: href
     type: string
   - name: type
