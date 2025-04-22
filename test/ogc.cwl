@@ -6,7 +6,7 @@ requirements:
     - $import: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/ogc.yaml
 inputs:
   input_bbox:
-    type: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/ogc.yaml#BBox
+    type: OGC#BBox
     inputBinding:
       position: 1
 outputs:
