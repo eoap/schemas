@@ -18,49 +18,49 @@ $graph:
 - type: record
   name: Link
   fields:
-    - name: href
-      type: string
-      doc: "Link reference"
-    - name: rel
-      type: string
-      doc: "Link relation type"
-    - name: type
-      type: string
-      doc: "Link type"
-    - name: title
-      type: string
-      doc: "Link title"
+  - name: href
+    type: string
+    doc: "Link reference"
+  - name: rel
+    type: string
+    doc: "Link relation type"
+  - name: type
+    type: string
+    doc: "Link type"
+  - name: title
+    type: string
+    doc: "Link title"
 
 - type: record
   name: Catalog
   documentRoot: true
   doc: "This object represents Catalogs in a SpatioTemporal Asset Catalog"
   fields:
-    - name: stac_version
-      type: string
-      doc: "STAC version"
-    - name: stac_extensions
-      type:
-        type: array
-        items: string
-      doc: "STAC extensions"
-    - name: type
-      type: string
-      doc: "Type of STAC entity, `Catalog` as constant"
-    - name: id
-      type: string
-      doc: "Identifier"
-    - name: title
-      type: string
-      doc: "Title"
-    - name: description
-      type: string
-      doc: "Description"
-    - name: links
-      type:
-        type: array
-        items: Link
-      doc: "Links"
+  - name: stac_version
+    type: string
+    doc: "STAC version"
+  - name: stac_extensions
+    type:
+      type: array
+      items: string
+    doc: "STAC extensions"
+  - name: type
+    type: string
+    doc: "Type of STAC entity, `Catalog` as constant"
+  - name: id
+    type: string
+    doc: "Identifier"
+  - name: title
+    type: string
+    doc: "Title"
+  - name: description
+    type: string
+    doc: "Description"
+  - name: links
+    type:
+      type: array
+      items: Link
+    doc: "Links"
 
 # STAC Collection
 # https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/collection-spec/json-schema/collection.json
@@ -75,242 +75,231 @@ $graph:
 
 - type: record
   name: Provider
-  doc: |
-    "STAC Collection"
+  doc: "STAC Collection"
   fields:
-    - name: name
-      type: string
-      doc: "Organization name"
-    - name: description
-      type: string
-      doc: "Organization description"
-    - name: roles
-      type:
-        type: array
-        items: Role
-      doc: "Organization roles"
-    - name: url
-      type: string
-      doc: "Organization homepage"
+  - name: name
+    type: string
+    doc: "Organization name"
+  - name: description
+    type: string
+    doc: "Organization description"
+  - name: roles
+    type:
+      type: array
+      items: Role
+    doc: "Organization roles"
+  - name: url
+    type: string
+    doc: "Organization homepage"
 
 - type: record
   name: Spatial
-  doc: |
-    "Spatial extent object"
+  doc: "Spatial extent object"
   fields:
-    - name: bbox
-      type:
+  - name: bbox
+    type:
+      type: array
+      items:
         type: array
-        items:
-          type: array
-          items: double
-      doc: "Spatial extents"
+        items: double
+    doc: "Spatial extents"
 
 - type: record
   name: Temporal
   doc: "Temporal extent object"
   fields:
-    - name: interval
-      type:
+  - name: interval
+    type:
+      type: array
+      items:
         type: array
-        items:
-          type: array
-          items: string
-      doc: "Temporal extents"
+        items: string
+    doc: "Temporal extents"
 
 - type: record
   name: Extents
-  doc: |
-    "Extents"
+  doc: "Extents"
   fields:
-    - name: spatial
-      type: Spatial
-      doc: "Spatial extent object"
-    - name: temporal
-      type: Temporal
-      doc: "Temporal extent object"
+  - name: spatial
+    type: Spatial
+    doc: "Spatial extent object"
+  - name: temporal
+    type: Temporal
+    doc: "Temporal extent object"
 
 - type: record
   name: Asset
   extends: [BasicDescriptiveFields, DateTime, Instrument, Licensing, Provider]
-  doc: |
-    "This object represents Collections in a SpatioTemporal Asset Catalog"
+  doc: "This object represents Collections in a SpatioTemporal Asset Catalog"
   fields:
-    - name: href
-      type: string
-      doc: "Asset reference"
-    - name: type
-      type: string
-      doc: "Asset type"
-    - name: roles
-      type:
-        type: array
-        items: string
-      doc: "Asset roles"
+  - name: href
+    type: string
+    doc: "Asset reference"
+  - name: type
+    type: string
+    doc: "Asset type"
+  - name: roles
+    type:
+      type: array
+      items: string
+    doc: "Asset roles"
 
 - type: record
   name: Collection
   documentRoot: true
-  doc: |
-    "This object represents Collections in a SpatioTemporal Asset Catalog"
+  doc: "This object represents Collections in a SpatioTemporal Asset Catalog"
   fields:
-    - name: stac_version
-      type: string
-      doc: "STAC version"
-    - name: stac_extensions
-      type:
-        type: array
+  - name: stac_version
+    type: string
+    doc: "STAC version"
+  - name: stac_extensions
+    type:
+      type: array
+      items: string
+    doc: "STAC extensions"
+  - name: type
+    type: string
+    doc: "Type of STAC entity, `Collection` as constant"
+  - name: id
+    type: string
+    doc: "Identifier"
+  - name: title
+    type: string
+    doc: "Title"
+  - name: description
+    type: string
+    doc: "Description"
+  - name: keywords
+    type:
+      type: array
+      items: string
+    doc: "Keywords"
+  - name: license
+    type: string
+    doc: "Collection License Name"
+  - name: providers
+    type:
+      type: array
+      items: Provider
+    doc: "$property.value.title"
+  - name: extent
+    type: Extents
+    doc: "Extents"
+  - name: assets
+    type:
+      type: array
+      items: Asset
+    doc: "Links to assets"
+  - name: links
+    type:
+      type: array
+      items: Link
+    doc: "Links"
+  - name: summaries
+    type:
+      - type: array
         items: string
-      doc: "STAC extensions"
-    - name: type
-      type: string
-      doc: "Type of STAC entity, `Collection` as constant"
-    - name: id
-      type: string
-      doc: "Identifier"
-    - name: title
-      type: string
-      doc: "Title"
-    - name: description
-      type: string
-      doc: "Description"
-    - name: keywords
-      type:
-        type: array
-        items: string
-      doc: "Keywords"
-    - name: license
-      type: string
-      doc: "Collection License Name"
-    - name: providers
-      type:
-        type: array
-        items: Provider
-      doc: "$property.value.title"
-    - name: extent
-      type: Extents
-      doc: "Extents"
-    - name: assets
-      type:
-        type: array
-        items: Asset
-      doc: "Links to assets"
-    - name: links
-      type:
-        type: array
-        items: Link
-      doc: "Links"
-    - name: summaries
-      type:
-        - type: array
-          items: string
-        - Range
-      doc: "$property.value.title"
+      - Range
+    doc: "$property.value.title"
 
 - type: record
   name: Range
-  doc: |
-    ""
+  doc: ""
   fields:
-    - name: minimum
-      type: [int, string]
-      doc: "Minimum value"
-    - name: maximum
-      type: [int, string]
-      doc: "Maximum value"
+  - name: minimum
+    type: [int, string]
+    doc: "Minimum value"
+  - name: maximum
+    type: [int, string]
+    doc: "Maximum value"
 
 # STAC Item
 # https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/item.json
 
 - type: record
   name: BasicDescriptiveFields
-  doc: |
-    "Basic Descriptive Fields"
+  doc: "Basic Descriptive Fields"
   fields:
-    - name: title
-      type: string
-      doc: "A human-readable title describing the Item."
-    - name: description
-      type: string
-      doc: "Detailed multi-line description to fully explain the Item."
+  - name: title
+    type: string
+    doc: "A human-readable title describing the Item."
+  - name: description
+    type: string
+    doc: "Detailed multi-line description to fully explain the Item."
 
 - type: record
   name: DateTime
-  doc: |
-    "Date and Time Fields"
+  doc: "Date and Time Fields"
   fields:
-    - name: datetime
-      type: string
-      doc: "The searchable date/time of the assets, in UTC (Formatted in RFC 3339)"
-    - name: start_datetime
-      type: string
-      doc: "The searchable start date/time of the assets, in UTC (Formatted in RFC 3339)"
-    - name: end_datetime
-      type: string
-      doc: "The searchable end date/time of the assets, in UTC (Formatted in RFC 3339)"
-    - name: created
-      type: string
-      doc: "Creation Time"
-    - name: updated
-      type: string
-      doc: "Last Update Time"
+  - name: datetime
+    type: string
+    doc: "The searchable date/time of the assets, in UTC (Formatted in RFC 3339)"
+  - name: start_datetime
+    type: string
+    doc: "The searchable start date/time of the assets, in UTC (Formatted in RFC 3339)"
+  - name: end_datetime
+    type: string
+    doc: "The searchable end date/time of the assets, in UTC (Formatted in RFC 3339)"
+  - name: created
+    type: string
+    doc: "Creation Time"
+  - name: updated
+    type: string
+    doc: "Last Update Time"
 
 - type: record
   name: Instrument
-  doc: |
-    "Instrument Fields"
+  doc: "Instrument Fields"
   fields:
-    - name: platform
-      type: string
-      doc: "Platform"
-    - name: instruments
-      type:
-        type: array
-        items: string
-      doc: "Instruments"
-    - name: constellation
-      type: string
-      doc: "Constellation"
-    - name: mission
-      type: string
-      doc: "Mission"
-    - name: gsd
-      type: int
-      doc: "Ground Sample Distance"
+  - name: platform
+    type: string
+    doc: "Platform"
+  - name: instruments
+    type:
+      type: array
+      items: string
+    doc: "Instruments"
+  - name: constellation
+    type: string
+    doc: "Constellation"
+  - name: mission
+    type: string
+    doc: "Mission"
+  - name: gsd
+    type: int
+    doc: "Ground Sample Distance"
 
 - type: record
   name: Licensing
-  doc: |
-    "Licensing Fields"
+  doc: "Licensing Fields"
   fields:
-    - name: license
-      type: string
-      doc: "License"
+  - name: license
+    type: string
+    doc: "License"
 
 - type: record
   name: Item
   extends: [geojson:Feature, BasicDescriptiveFields, DateTime, Instrument, Licensing, Provider]
   documentRoot: true
-  doc: |
-    "This object represents the metadata for an item in a SpatioTemporal Asset Catalog"
+  doc: "This object represents the metadata for an item in a SpatioTemporal Asset Catalog"
   fields:
-    - name: stac_version
-      type: string
-      doc: "STAC version"
-    - name: stac_extensions
-      type:
-        type: array
-        items: string
-      doc: "STAC extensions"
-    - name: collection
-      type: string
-      doc: "The ID of the STAC Collection this Item references to."
-    - name: links
-      type:
-        type: array
-        items: Link
-      doc: "Links"
-    - name: assets
-      type:
-        type: array
-        items: Asset
+  - name: stac_version
+    type: string
+    doc: "STAC version"
+  - name: stac_extensions
+    type:
+      type: array
+      items: string
+    doc: "STAC extensions"
+  - name: collection
+    type: string
+    doc: "The ID of the STAC Collection this Item references to."
+  - name: links
+    type:
+      type: array
+      items: Link
+    doc: "Links"
+  - name: assets
+    type:
+      type: array
+      items: Asset
