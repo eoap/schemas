@@ -224,9 +224,13 @@
   name: Range
   fields:
   - name: minimum
-    type: [int, string]
+    type:
+    - type: int
+    - type: string
   - name: maximum
-    type: [int, string]
+    type:
+    - type: int
+    - type: string
 
 - type: record
   name: Collection
