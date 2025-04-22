@@ -16,7 +16,7 @@
   name: BBox
   fields:
   - type:
-    - type: array
+      type: array
       items: double
     name: bbox
   - type: CRS
