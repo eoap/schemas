@@ -1,36 +1,18 @@
 cwlVersion: v1.2
 class: CommandLineTool
-id: main
-label: "Echo OGC BBox"
-baseCommand: echo
-
 requirements:
-  InlineJavascriptRequirement: {}
   SchemaDefRequirement:
     types:
+    - $import: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/geojson.yaml
     - $import: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/stac.yaml
-
 inputs:
-  aoi:
-    type: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/stac.yaml#Item
-    label: "Area of interest"
-    doc: "Area of interest defined as a bounding box"
-    loadContents: true
+  input_catalog:
+    type: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/stac.yaml#Catalog
     inputBinding:
-      valueFrom: |
-        ${
-          /* Validate the length of bbox to be either 4 or 6 */
-          var aoi = JSON.parse(self.contents);
-          var bboxLength = aoi.bbox.length;
-          if (bboxLength !== 4 && bboxLength !== 6) {
-            throw "Invalid bbox length: bbox must have either 4 or 6 elements.";
-          }
-          /* Convert bbox array to a space-separated string for echo */
-          return aoi.bbox.join(' ') + " CRS: " + aoi.crs;
-        }
-
+      position: 1
 outputs:
-  echo_output:
-    type: stdout
-
-stdout: echo_output.txt
+  output_file:
+    type: File
+    outputBinding:
+      glob: output.txt
+baseCommand: echo

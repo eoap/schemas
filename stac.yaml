@@ -6,12 +6,6 @@
 # You should have received a copy of the license along with this work.
 # If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 
-$base: "https://stacspec.org/schema#"
-$namespaces:
-  geojson: "https://geojson.org/schema#"
-$graph:
-- $import: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/geojson.yaml
-
 # STAC Catalog
 # https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/catalog-spec/json-schema/catalog.json
 
@@ -216,7 +210,7 @@ $graph:
 
 - type: record
   name: Item
-  extends: [geojson:Feature, BasicDescriptiveFields, DateTime, Instrument, Licensing, Provider]
+  extends: [https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/geojson.yaml#Feature, BasicDescriptiveFields, DateTime, Instrument, Licensing, Provider]
   fields:
   - name: stac_version
     type: string
