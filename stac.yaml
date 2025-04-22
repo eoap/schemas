@@ -222,7 +222,6 @@
 
 - type: record
   name: Collection
-  documentRoot: true
   fields:
   - name: stac_version
     type: string
