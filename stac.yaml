@@ -15,8 +15,8 @@ $graph:
 # STAC Catalog
 # https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/catalog-spec/json-schema/catalog.json
 
-- name: Link
-  type: record
+- type: record
+  name: Link
   fields:
     - name: href
       type: string
@@ -31,11 +31,10 @@ $graph:
       type: string
       doc: "Link title"
 
-- name: Catalog
-  type: record
+- type: record
+  name: Catalog
   documentRoot: true
-  doc: |
-    "This object represents Catalogs in a SpatioTemporal Asset Catalog"
+  doc: "This object represents Catalogs in a SpatioTemporal Asset Catalog"
   fields:
     - name: stac_version
       type: string
@@ -66,16 +65,16 @@ $graph:
 # STAC Collection
 # https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/collection-spec/json-schema/collection.json
 
-- name: Role
-  type: enum
+- type: enum
+  name: Role
   symbols:
   - "producer"
   - "licensor"
   - "processor"
   - "host"
 
-- name: Provider
-  type: record
+- type: record
+  name: Provider
   doc: |
     "STAC Collection"
   fields:
@@ -94,8 +93,8 @@ $graph:
       type: string
       doc: "Organization homepage"
 
-- name: Spatial
-  type: record
+- type: record
+  name: Spatial
   doc: |
     "Spatial extent object"
   fields:
@@ -107,8 +106,8 @@ $graph:
           items: double
       doc: "Spatial extents"
 
-- name: Temporal
-  type: record
+- type: record
+  name: Temporal
   doc: "Temporal extent object"
   fields:
     - name: interval
@@ -119,8 +118,8 @@ $graph:
           items: string
       doc: "Temporal extents"
 
-- name: Extents
-  type: record
+- type: record
+  name: Extents
   doc: |
     "Extents"
   fields:
@@ -131,8 +130,8 @@ $graph:
       type: Temporal
       doc: "Temporal extent object"
 
-- name: Asset
-  type: record
+- type: record
+  name: Asset
   extends: [BasicDescriptiveFields, DateTime, Instrument, Licensing, Provider]
   doc: |
     "This object represents Collections in a SpatioTemporal Asset Catalog"
@@ -149,8 +148,8 @@ $graph:
         items: string
       doc: "Asset roles"
 
-- name: Collection
-  type: record
+- type: record
+  name: Collection
   documentRoot: true
   doc: |
     "This object represents Collections in a SpatioTemporal Asset Catalog"
@@ -208,8 +207,8 @@ $graph:
         - Range
       doc: "$property.value.title"
 
-- name: Range
-  type: record
+- type: record
+  name: Range
   doc: |
     ""
   fields:
@@ -223,8 +222,8 @@ $graph:
 # STAC Item
 # https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/item.json
 
-- name: BasicDescriptiveFields
-  type: record
+- type: record
+  name: BasicDescriptiveFields
   doc: |
     "Basic Descriptive Fields"
   fields:
@@ -235,8 +234,8 @@ $graph:
       type: string
       doc: "Detailed multi-line description to fully explain the Item."
 
-- name: DateTime
-  type: record
+- type: record
+  name: DateTime
   doc: |
     "Date and Time Fields"
   fields:
@@ -256,8 +255,8 @@ $graph:
       type: string
       doc: "Last Update Time"
 
-- name: Instrument
-  type: record
+- type: record
+  name: Instrument
   doc: |
     "Instrument Fields"
   fields:
@@ -279,8 +278,8 @@ $graph:
       type: int
       doc: "Ground Sample Distance"
 
-- name: Licensing
-  type: record
+- type: record
+  name: Licensing
   doc: |
     "Licensing Fields"
   fields:
@@ -288,8 +287,8 @@ $graph:
       type: string
       doc: "License"
 
-- name: Item
-  type: record
+- type: record
+  name: Item
   extends: [geojson:Feature, BasicDescriptiveFields, DateTime, Instrument, Licensing, Provider]
   documentRoot: true
   doc: |
