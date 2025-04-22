@@ -221,6 +221,14 @@
       items: string
 
 - type: record
+  name: Range
+  fields:
+  - name: minimum
+    type: [int, string]
+  - name: maximum
+    type: [int, string]
+
+- type: record
   name: Collection
   fields:
   - name: stac_version
@@ -262,11 +270,3 @@
       - type: array
         items: string
       - Range
-
-- type: record
-  name: Range
-  fields:
-  - name: minimum
-    type: [int, string]
-  - name: maximum
-    type: [int, string]
