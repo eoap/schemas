@@ -17,31 +17,19 @@ $graph:
 
 - name: Link
   type: record
-  doc: |
-    ""
   fields:
-    class:
+    - name: href
       type: string
-      doc: "Always 'Link"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    href:
+      doc: "Link reference"
+    - name: rel
       type: string
-      doc: |
-        "Link reference"
-    rel:
+      doc: "Link relation type"
+    - name: type
       type: string
-      doc: |
-        "Link relation type"
-    type:
+      doc: "Link type"
+    - name: title
       type: string
-      doc: |
-        "Link type"
-    title:
-      type: string
-      doc: |
-        "Link title"
+      doc: "Link title"
 
 - name: Catalog
   type: record
@@ -49,40 +37,31 @@ $graph:
   doc: |
     "This object represents Catalogs in a SpatioTemporal Asset Catalog"
   fields:
-    class:
+    - name: stac_version
       type: string
-      doc: "Always 'STAC Catalog'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    stac_version:
+      doc: "STAC version"
+    - name: stac_extensions
+      type:
+        type: array
+        items: string
+      doc: "STAC extensions"
+    - name: type
       type: string
-      doc: |
-        "STAC version"
-    stac_extensions:
-      type: string[]
-      doc: |
-        "STAC extensions"
-    type:
+      doc: "Type of STAC entity, `Catalog` as constant"
+    - name: id
       type: string
-      doc: |
-        "Type of STAC entity, `Catalog` as constant"
-    id:
+      doc: "Identifier"
+    - name: title
       type: string
-      doc: |
-        "Identifier"
-    title:
+      doc: "Title"
+    - name: description
       type: string
-      doc: |
-        "Title"
-    description:
-      type: string
-      doc: |
-        "Description"
-    links:
-      type: Link[]
-      doc: |
-        "Links"
+      doc: "Description"
+    - name: links
+      type:
+        type: array
+        items: Link
+      doc: "Links"
 
 # STAC Collection
 # https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/collection-spec/json-schema/collection.json
@@ -100,22 +79,18 @@ $graph:
   doc: |
     "STAC Collection"
   fields:
-    class:
-      type: string
-      doc: "Always 'Provider'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    name:
+    - name: name
       type: string
       doc: "Organization name"
-    description:
+    - name: description
       type: string
       doc: "Organization description"
-    roles:
-      type: Role[]
+    - name: roles
+      type:
+        type: array
+        items: Role
       doc: "Organization roles"
-    url:
+    - name: url
       type: string
       doc: "Organization homepage"
 
@@ -124,28 +99,24 @@ $graph:
   doc: |
     "Spatial extent object"
   fields:
-    class:
-      type: string
-      doc: "Always 'Spatial'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    bbox:
-      type: double[][]
+    - name: bbox
+      type:
+        type: array
+        items:
+          type: array
+          items: double
       doc: "Spatial extents"
 
 - name: Temporal
   type: record
   doc: "Temporal extent object"
   fields:
-    class:
-      type: string
-      doc: "Always 'Temporal'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    interval:
-      type: string[][]
+    - name: interval
+      type:
+        type: array
+        items:
+          type: array
+          items: string
       doc: "Temporal extents"
 
 - name: Extents
@@ -153,16 +124,10 @@ $graph:
   doc: |
     "Extents"
   fields:
-    class:
-      type: string
-      doc: "Always 'Extents'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    spatial:
+    - name: spatial
       type: Spatial
       doc: "Spatial extent object"
-    temporal:
+    - name: temporal
       type: Temporal
       doc: "Temporal extent object"
 
@@ -172,24 +137,17 @@ $graph:
   doc: |
     "This object represents Collections in a SpatioTemporal Asset Catalog"
   fields:
-    class:
+    - name: href
       type: string
-      doc: "Always 'Asset'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    href:
+      doc: "Asset reference"
+    - name: type
       type: string
-      doc: |
-        "Asset reference"
-    type:
-      type: string
-      doc: |
-        "Asset type"
-    roles:
-      type: string[]
-      doc: |
-        "Asset roles"
+      doc: "Asset type"
+    - name: roles
+      type:
+        type: array
+        items: string
+      doc: "Asset roles"
 
 - name: Collection
   type: record
@@ -197,86 +155,70 @@ $graph:
   doc: |
     "This object represents Collections in a SpatioTemporal Asset Catalog"
   fields:
-    class:
+    - name: stac_version
       type: string
-      doc: "Always 'STAC Collection'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    stac_version:
-      type: string
-      doc: |
-        "STAC version"
-    stac_extensions:
-      type: string[]
-      doc: |
-        "STAC extensions"
-    type:
-      type: string
-      doc: |
-        "Type of STAC entity, `Collection` as constant"
-    id:
-      type: string
-      doc: |
-        "Identifier"
-    title:
-      type: string
-      doc: |
-        "Title"
-    description:
-      type: string
-      doc: |
-        "Description"
-    keywords:
-      type: string[]
-      doc: |
-        "Keywords"
-    license:
-      type: string
-      doc: |
-        "Collection License Name"
-    providers:
-      type: Provider[]
-      doc: |
-        "$property.value.title"
-    extent:
-      type: Extents
-      doc: |
-        "Extents"
-    assets:
-      type: Asset[]
-      doc: |
-        "Links to assets"
-    links:
-      type: Link[]
-      doc: |
-        "Links"
-    summaries:
+      doc: "STAC version"
+    - name: stac_extensions
       type:
-        - string[]
+        type: array
+        items: string
+      doc: "STAC extensions"
+    - name: type
+      type: string
+      doc: "Type of STAC entity, `Collection` as constant"
+    - name: id
+      type: string
+      doc: "Identifier"
+    - name: title
+      type: string
+      doc: "Title"
+    - name: description
+      type: string
+      doc: "Description"
+    - name: keywords
+      type:
+        type: array
+        items: string
+      doc: "Keywords"
+    - name: license
+      type: string
+      doc: "Collection License Name"
+    - name: providers
+      type:
+        type: array
+        items: Provider
+      doc: "$property.value.title"
+    - name: extent
+      type: Extents
+      doc: "Extents"
+    - name: assets
+      type:
+        type: array
+        items: Asset
+      doc: "Links to assets"
+    - name: links
+      type:
+        type: array
+        items: Link
+      doc: "Links"
+    - name: summaries
+      type:
+        - type: array
+          items: string
         - Range
-      doc: |
-        "$property.value.title"
+      doc: "$property.value.title"
 
 - name: Range
   type: record
   doc: |
     ""
   fields:
-    class:
-      type: string
-      doc: "Always 'Range'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    minimum:
+    - name: minimum
       type: [int, string]
-      doc: |
-        "Minimum value"
-    maximum:
+      doc: "Minimum value"
+    - name: maximum
       type: [int, string]
-      doc: |
-        "Maximum value"
+      doc: "Maximum value"
 
 # STAC Item
 # https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/item.json
@@ -286,101 +228,65 @@ $graph:
   doc: |
     "Basic Descriptive Fields"
   fields:
-    class:
+    - name: title
       type: string
-      doc: "Always 'BasicDescriptiveFields'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    title:
+      doc: "A human-readable title describing the Item."
+    - name: description
       type: string
-      doc: |
-        "A human-readable title describing the Item."
-    description:
-      type: string {
-      "title": "Item Description"
-      doc: |
-        "Detailed multi-line description to fully explain the Item."
+      doc: "Detailed multi-line description to fully explain the Item."
 
 - name: DateTime
   type: record
   doc: |
     "Date and Time Fields"
   fields:
-    class:
+    - name: datetime
       type: string
-      doc: "Always 'DateTime'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    datetime:
+      doc: "The searchable date/time of the assets, in UTC (Formatted in RFC 3339)"
+    - name: start_datetime
       type: string
-      doc: |
-        "The searchable date/time of the assets, in UTC (Formatted in RFC 3339)"
-    start_datetime:
+      doc: "The searchable start date/time of the assets, in UTC (Formatted in RFC 3339)"
+    - name: end_datetime
       type: string
-      doc: |
-        "The searchable start date/time of the assets, in UTC (Formatted in RFC 3339)"
-    end_datetime:
+      doc: "The searchable end date/time of the assets, in UTC (Formatted in RFC 3339)"
+    - name: created
       type: string
-      doc: |
-        "The searchable end date/time of the assets, in UTC (Formatted in RFC 3339)"
-    created:
+      doc: "Creation Time"
+    - name: updated
       type: string
-      doc: |
-        "Creation Time"
-    updated:
-      type: string
-      doc: |
-        "Last Update Time"
+      doc: "Last Update Time"
 
 - name: Instrument
   type: record
   doc: |
     "Instrument Fields"
   fields:
-    class:
+    - name: platform
       type: string
-      doc: "Always 'Instrument'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    platform:
+      doc: "Platform"
+    - name: instruments
+      type:
+        type: array
+        items: string
+      doc: "Instruments"
+    - name: constellation
       type: string
-      doc: |
-        "Platform"
-    instruments:
-      type: string[]
-      doc: |
-        "Instruments"
-    constellation:
+      doc: "Constellation"
+    - name: mission
       type: string
-      doc: |
-        "Constellation"
-    mission:
-      type: string
-      doc: |
-        "Mission"
-    gsd:
+      doc: "Mission"
+    - name: gsd
       type: int
-      doc: |
-        "Ground Sample Distance"
+      doc: "Ground Sample Distance"
 
 - name: Licensing
   type: record
   doc: |
     "Licensing Fields"
   fields:
-    class:
+    - name: license
       type: string
-      doc: "Always 'Licensing'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    license:
-      type: string
-      doc: |
-        "License"
+      doc: "License"
 
 - name: Item
   type: record
@@ -389,27 +295,23 @@ $graph:
   doc: |
     "This object represents the metadata for an item in a SpatioTemporal Asset Catalog"
   fields:
-    class:
+    - name: stac_version
       type: string
-      doc: "Always 'STAC Item'"
-      jsonldPredicate:
-        "_id": "@type"
-        "_type": "@vocab"
-    stac_version:
+      doc: "STAC version"
+    - name: stac_extensions
+      type:
+        type: array
+        items: string
+      doc: "STAC extensions"
+    - name: collection
       type: string
-      doc: |
-        "STAC version"
-    stac_extensions:
-      type: string[]
-      doc: |
-        "STAC extensions"
-    collection:
-      type: string
-      doc: |
-        "The ID of the STAC Collection this Item references to."
-    links:
-      type: Link[]
-      doc: |
-        "Links"
-    assets:
-      type: Asset[]
+      doc: "The ID of the STAC Collection this Item references to."
+    - name: links
+      type:
+        type: array
+        items: Link
+      doc: "Links"
+    - name: assets
+      type:
+        type: array
+        items: Asset
