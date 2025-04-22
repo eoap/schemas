@@ -7,7 +7,7 @@ requirements:
     - $import: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/stac.yaml
 inputs:
   input_catalog:
-    type: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/stac.yaml#Catalog
+    type: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/stac.yaml#Collection
     inputBinding:
       position: 1
 outputs:
