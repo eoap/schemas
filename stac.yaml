@@ -208,23 +208,23 @@
   - name: license
     type: string
 
-- type: record
-  name: Item
-  extends: [https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/geojson.yaml#Feature, BasicDescriptiveFields, DateTime, Instrument, Licensing, Provider]
-  fields:
-  - name: stac_version
-    type: string
-  - name: stac_extensions
-    type:
-      type: array
-      items: string
-  - name: collection
-    type: string
-  - name: links
-    type:
-      type: array
-      items: Link
-  - name: assets
-    type:
-      type: array
-      items: Asset
+#- type: record
+#  name: Item
+#  extends: [https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/geojson.yaml#Feature, BasicDescriptiveFields, DateTime, Instrument, Licensing, Provider]
+#  fields:
+#  - name: stac_version
+#    type: string
+#  - name: stac_extensions
+#    type:
+#      type: array
+#      items: string
+#  - name: collection
+#    type: string
+#  - name: links
+#    type:
+#      type: array
+#      items: Link
+#  - name: assets
+#    type:
+#      type: array
+#      items: Asset
