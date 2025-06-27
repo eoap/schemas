@@ -1,0 +1,191 @@
+# EOAP Schemas (c) 2024-2025
+# 
+# EOAP Schemas is licensed under
+# Creative Commons Attribution-ShareAlike 4.0 International.
+#
+# You should have received a copy of the license along with this work.
+# If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
+
+# https://opis.io/json-schema/2.x/formats.html
+
+# type: string
+# format: date
+
+- type: record
+  name: Date
+  fields:
+  - name: value
+    type: string
+
+# type: string
+# format: date-time
+
+- type: record
+  name: DateTime
+  fields:
+  - name: value
+    type: string
+
+# type: string
+# format: duration
+
+- type: record
+  name: Duration
+  fields:
+  - name: value
+    type: string
+
+# type: string
+# format: email
+
+- type: record
+  name: Email
+  fields:
+  - name: value
+    type: string
+
+# type: string
+# format: hostname
+
+- type: record
+  name: Hostname
+  fields:
+  - name: value
+    type: string
+
+# type: string
+# format: idn-email
+
+- type: record
+  name: IDNEmail
+  fields:
+  - name: value
+    type: string
+
+# type: string
+# format: idn-hostname
+
+- type: record
+  name: IDNHostname
+  fields:
+  - name: value
+    type: string
+
+# type: string
+# format: ipv4
+
+- type: record
+  name: IPv4
+  fields:
+  - name: value
+    type: string
+
+# type: string
+# format: ipv6
+
+- type: record
+  name: IPv6
+  fields:
+  - name: value
+    type: string
+
+# type: string
+# format: iri
+
+- type: record
+  name: IRI
+  fields:
+  - name: value
+    type: string
+
+# type: string
+# format: iri-reference
+
+- type: record
+  name: IRIReference
+  fields:
+  - name: value
+    type: string
+
+# type: string
+# format: json-pointer
+
+- type: record
+  name: JsonPointer
+  fields:
+  - name: value
+    type: string
+
+# type: string
+# format: password
+
+- type: record
+  name: Password
+  fields:
+  - name: value
+    type: string
+
+# ??????????????????0
+# type: string
+# format: regex
+# pattern: {{.value}}
+
+- type: record
+  name: Regex
+  fields:
+  - name: value
+    type: string
+
+# type: string
+# format: relative-json-pointer
+
+- type: record
+  name: RelativeJsonPointer
+  fields:
+  - name: value
+    type: string
+
+# type: string
+# format: uuid
+
+- type: record
+  name: UUID
+  fields:
+  - name: value
+    type: string
+
+# type: string
+# format: uri
+
+- type: record
+  name: URI
+  fields:
+  - name: value
+    type: string
+
+# type: string
+# format: uri-reference
+
+- type: record
+  name: URIReference
+  fields:
+  - name: value
+    type: string
+
+# type: string
+# format: uri-template
+
+- type: record
+  name: URITemplate
+  fields:
+  - name: value
+    type: string
+
+# type: string
+# format: time
+
+- type: record
+  name: Time
+  fields:
+  - name: value
+    type: string
