@@ -125,17 +125,6 @@
   - name: value
     type: string
 
-# ??????????????????0
-# type: string
-# format: regex
-# pattern: {{.value}}
-
-- type: record
-  name: Regex
-  fields:
-  - name: value
-    type: string
-
 # type: string
 # format: relative-json-pointer
 
