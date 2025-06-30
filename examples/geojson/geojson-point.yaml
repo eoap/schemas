@@ -1,0 +1,11 @@
+point_of_interest:
+  class: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Point
+  type: Point
+  coordinates:
+  - 125.6
+  - 10.1
+  bbox:
+  - 125.6
+  - 10.1
+  - 125.6
+  - 10.1
