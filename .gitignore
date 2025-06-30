@@ -1,3 +1,5 @@
 .project
 no-commit/*
 *.TIF
+output.json
+echo_output.txt
