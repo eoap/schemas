@@ -1,4 +1,4 @@
-# OGC API Processes custom types for CWL
+# GeoJSON custom types for CWL
 
 !!! note
 
