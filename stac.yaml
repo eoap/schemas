@@ -9,268 +9,165 @@
 # STAC Catalog
 # https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/catalog-spec/json-schema/catalog.json
 
+- type: enum
+  name: StacVersion
+  symbols:
+  - '1.0.0'
+
 - type: record
   name: Link
   fields:
-  - name: href
-    type: string
-  - name: rel
-    type: string
-  - name: type
-    type: string
-  - name: title
-    type: string
+  - type: string
+    name: href
+  - type: string
+    name: rel
+  - type:
+    - null
+    - string
+    name: title
+  - type:
+    - null
+    - string
+    name: type
 
 - type: record
   name: Catalog
   fields:
-  - name: stac_version
-    type: string
-  - name: stac_extensions
-    type:
-      type: array
-      items: string
-  - name: type
-    type: string
-  - name: id
-    type: string
-  - name: title
-    type: string
-  - name: description
-    type: string
-  - name: links
-    type:
+  - type: string
+    name: description
+  - type: string
+    name: id
+  - type:
       type: array
       items: Link
+    name: links
+  - type:
+    - null
+    - type: array
+      items: string
+    name: stac_extensions
+  - type: StacVersion
+    name: stac_version
+  - type:
+    - null
+    - string
+    name: title
+  - type: string
+    name: type
 
-# STAC Item
-# https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/item.json
+# https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/basics.json
 
 - type: record
   name: BasicDescriptiveFields
   fields:
-  - name: title
-    type: string
-  - name: description
-    type: string
+  - type:
+    - null
+    - string
+    name: title
+  - type:
+    - null
+    - string
+    name: description
+
+# https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/datetime.json
 
 - type: record
   name: DateTime
   fields:
-  - name: datetime
-    type: string
-  - name: start_datetime
-    type: string
-  - name: end_datetime
-    type: string
-  - name: created
-    type: string
-  - name: updated
-    type: string
+  - type:
+    - null
+    - string
+    name: datetime
+  - type:
+    - null
+    - string
+    name: start_datetime
+  - type:
+    - null
+    - string
+    name: end_datetime
+  - type:
+    - null
+    - string
+    name: created
+  - type:
+    - null
+    - string
+    name: updated
+
+# https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/instrument.json
 
 - type: record
   name: Instrument
   fields:
-  - name: platform
-    type: string
-  - name: instruments
-    type:
+  - type:
+    - null
+    - string
+    name: constellation
+  - type:
+    - null
+    - int
+    name: gsd
+  - type:
       type: array
       items: string
-  - name: constellation
-    type: string
-  - name: mission
-    type: string
-  - name: gsd
-    type: int
+    name: instruments
+  - type:
+    - null
+    - string
+    name: mission
+  - type:
+    - null
+    - string
+    name: platform
+
+# https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/licensing.json
 
 - type: record
   name: Licensing
   fields:
-  - name: license
-    type: string
+  - type:
+    - null
+    - string
+    name: license
 
-#- type: record
-#  name: Item
-#  extends: [https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/geojson.yaml#Feature, BasicDescriptiveFields, DateTime, Instrument, Licensing, Provider]
-#  fields:
-#  - name: stac_version
-#    type: string
-#  - name: stac_extensions
-#    type:
-#      type: array
-#      items: string
-#  - name: collection
-#    type: string
-#  - name: links
-#    type:
-#      type: array
-#      items: Link
-#  - name: assets
-#    type:
-#      type: array
-#      items: Asset
-
-# STAC Collection
-# https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/collection-spec/json-schema/collection.json
+# https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/provider.json
 
 - type: enum
-  name: Role
+  name: OrganizationRole
   symbols:
-  - "producer"
-  - "licensor"
-  - "processor"
-  - "host"
+  - 'producer'
+  - 'licensor'
+  - 'processor'
+  - 'host'
 
 - type: record
   name: Provider
   fields:
-  - name: name
-    type: string
-  - name: description
-    type: string
-  - name: roles
-    type:
-      type: array
-      items: Role
-  - name: url
-    type: string
+  - type:
+    - null
+    - string
+    name: description
+  - type: string
+    name: name
+  - type:
+    - null
+    - type: array
+      items: OrganizationRole
+    name: roles
+  - type:
+    - null
+    - string
+    name: url
 
 - type: record
-  name: Spatial
+  name: Providers
   fields:
-  - name: bbox
-    type:
-      type: array
-      items:
-        type: array
-        items: double
-
-- type: record
-  name: Temporal
-  fields:
-  - name: interval
-    type:
-      type: array
-      items:
-        type: array
-        items: string
-
-- type: record
-  name: Extents
-  fields:
-  - name: spatial
-    type: Spatial
-  - name: temporal
-    type: Temporal
-
-- type: record
-  name: Asset
-  fields:
-  # BasicDescriptiveFields
-  - name: title
-    type: string
-  - name: description
-    type: string
-  # DateTime
-  - name: datetime
-    type: string
-  - name: start_datetime
-    type: string
-  - name: end_datetime
-    type: string
-  - name: created
-    type: string
-  - name: updated
-    type: string
-  # Instrument
-  - name: platform
-    type: string
-  - name: instruments
-    type:
-      type: array
-      items: string
-  - name: constellation
-    type: string
-  - name: mission
-    type: string
-  - name: gsd
-    type: int
-  # Licensing
-  - name: license
-    type: string
-  # Provider
-  - name: name
-    type: string
-  - name: description
-    type: string
-  - name: roles
-    type:
-      type: array
-      items: Role
-  - name: url
-    type: string
-  # Asset
-  - name: href
-    type: string
-  - name: type
-    type: string
-  - name: roles
-    type:
-      type: array
-      items: string
-
-- type: record
-  name: Range
-  fields:
-  - name: minimum
-    type:
-    - type: int
-    - type: string
-  - name: maximum
-    type:
-    - type: int
-    - type: string
-
-- type: record
-  name: Collection
-  fields:
-  - name: stac_version
-    type: string
-  - name: stac_extensions
-    type:
-      type: array
-      items: string
-  - name: type
-    type: string
-  - name: id
-    type: string
-  - name: title
-    type: string
-  - name: description
-    type: string
-  - name: keywords
-    type:
-      type: array
-      items: string
-  - name: license
-    type: string
-  - name: providers
-    type:
-      type: array
+  - type:
+    - type: array
       items: Provider
-  - name: extent
-    type: Extents
-  - name: assets
-    type:
-      type: array
-      items: Asset
-  - name: links
-    type:
-      type: array
-      items: Link
-  - name: summaries
-    type:
-      - type: array
-        items: string
-      - Range
+    name: providers
+
+# STAC Item
+# https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/item.json
+
