@@ -20,6 +20,11 @@ plugins:
   - search
   - mermaid2:
       version: 10.6.0
+  - mkdocs-jupyter:
+      execute: true
+      kernel_name: bash
+      show_input: False
+      no_input: True
 
 markdown_extensions:
   - pymdownx.details
