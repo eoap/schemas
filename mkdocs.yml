@@ -67,6 +67,7 @@ nav:
     - GeoJSON:
       - geojson.md
       - geojson-point.ipynb
+      - geojson-feature.ipynb
     - String format: 
       - string-format.ipynb
       - datetime.ipynb
