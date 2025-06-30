@@ -153,7 +153,7 @@
   - name: id
     type: string
     doc: "Identifier"
-  - type: 
+  - type:
     - Point
     - LineString
     - Polygon
@@ -176,20 +176,20 @@
   fields:
   - type: GeometryCollectionType
     name: type
-#    type: array
-#    items:
-#    - type: Point
-#    - type: LineString
-#    - type: Polygon
-#    - type: MultiPoint
-#    - type: MultiLineString
-#    - type: MultiPolygon
-#    name: geometries
+  - type:
+      type: array
+      items:
+      - Point
+      - LineString
+      - Polygon
+      - MultiPoint
+      - MultiLineString
+      - MultiPolygon
+    name: geometries
   - type:
       type: array
       items: double
     name: bbox
-
 
 # from https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/link.yaml
 
