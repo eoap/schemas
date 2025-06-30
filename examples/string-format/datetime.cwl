@@ -1,6 +1,6 @@
 cwlVersion: v1.2
 class: CommandLineTool
-label: "Echo OGC BBox"
+label: "Echo Datetime string format"
 baseCommand: echo
 
 requirements:
