@@ -1,0 +1,9 @@
+catalog: 
+  class: "https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml#Catalog"
+  id: "stac-catalog"
+  type: "Catalog"
+  title: "STAC Catalog Example"
+  description: "An example STAC catalog"
+  stac_version: "1.0.0"
+  stac_extensions: 
+    - "https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/extensions/eo/v1.0.0/schema.json"
