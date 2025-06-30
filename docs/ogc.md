@@ -86,6 +86,7 @@ Then create an input:
 
 ```
 aoi:
+  class: "https://raw.githubusercontent.com/eoap/schemas/main/ogc.yaml#BBox"
   bbox: [100.0, 0.0, 101.0, 1.0]
   crs: "CRS84"
 ```
