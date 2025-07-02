@@ -167,7 +167,345 @@
     - type: array
       items: Provider
     name: providers
+# Geometry
+# https://geojson.org/schema/Geometry.json
+
+- type: enum
+  name: PointType
+  symbols:
+  - Point
+
+- type: record
+  name: Point
+  fields:
+  - type: PointType
+    name: type
+  - type:
+      type: array
+      items: double
+    name: coordinates
+  - type:
+      type: array
+      items: double
+    name: bbox
+
+- type: enum
+  name: LineStringType
+  symbols:
+  - LineString
+
+- type: record
+  name: LineString
+  fields:
+  - type: LineStringType
+    name: type
+  - type:
+      type: array
+      items: double
+    name: coordinates
+  - type:
+      type: array
+      items: double
+    name: bbox
+
+- type: enum
+  name: PolygonType
+  symbols:
+  - Polygon
+
+- type: record
+  name: Polygon
+  fields:
+  - type: PolygonType
+    name: type
+  - type:
+      type: array
+      items:
+        type: array
+        items: double
+    name: coordinates
+  - type:
+      type: array
+      items: double
+    name: bbox
+
+- type: enum
+  name: MultiPointType
+  symbols:
+  - MultiPoint
+
+- type: record
+  name: MultiPoint
+  fields:
+  - type: MultiPointType
+    name: type
+  - type:
+      type: array
+      items:
+        type: array
+        items: double
+    name: coordinates
+  - type:
+      type: array
+      items: double
+    name: bbox
+
+- type: enum
+  name: MultiLineStringType
+  symbols:
+  - MultiLineString
+
+- type: record
+  name: MultiLineString
+  fields:
+  - type: MultiLineStringType
+    name: type
+  - type:
+      type: array
+      items:
+        type: array
+        items:
+          type: array
+          items: double
+    name: coordinates
+  - type:
+      type: array
+      items: double
+    name: bbox
+
+- type: enum
+  name: MultiPolygonType
+  symbols:
+  - MultiPolygon
+
+- type: record
+  name: MultiPolygon
+  fields:
+  - type: MultiPolygonType
+    name: type
+  - type:
+      type: array
+      items:
+        type: array
+        items:
+          type: array
+          items:
+            type: array
+            items: double
+    name: coordinates
+  - type:
+      type: array
+      items: double
+    name: bbox
+
+# Feature
+# https://geojson.org/schema/Feature.json
+
+- type: enum
+  name: FeatureType
+  symbols:
+  - Feature
+
+- type: record
+  name: Feature
+  fields:
+  - type: FeatureType
+    name: type
+  - name: id
+    type: string
+    doc: "Identifier"
+  - type:
+    - Point
+    - LineString
+    - Polygon
+    - MultiPoint
+    - MultiLineString
+    - MultiPolygon
+    name: geometry
+  - type:
+      type: array
+      items: double
+    name: bbox
+
+- type: enum
+  name: GeometryCollectionType
+  symbols:
+  - GeometryCollection
+
+- type: record
+  name: GeometryCollection
+  fields:
+  - type: GeometryCollectionType
+    name: type
+  - type:
+      type: array
+      items:
+      - Point
+      - LineString
+      - Polygon
+      - MultiPoint
+      - MultiLineString
+      - MultiPolygon
+    name: geometries
+  - type:
+      type: array
+      items: double
+    name: bbox
 
 # STAC Item
 # https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/item.json
 
+- type: record
+  name: CommonMetadata
+  fields:
+  # $ref": "basics.json"
+  - type:
+    - null
+    - string
+    name: title
+  - type:
+    - null
+    - string
+    name: description
+  # "$ref": "datetime.json"
+  - type:
+    - null
+    - string
+    name: datetime
+  - type:
+    - null
+    - string
+    name: start_datetime
+  - type:
+    - null
+    - string
+    name: end_datetime
+  - type:
+    - null
+    - string
+    name: created
+  - type:
+    - null
+    - string
+    name: updated
+  # "$ref": "licensing.json"
+  - type:
+    - null
+    - string
+    name: license
+  # "$ref": "provider.json"
+  - type:
+    - type: array
+      items: Provider
+    name: providers
+
+- type: enum
+  name: StacVersion
+  symbols:
+  - '1.0.0'
+
+- type: record
+  name: Asset
+  fields:
+  - type: string
+    name: href
+  - type:
+    - null
+    - string
+    name: title
+  - type:
+    - null
+    - string
+    name: description
+  - type:
+    - null
+    - string
+    name: type
+  - type:
+    - null
+    - type: array
+      items: string
+    name: roles
+  # "allOf": "$ref": "#/definitions/common_metadata"
+  # $ref": "basics.json"
+  - type:
+    - null
+    - string
+    name: title
+  - type:
+    - null
+    - string
+    name: description
+  # "$ref": "datetime.json"
+  - type:
+    - null
+    - string
+    name: datetime
+  - type:
+    - null
+    - string
+    name: start_datetime
+  - type:
+    - null
+    - string
+    name: end_datetime
+  - type:
+    - null
+    - string
+    name: created
+  - type:
+    - null
+    - string
+    name: updated
+  # "$ref": "licensing.json"
+  - type:
+    - null
+    - string
+    name: license
+  # "$ref": "provider.json"
+  - type:
+    - type: array
+      items: Provider
+    name: providers
+
+- type: record
+  name: Item
+  fields:
+  # "allOf": [ { "$ref": "Feature.json"
+  - type: FeatureType
+    name: type
+  - name: id
+    type: string
+  - type:
+    - Point
+    - LineString
+    - Polygon
+    - MultiPoint
+    - MultiLineString
+    - MultiPolygon
+    name: geometry
+  - type:
+      type: array
+      items: double
+    name: bbox
+  # core
+  - type: StacVersion
+    name: stac_version
+  - type:
+    - null
+    - type: array
+      items: string
+    name: stac_extensions
+  - type: string
+    name: id
+  - type:
+      type: array
+      items: Link
+    name: links
+  # The map type is not part of the CWL v1.0 core schema — it's a CWL v1.2+ extension.
+  - type:
+    - type: map
+      values: Asset
+    name: assets
+  - type: CommonMetadata
+    name: properties
