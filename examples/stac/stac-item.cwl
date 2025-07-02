@@ -1,0 +1,33 @@
+cwlVersion: v1.2
+class: CommandLineTool
+label: "Echo STAC Item"
+baseCommand: echo
+
+requirements:
+  - class: InlineJavascriptRequirement
+  - class: SchemaDefRequirement
+    types:
+    - $import: https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml
+
+inputs:
+  stac_item:
+    type: https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml#Item
+    label: "STAC Catalog"
+    doc: "STAC Catalog defined in STAC format"
+    inputBinding:
+      valueFrom: |
+        ${
+          // Validate if type is 'Feature'
+          if (inputs.stac_item.type !== 'Item') {
+            throw "Invalid STAC type: expected 'Item', got '" + inputs.stac_item.type + "'";
+          }
+          // get the STAC Item description
+
+          return "STAC Item description: " + inputs.catalog.stac_item.id;
+        }
+
+outputs:
+  echo_output:
+    type: stdout
+
+stdout: echo_output.txt
