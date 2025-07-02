@@ -1,4 +1,5 @@
 .project
+.venv
 no-commit/*
 *.TIF
 output.json
