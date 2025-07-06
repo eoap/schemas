@@ -60,7 +60,6 @@ extra_javascript:
 nav:
   - Introduction: 'index.md'
   - Schemas:
-    
     - OGC API Processes:
       - ogc.ipynb
       - ogc-bbox.ipynb
@@ -75,7 +74,7 @@ nav:
     - STAC: 
       - stac.ipynb
       - stac-catalog.ipynb
-      
+      - stac-item.ipynb
   - How-to define new types: 'newtypes.md'
 
 copyright: <a href="https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg">License CC BY-SA 4.0</a>, by <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons</a>
