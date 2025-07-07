@@ -1,6 +1,6 @@
 # STAC custom types for CWL
 
-The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml and 1:1 reflects the stacspec.org schemas.
+The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml and 1:1 reflects the [SpatioTemporal Asset Catalogs](https://stacspec.org/en) schemas.
 
 The schema defines: 
 
