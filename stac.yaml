@@ -167,6 +167,7 @@
     - type: array
       items: Provider
     name: providers
+
 # Geometry
 # https://geojson.org/schema/Geometry.json
 
@@ -467,45 +468,3 @@
     - type: array
       items: Provider
     name: providers
-
-- type: record
-  name: Item
-  fields:
-  # "allOf": [ { "$ref": "Feature.json"
-  - type: FeatureType
-    name: type
-  - name: id
-    type: string
-  - type:
-    - Point
-    - LineString
-    - Polygon
-    - MultiPoint
-    - MultiLineString
-    - MultiPolygon
-    name: geometry
-  - type:
-      type: array
-      items: double
-    name: bbox
-  # core
-  - type: StacVersion
-    name: stac_version
-  - type:
-    - null
-    - type: array
-      items: string
-    name: stac_extensions
-  - type: string
-    name: id
-  - type:
-      type: array
-      items: Link
-    name: links
-  # The map type is not part of the CWL v1.0 core schema — it's a CWL v1.2+ extension.
-  #- type:
-  #  - type: map
-  #    values: Asset
-  #  name: assets
-  - type: CommonMetadata
-    name: properties
