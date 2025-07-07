@@ -503,9 +503,9 @@
       items: Link
     name: links
   # The map type is not part of the CWL v1.0 core schema — it's a CWL v1.2+ extension.
-  - type:
-    - type: map
-      values: Asset
-    name: assets
+  #- type:
+  #  - type: map
+  #    values: Asset
+  #  name: assets
   - type: CommonMetadata
     name: properties
