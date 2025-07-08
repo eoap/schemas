@@ -18,12 +18,12 @@ inputs:
       valueFrom: |
         ${
           // Validate if type is 'Feature'
-          if (inputs.stac_item.type !== 'Item') {
-            throw "Invalid STAC type: expected 'Item', got '" + inputs.stac_item.type + "'";
+          if ('Feature' != inputs.stac_item.type) {
+            throw "Invalid STAC type: expected 'Feature', got '" + inputs.stac_item.type + "'";
           }
-          // get the STAC Item description
+          // get the STAC Item id
 
-          return "STAC Item description: " + inputs.catalog.stac_item.id;
+          return "STAC Item ID: " + inputs.stac_item.id;
         }
 
 outputs:

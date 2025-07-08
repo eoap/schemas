@@ -1,348 +1,257 @@
-item: 
-  {
-    "type": "Feature",
-    "stac_version": "1.0.0",
-    "stac_extensions": [
-        "https://stac-extensions.github.io/raster/v1.1.0/schema.json",
-        "https://stac-extensions.github.io/eo/v1.1.0/schema.json",
-        "https://stac-extensions.github.io/view/v1.0.0/schema.json",
-        "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
-        "https://landsat.usgs.gov/stac/landsat-extension/v1.1.1/schema.json",
-        "https://stac-extensions.github.io/classification/v2.0.0/schema.json",
-        "https://stac-extensions.github.io/scientific/v1.0.0/schema.json"
-    ],
-    "id": "LC08_L2SP_042033_20231007_02_T1",
-    "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-            [
-                [
-                    -119.38821819669329,
-                    39.95392906314486
-                ],
-                [
-                    -119.88986331792648,
-                    38.23523519887004
-                ],
-                [
-                    -117.83270659643567,
-                    37.84365417119595
-                ],
-                [
-                    -117.2780405985925,
-                    39.56031274984667
-                ],
-                [
-                    -119.38821819669329,
-                    39.95392906314486
-                ]
-            ]
-        ]
-    },
-    "bbox": [
-        -119.9837203432464,
-        37.8009949508882,
-        -117.23393445743163,
-        39.9831550491118
-    ],
-    "properties": {
-        "gsd": 30,
-        "created": "2023-10-13T09:19:56.326826Z",
-        "datetime": "2023-10-07T18:33:27.281508Z",
-        "platform": "landsat-8",
-        "description": "Landsat Collection 2 Level-2",
-        "instruments": [
-            "oli",
-            "tirs"
-        ]
-    },
-    "links": [
-        {
-            "rel": "collection",
-            "href": "https://planetarycomputer.microsoft.com/api/stac/v1/collections/landsat-c2-l2",
-            "type": "application/json"
-        },
-        {
-            "rel": "parent",
-            "href": "https://planetarycomputer.microsoft.com/api/stac/v1/collections/landsat-c2-l2",
-            "type": "application/json"
-        },
-        {
-            "rel": "root",
-            "href": "https://planetarycomputer.microsoft.com/api/stac/v1/",
-            "type": "application/json"
-        },
-        {
-            "rel": "cite-as",
-            "href": "https://doi.org/10.5066/P9OGBGM6",
-            "title": "Landsat 8-9 OLI/TIRS Collection 2 Level-2"
-        },
-        {
-            "rel": "via",
-            "href": "https://landsatlook.usgs.gov/stac-server/collections/landsat-c2l2-sr/items/LC08_L2SP_042033_20231007_20231011_02_T1_SR",
-            "type": "application/json",
-            "title": "USGS STAC Item"
-        },
-        {
-            "rel": "via",
-            "href": "https://landsatlook.usgs.gov/stac-server/collections/landsat-c2l2-st/items/LC08_L2SP_042033_20231007_20231011_02_T1_ST",
-            "type": "application/json",
-            "title": "USGS STAC Item"
-        },
-        {
-            "rel": "preview",
-            "href": "https://planetarycomputer.microsoft.com/api/data/v1/item/map?collection=landsat-c2-l2&item=LC08_L2SP_042033_20231007_02_T1",
-            "type": "text/html",
-            "title": "Map of item"
-        },
-        {
-            "rel": "derived_from",
-            "href": "https://planetarycomputer.microsoft.com/api/stac/v1/collections/landsat-c2-l2/items/LC08_L2SP_042033_20231007_02_T1"
-        },
-        {
-            "rel": "self",
-            "href": "/data/work/github/eoap/application-package-patterns/data/LC08_L2SP_042033_20231007_02_T1/LC08_L2SP_042033_20231007_02_T1.json",
-            "type": "application/json"
-        }
-    ],
-    "assets": {
-        "qa": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_ST_QA.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Surface Temperature Quality Assessment Band",
-            "description": "Collection 2 Level-2 Quality Assessment Band (ST_QA) Surface Temperature Product",
-            "roles": [
-                "data"
-            ]
-        },
-        "ang": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_ANG.txt",
-            "type": "text/plain",
-            "title": "Angle Coefficients File",
-            "description": "Collection 2 Level-1 Angle Coefficients File",
-            "roles": [
-                "metadata"
-            ]
-        },
-        "red": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_SR_B4.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Red Band",
-            "description": "Collection 2 Level-2 Red Band (SR_B4) Surface Reflectance",
-            "roles": [
-                "data",
-                "reflectance"
-            ]
-        },
-        "blue": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_SR_B2.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Blue Band",
-            "description": "Collection 2 Level-2 Blue Band (SR_B2) Surface Reflectance",
-            "roles": [
-                "data",
-                "reflectance"
-            ]
-        },
-        "drad": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_ST_DRAD.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Downwelled Radiance Band",
-            "description": "Collection 2 Level-2 Downwelled Radiance Band (ST_DRAD) Surface Temperature Product",
-            "roles": [
-                "data"
-            ]
-        },
-        "emis": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_ST_EMIS.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Emissivity Band",
-            "description": "Collection 2 Level-2 Emissivity Band (ST_EMIS) Surface Temperature Product",
-            "roles": [
-                "data"
-            ]
-        },
-        "emsd": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_ST_EMSD.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Emissivity Standard Deviation Band",
-            "description": "Collection 2 Level-2 Emissivity Standard Deviation Band (ST_EMSD) Surface Temperature Product",
-            "roles": [
-                "data"
-            ]
-        },
-        "trad": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_ST_TRAD.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Thermal Radiance Band",
-            "description": "Collection 2 Level-2 Thermal Radiance Band (ST_TRAD) Surface Temperature Product",
-            "roles": [
-                "data"
-            ]
-        },
-        "urad": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_ST_URAD.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Upwelled Radiance Band",
-            "description": "Collection 2 Level-2 Upwelled Radiance Band (ST_URAD) Surface Temperature Product",
-            "roles": [
-                "data"
-            ]
-        },
-        "atran": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_ST_ATRAN.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Atmospheric Transmittance Band",
-            "description": "Collection 2 Level-2 Atmospheric Transmittance Band (ST_ATRAN) Surface Temperature Product",
-            "roles": [
-                "data"
-            ]
-        },
-        "cdist": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_ST_CDIST.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Cloud Distance Band",
-            "description": "Collection 2 Level-2 Cloud Distance Band (ST_CDIST) Surface Temperature Product",
-            "roles": [
-                "data"
-            ]
-        },
-        "green": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_SR_B3.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Green Band",
-            "description": "Collection 2 Level-2 Green Band (SR_B3) Surface Reflectance",
-            "roles": [
-                "data",
-                "reflectance"
-            ]
-        },
-        "nir08": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_SR_B5.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Near Infrared Band 0.8",
-            "description": "Collection 2 Level-2 Near Infrared Band 0.8 (SR_B5) Surface Reflectance",
-            "roles": [
-                "data",
-                "reflectance"
-            ]
-        },
-        "lwir11": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_ST_B10.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Surface Temperature Band",
-            "description": "Collection 2 Level-2 Thermal Infrared Band (ST_B10) Surface Temperature",
-            "gsd": 100,
-            "roles": [
-                "data",
-                "temperature"
-            ]
-        },
-        "swir16": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_SR_B6.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Short-wave Infrared Band 1.6",
-            "description": "Collection 2 Level-2 Short-wave Infrared Band 1.6 (SR_B6) Surface Reflectance",
-            "roles": [
-                "data",
-                "reflectance"
-            ]
-        },
-        "swir22": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_SR_B7.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Short-wave Infrared Band 2.2",
-            "description": "Collection 2 Level-2 Short-wave Infrared Band 2.2 (SR_B7) Surface Reflectance",
-            "roles": [
-                "data",
-                "reflectance"
-            ]
-        },
-        "coastal": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_SR_B1.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Coastal/Aerosol Band",
-            "description": "Collection 2 Level-2 Coastal/Aerosol Band (SR_B1) Surface Reflectance",
-            "roles": [
-                "data",
-                "reflectance"
-            ]
-        },
-        "mtl.txt": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_MTL.txt",
-            "type": "text/plain",
-            "title": "Product Metadata File (txt)",
-            "description": "Collection 2 Level-2 Product Metadata File (txt)",
-            "roles": [
-                "metadata"
-            ]
-        },
-        "mtl.xml": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_MTL.xml",
-            "type": "application/xml",
-            "title": "Product Metadata File (xml)",
-            "description": "Collection 2 Level-2 Product Metadata File (xml)",
-            "roles": [
-                "metadata"
-            ]
-        },
-        "mtl.json": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_MTL.json",
-            "type": "application/json",
-            "title": "Product Metadata File (json)",
-            "description": "Collection 2 Level-2 Product Metadata File (json)",
-            "roles": [
-                "metadata"
-            ]
-        },
-        "qa_pixel": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_QA_PIXEL.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Pixel Quality Assessment Band",
-            "description": "Collection 2 Level-1 Pixel Quality Assessment Band (QA_PIXEL)",
-            "roles": [
-                "cloud",
-                "cloud-shadow",
-                "snow-ice",
-                "water-mask"
-            ]
-        },
-        "qa_radsat": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_QA_RADSAT.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Radiometric Saturation and Terrain Occlusion Quality Assessment Band",
-            "description": "Collection 2 Level-1 Radiometric Saturation and Terrain Occlusion Quality Assessment Band (QA_RADSAT)",
-            "roles": [
-                "saturation"
-            ]
-        },
-        "qa_aerosol": {
-            "href": "LC08_L2SP_042033_20231007_20231011_02_T1_SR_QA_AEROSOL.TIF",
-            "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "title": "Aerosol Quality Assessment Band",
-            "description": "Collection 2 Level-2 Aerosol Quality Assessment Band (SR_QA_AEROSOL) Surface Reflectance Product",
-            "roles": [
-                "data-mask",
-                "water-mask"
-            ]
-        },
-        "tilejson": {
-            "href": "tilejson.json",
-            "type": "application/json",
-            "title": "TileJSON with default rendering",
-            "roles": [
-                "tiles"
-            ]
-        },
-        "rendered_preview": {
-            "href": "preview.png",
-            "type": "image/png",
-            "title": "Rendered preview",
-            "rel": "preview",
-            "roles": [
-                "overview"
-            ]
-        }
-    },
-    "collection": "landsat-c2-l2"
-}
+stac_item:
+  type: Feature
+  stac_version: 1.0.0
+  stac_extensions:
+  - https://stac-extensions.github.io/raster/v1.1.0/schema.json
+  - https://stac-extensions.github.io/eo/v1.1.0/schema.json
+  - https://stac-extensions.github.io/view/v1.0.0/schema.json
+  - https://stac-extensions.github.io/projection/v2.0.0/schema.json
+  - https://landsat.usgs.gov/stac/landsat-extension/v1.1.1/schema.json
+  - https://stac-extensions.github.io/classification/v2.0.0/schema.json
+  - https://stac-extensions.github.io/scientific/v1.0.0/schema.json
+  id: LC08_L2SP_042033_20231007_02_T1
+  bbox:
+  - 8.3986668
+  - 47.3783503
+  - 8.4571096
+  - 47.4058268
+  properties:
+    gsd: 30
+    created: '2023-10-13T09:19:56.326826Z'
+    datetime: '2023-10-07T18:33:27.281508Z'
+    platform: landsat-8
+    description: Landsat Collection 2 Level-2
+    instruments:
+    - oli
+    - tirs
+  links:
+  - rel: collection
+    href: https://planetarycomputer.microsoft.com/api/stac/v1/collections/landsat-c2-l2
+    type: application/json
+  - rel: parent
+    href: https://planetarycomputer.microsoft.com/api/stac/v1/collections/landsat-c2-l2
+    type: application/json
+  - rel: root
+    href: https://planetarycomputer.microsoft.com/api/stac/v1/
+    type: application/json
+  - rel: cite-as
+    href: https://doi.org/10.5066/P9OGBGM6
+    title: Landsat 8-9 OLI/TIRS Collection 2 Level-2
+  - rel: via
+    href: https://landsatlook.usgs.gov/stac-server/collections/landsat-c2l2-sr/items/LC08_L2SP_042033_20231007_20231011_02_T1_SR
+    type: application/json
+    title: USGS STAC Item
+  - rel: via
+    href: https://landsatlook.usgs.gov/stac-server/collections/landsat-c2l2-st/items/LC08_L2SP_042033_20231007_20231011_02_T1_ST
+    type: application/json
+    title: USGS STAC Item
+  - rel: preview
+    href: https://planetarycomputer.microsoft.com/api/data/v1/item/map?collection=landsat-c2-l2&item=LC08_L2SP_042033_20231007_02_T1
+    type: text/html
+    title: Map of item
+  - rel: derived_from
+    href: https://planetarycomputer.microsoft.com/api/stac/v1/collections/landsat-c2-l2/items/LC08_L2SP_042033_20231007_02_T1
+  - rel: self
+    href: "/data/work/github/eoap/application-package-patterns/data/LC08_L2SP_042033_20231007_02_T1/LC08_L2SP_042033_20231007_02_T1.json"
+    type: application/json
+  assets:
+    qa:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_ST_QA.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Surface Temperature Quality Assessment Band
+      description: Collection 2 Level-2 Quality Assessment Band (ST_QA) Surface Temperature
+        Product
+      roles:
+      - data
+    ang:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_ANG.txt
+      type: text/plain
+      title: Angle Coefficients File
+      description: Collection 2 Level-1 Angle Coefficients File
+      roles:
+      - metadata
+    red:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_SR_B4.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Red Band
+      description: Collection 2 Level-2 Red Band (SR_B4) Surface Reflectance
+      roles:
+      - data
+      - reflectance
+    blue:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_SR_B2.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Blue Band
+      description: Collection 2 Level-2 Blue Band (SR_B2) Surface Reflectance
+      roles:
+      - data
+      - reflectance
+    drad:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_ST_DRAD.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Downwelled Radiance Band
+      description: Collection 2 Level-2 Downwelled Radiance Band (ST_DRAD) Surface
+        Temperature Product
+      roles:
+      - data
+    emis:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_ST_EMIS.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Emissivity Band
+      description: Collection 2 Level-2 Emissivity Band (ST_EMIS) Surface Temperature
+        Product
+      roles:
+      - data
+    emsd:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_ST_EMSD.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Emissivity Standard Deviation Band
+      description: Collection 2 Level-2 Emissivity Standard Deviation Band (ST_EMSD)
+        Surface Temperature Product
+      roles:
+      - data
+    trad:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_ST_TRAD.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Thermal Radiance Band
+      description: Collection 2 Level-2 Thermal Radiance Band (ST_TRAD) Surface Temperature
+        Product
+      roles:
+      - data
+    urad:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_ST_URAD.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Upwelled Radiance Band
+      description: Collection 2 Level-2 Upwelled Radiance Band (ST_URAD) Surface Temperature
+        Product
+      roles:
+      - data
+    atran:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_ST_ATRAN.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Atmospheric Transmittance Band
+      description: Collection 2 Level-2 Atmospheric Transmittance Band (ST_ATRAN)
+        Surface Temperature Product
+      roles:
+      - data
+    cdist:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_ST_CDIST.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Cloud Distance Band
+      description: Collection 2 Level-2 Cloud Distance Band (ST_CDIST) Surface Temperature
+        Product
+      roles:
+      - data
+    green:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_SR_B3.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Green Band
+      description: Collection 2 Level-2 Green Band (SR_B3) Surface Reflectance
+      roles:
+      - data
+      - reflectance
+    nir08:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_SR_B5.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Near Infrared Band 0.8
+      description: Collection 2 Level-2 Near Infrared Band 0.8 (SR_B5) Surface Reflectance
+      roles:
+      - data
+      - reflectance
+    lwir11:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_ST_B10.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Surface Temperature Band
+      description: Collection 2 Level-2 Thermal Infrared Band (ST_B10) Surface Temperature
+      gsd: 100
+      roles:
+      - data
+      - temperature
+    swir16:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_SR_B6.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Short-wave Infrared Band 1.6
+      description: Collection 2 Level-2 Short-wave Infrared Band 1.6 (SR_B6) Surface
+        Reflectance
+      roles:
+      - data
+      - reflectance
+    swir22:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_SR_B7.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Short-wave Infrared Band 2.2
+      description: Collection 2 Level-2 Short-wave Infrared Band 2.2 (SR_B7) Surface
+        Reflectance
+      roles:
+      - data
+      - reflectance
+    coastal:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_SR_B1.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Coastal/Aerosol Band
+      description: Collection 2 Level-2 Coastal/Aerosol Band (SR_B1) Surface Reflectance
+      roles:
+      - data
+      - reflectance
+    mtl.txt:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_MTL.txt
+      type: text/plain
+      title: Product Metadata File (txt)
+      description: Collection 2 Level-2 Product Metadata File (txt)
+      roles:
+      - metadata
+    mtl.xml:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_MTL.xml
+      type: application/xml
+      title: Product Metadata File (xml)
+      description: Collection 2 Level-2 Product Metadata File (xml)
+      roles:
+      - metadata
+    mtl.json:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_MTL.json
+      type: application/json
+      title: Product Metadata File (json)
+      description: Collection 2 Level-2 Product Metadata File (json)
+      roles:
+      - metadata
+    qa_pixel:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_QA_PIXEL.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Pixel Quality Assessment Band
+      description: Collection 2 Level-1 Pixel Quality Assessment Band (QA_PIXEL)
+      roles:
+      - cloud
+      - cloud-shadow
+      - snow-ice
+      - water-mask
+    qa_radsat:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_QA_RADSAT.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Radiometric Saturation and Terrain Occlusion Quality Assessment Band
+      description: Collection 2 Level-1 Radiometric Saturation and Terrain Occlusion
+        Quality Assessment Band (QA_RADSAT)
+      roles:
+      - saturation
+    qa_aerosol:
+      href: LC08_L2SP_042033_20231007_20231011_02_T1_SR_QA_AEROSOL.TIF
+      type: image/tiff; application=geotiff; profile=cloud-optimized
+      title: Aerosol Quality Assessment Band
+      description: Collection 2 Level-2 Aerosol Quality Assessment Band (SR_QA_AEROSOL)
+        Surface Reflectance Product
+      roles:
+      - data-mask
+      - water-mask
+    tilejson:
+      href: tilejson.json
+      type: application/json
+      title: TileJSON with default rendering
+      roles:
+      - tiles
+    rendered_preview:
+      href: preview.png
+      type: image/png
+      title: Rendered preview
+      rel: preview
+      roles:
+      - overview
+  collection: landsat-c2-l2

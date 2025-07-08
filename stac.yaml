@@ -22,11 +22,11 @@
   - type: string
     name: rel
   - type:
-    - null
+    - 'null'
     - string
     name: title
   - type:
-    - null
+    - 'null'
     - string
     name: type
 
@@ -42,14 +42,14 @@
       items: Link
     name: links
   - type:
-    - null
+    - 'null'
     - type: array
       items: string
     name: stac_extensions
   - type: StacVersion
     name: stac_version
   - type:
-    - null
+    - 'null'
     - string
     name: title
   - type: string
@@ -61,11 +61,11 @@
   name: BasicDescriptiveFields
   fields:
   - type:
-    - null
+    - 'null'
     - string
     name: title
   - type:
-    - null
+    - 'null'
     - string
     name: description
 
@@ -75,23 +75,23 @@
   name: DateTime
   fields:
   - type:
-    - null
+    - 'null'
     - string
     name: datetime
   - type:
-    - null
+    - 'null'
     - string
     name: start_datetime
   - type:
-    - null
+    - 'null'
     - string
     name: end_datetime
   - type:
-    - null
+    - 'null'
     - string
     name: created
   - type:
-    - null
+    - 'null'
     - string
     name: updated
 
@@ -101,11 +101,11 @@
   name: Instrument
   fields:
   - type:
-    - null
+    - 'null'
     - string
     name: constellation
   - type:
-    - null
+    - 'null'
     - int
     name: gsd
   - type:
@@ -113,11 +113,11 @@
       items: string
     name: instruments
   - type:
-    - null
+    - 'null'
     - string
     name: mission
   - type:
-    - null
+    - 'null'
     - string
     name: platform
 
@@ -127,7 +127,7 @@
   name: Licensing
   fields:
   - type:
-    - null
+    - 'null'
     - string
     name: license
 
@@ -145,18 +145,18 @@
   name: Provider
   fields:
   - type:
-    - null
+    - 'null'
     - string
     name: description
   - type: string
     name: name
   - type:
-    - null
+    - 'null'
     - type: array
       items: OrganizationRole
     name: roles
   - type:
-    - null
+    - 'null'
     - string
     name: url
 
@@ -164,6 +164,7 @@
   name: Providers
   fields:
   - type:
+    - 'null'
     - type: array
       items: Provider
     name: providers
@@ -314,8 +315,8 @@
     name: type
   - name: id
     type: string
-    doc: "Identifier"
   - type:
+    - 'null'
     - Point
     - LineString
     - Polygon
@@ -361,49 +362,45 @@
   fields:
   # $ref": "basics.json"
   - type:
-    - null
+    - 'null'
     - string
     name: title
   - type:
-    - null
+    - 'null'
     - string
     name: description
   # "$ref": "datetime.json"
   - type:
-    - null
+    - 'null'
     - string
     name: datetime
   - type:
-    - null
+    - 'null'
     - string
     name: start_datetime
   - type:
-    - null
+    - 'null'
     - string
     name: end_datetime
   - type:
-    - null
+    - 'null'
     - string
     name: created
   - type:
-    - null
+    - 'null'
     - string
     name: updated
   # "$ref": "licensing.json"
   - type:
-    - null
+    - 'null'
     - string
     name: license
   # "$ref": "provider.json"
   - type:
+    - 'null'
     - type: array
       items: Provider
     name: providers
-
-- type: enum
-  name: StacVersion
-  symbols:
-  - '1.0.0'
 
 - type: record
   name: Asset
@@ -411,56 +408,49 @@
   - type: string
     name: href
   - type:
-    - null
+    - 'null'
     - string
     name: title
   - type:
-    - null
+    - 'null'
     - string
     name: description
   - type:
-    - null
+    - 'null'
     - string
     name: type
   - type:
-    - null
+    - 'null'
     - type: array
       items: string
     name: roles
   # "allOf": "$ref": "#/definitions/common_metadata"
   # $ref": "basics.json"
-  - type:
-    - null
-    - string
-    name: title
-  - type:
-    - null
-    - string
-    name: description
+  # title and description previously defined
   # "$ref": "datetime.json"
   - type:
-    - null
+    - 'null'
     - string
     name: datetime
   - type:
-    - null
+    - 'null'
     - string
     name: start_datetime
   - type:
-    - null
+    - 'null'
     - string
     name: end_datetime
   - type:
-    - null
+    - 'null'
     - string
     name: created
   - type:
-    - null
+    - 'null'
     - string
     name: updated
   # "$ref": "licensing.json"
   - type:
-    - null
+    - 'null'
     - string
     name: license
   # "$ref": "provider.json"
@@ -468,3 +458,44 @@
     - type: array
       items: Provider
     name: providers
+
+- type: record
+  name: Item
+  fields:
+  # "allOf": [ { "$ref": "Feature.json"
+  - type: FeatureType
+    name: type
+  - name: id
+    type: string
+  - type:
+    - 'null'
+    - Point
+    - LineString
+    - Polygon
+    - MultiPoint
+    - MultiLineString
+    - MultiPolygon
+    name: geometry
+  - type:
+      type: array
+      items: double
+    name: bbox
+  # core
+  - type: StacVersion
+    name: stac_version
+  - type:
+    - 'null'
+    - type: array
+      items: string
+    name: stac_extensions
+  - type:
+      type: array
+      items: Link
+    name: links
+  # The map type is not part of the CWL v1.0 core schema — it's a CWL v1.2+ extension.
+  #- type:
+  #  - type: map
+  #    values: Asset
+  #  name: assets
+  - type: CommonMetadata
+    name: properties
