@@ -31,7 +31,7 @@ inputs:
             "Hour: " + date.getUTCHours(),
             "Minute: " + date.getUTCMinutes(),
             "Second: " + date.getUTCSeconds()
-          ].join(", ");
+          ].join("\n * ");
 
           return dateParts;
         }
