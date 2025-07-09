@@ -7,11 +7,11 @@ requirements:
   - class: InlineJavascriptRequirement
   - class: SchemaDefRequirement
     types:
-    - $import: file:///home/stripodi/Documents/workspace/schemas/stac.yaml
+    - $import: https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml
 
 inputs:
   stac_catalog:
-    type: file:///home/stripodi/Documents/workspace/schemas/stac.yaml#Catalog
+    type: https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml#Catalog
     label: "STAC Catalog"
     doc: "STAC Catalog defined in STAC format"
     inputBinding:

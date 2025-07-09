@@ -61,19 +61,19 @@ nav:
   - Introduction: 'index.md'
   - Schemas:
     - GeoJSON:
-      - geojson/geojson.md
-      - geojson/geojson-point.ipynb
-      - geojson/geojson-feature.ipynb
+      - geojson/index.md
+      - geojson/point.ipynb
+      - geojson/feature.ipynb
     - OGC API Processes:
-      - ogc/ogc.md
-      - ogc/ogc-bbox.ipynb
+      - ogc/index.md
+      - ogc/bbox.ipynb
     - STAC: 
-      - stac/stac.md
-      - stac/stac-catalog.ipynb
-      - stac/stac-collection.ipynb
-      - stac/stac-item.ipynb
+      - stac/index.md
+      - stac/catalog.ipynb
+      - stac/collection.ipynb
+      - stac/item.ipynb
     - String format:
-      - string-format/string-format.md
+      - string-format/index.md
       - string-format/datetime.ipynb
       - string-format/uri.ipynb
   - How-to define new types: 'newtypes.md'
