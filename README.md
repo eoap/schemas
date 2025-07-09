@@ -1,4 +1,4 @@
-# schemas
+# EOAP CWL custom types schemas
 
 This documentation contains proposals for the adoption of CWL custom types to define Earth Observation Application Packages inputs and outputs: 
 
