@@ -1,0 +1,11 @@
+stac_collection:
+  stac_version: "1.0.0"
+  type: "Collection"
+  id: collection-id
+  description: a collection description
+  license: 'Creative Commons Attribution-ShareAlike 4.0 International'
+  links: 
+  - rel: "self"
+    href: "./item.json"
+    type: "application/json"
+    title: "This collection"

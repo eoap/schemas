@@ -1,4 +1,4 @@
-catalog: 
+stac_catalog: 
   class: "https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml#Catalog"
   id: "stac-catalog"
   type: "Catalog"

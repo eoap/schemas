@@ -7,23 +7,23 @@ requirements:
   - class: InlineJavascriptRequirement
   - class: SchemaDefRequirement
     types:
-    - $import: https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml
+    - $import: file:///home/stripodi/Documents/workspace/schemas/stac.yaml
 
 inputs:
-  catalog:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/stac.yaml#Catalog
+  stac_catalog:
+    type: file:///home/stripodi/Documents/workspace/schemas/stac.yaml#Catalog
     label: "STAC Catalog"
     doc: "STAC Catalog defined in STAC format"
     inputBinding:
       valueFrom: |
         ${
           // Validate if type is 'Feature'
-          if (inputs.catalog.type !== 'Catalog') {
-            throw "Invalid STAC type: expected 'Catalog', got '" + inputs.catalog.type + "'";
+          if ('Catalog' !== inputs.stac_catalog.type) {
+            throw "Invalid STAC type: expected 'Catalog', got '" + inputs.stac_catalog.type + "'";
           }
           // get the STAC Catalog description
 
-          return "STAC Catalog description: " + inputs.catalog.description;
+          return "STAC Catalog description: " + inputs.stac_catalog.description;
         }
 
 outputs:
