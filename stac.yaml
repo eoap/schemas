@@ -499,3 +499,85 @@
   #  name: assets
   - type: CommonMetadata
     name: properties
+
+# STAC Collection
+# https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/collection-spec/json-schema/collection.json
+
+- type: enum
+  name: CollectionType
+  symbols:
+  - Collection
+
+- type: record
+  name: Spatial
+  fields:
+  - name: bbox
+    type:
+      type: array
+      items:
+        type: array
+        items: double
+
+- type: record
+  name: Temporal
+  fields:
+  - name: interval
+    type:
+      type: array
+      items:
+        type: array
+        items: string
+
+- type: record
+  name: Extents
+  fields:
+  - type: Spatial
+    name: spatial
+  - type: Temporal
+    name: temporal
+
+- type: record
+  name: Range
+  fields:
+  - type:
+    - int
+    - string
+    name: minimum
+  - type:
+    - int
+    - string
+    name: maximum
+
+- type: record
+  name: Collection
+  fields:
+  - type: StacVersion
+    name: stac_version
+  - type:
+    - 'null'
+    - type: array
+      items: string
+    name: stac_extensions
+  - type: CollectionType
+    name: type
+  - type:
+    - 'null'
+    - string
+    name: title
+  - type:
+    - 'null'
+    - type: array
+      items: string
+    name: keywords
+  - type: string
+    name: license
+  - type: Provider
+    name: providers
+  - type:
+      type: array
+      items: Link
+    name: links
+  - type:
+    - 'null'
+    - Range
+    name: summaries
