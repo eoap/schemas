@@ -571,7 +571,9 @@
     name: keywords
   - type: string
     name: license
-  - type: Provider
+  - type:
+      - 'null'
+      - Provider
     name: providers
   - type:
       type: array
