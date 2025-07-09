@@ -70,8 +70,8 @@ nav:
     - STAC: 
       - stac/stac.md
       - stac/stac-catalog.ipynb
-      - stac/stac-item.ipynb
       - stac/stac-collection.ipynb
+      - stac/stac-item.ipynb
     - String format:
       - string-format/string-format.md
       - string-format/datetime.ipynb
