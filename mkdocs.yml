@@ -76,6 +76,8 @@ nav:
       - string-format/index.md
       - string-format/datetime.ipynb
       - string-format/uri.ipynb
+    - Experimental:
+      - experimental/landsat9_inputs.ipynb
   - How-to define new types: 'newtypes.md'
 
 copyright: <a href="https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg">License CC BY-SA 4.0</a>, by <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons</a>

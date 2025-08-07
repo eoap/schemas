@@ -1,0 +1,25 @@
+stac_api_search_request:
+  collection: landsat-9
+  datetime_interval:
+    start: 2021-10-17T07:44
+    end: 2025-10-17T07:44
+  aoi:
+  - 125.6
+  - 10.1
+  - 125.6
+  - 10.1
+ogc_api_processes_execute_request:
+  stac_items:
+  - https://raw.githubusercontent.com/stac-utils/stac-examples/refs/heads/main/landsat9/LC81530252014153LGN00.json # does not exist
+  aoi:
+  - 125.6
+  - 10.1
+  - 125.6
+  - 10.1
+  bands:
+  - nir
+  - swir1
+  - panchromatic
+  - cirrus
+  - tirs2
+process_id: 7ef252e1-9c70-49e7-a077-41aaefe59099
