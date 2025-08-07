@@ -44,7 +44,9 @@
 - type: record
   name: OGCProcessSettings
   fields:
-  - type: string
+  - type:
+      type: array
+      items: string
     name: stac_items
   - type:
       type: array
