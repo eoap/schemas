@@ -45,8 +45,9 @@
       name: aoi
     - type:
         - "null"
-        - type: array
-          items: string
+        - type:
+            type: array
+            items: string
       name: query
 
 - type: enum
@@ -65,6 +66,14 @@
     - tirs2
 
 - type: record
+  name: KeyValuePair
+  fields:
+  - type: string
+    name: key
+  - type: string
+    name: value
+
+- type: record
   name: OGCApiProcessesEndpoint
   fields:
     - type: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml#URI
@@ -72,14 +81,9 @@
     # add headers as list of key-value pairs
     - type:
         - "null"
-        - type: array
-          items:
-            type: record
-            fields:
-              - type: string
-                name: key
-              - type: string
-                name: value
+        - type:
+            type: array
+            items: KeyValuePair
       name: headers
 
 - type: record
@@ -91,6 +95,7 @@
       name: inputs
     - type:
         - "null"
-        - type: array
-          items: Any
+        - type:
+            type: array
+            items: Any
       name: properties
