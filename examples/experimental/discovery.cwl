@@ -9,6 +9,7 @@ requirements:
   types:
   - $import: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml
   - $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/api-endpoint.yaml
+  - $import: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml
   - $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/discovery.yaml
 - class: InitialWorkDirRequirement
   listing:
