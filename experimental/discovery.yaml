@@ -34,8 +34,8 @@
 - type: enum
   name: FilterLang
   symbols:
-  - cql-text
-  - cql-json
+  - cql2-text
+  - cql2-json
 
 - type: enum
   name: Direction
