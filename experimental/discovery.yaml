@@ -11,9 +11,9 @@
 - type: record
   name: DatetimeInterval
   fields:
-  - type: string
+  - type: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml#DateTime
     name: start
-  - type: string
+  - type: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml#DateTime
     name: end
 
 - type: record
@@ -60,7 +60,7 @@
     name: bbox
   - type:
     - 'null'
-    - string
+    - https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml#DateTime
     name: datetime
   - type:
     - 'null'
