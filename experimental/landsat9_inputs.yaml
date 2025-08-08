@@ -8,6 +8,8 @@
 
 # commons shared
 
+- $import: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml
+
 - type: record
   name: KeyValuePair
   fields:
