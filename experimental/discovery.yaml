@@ -115,7 +115,7 @@
 - type: record
   name: STACAPI
   fields:
-  - type: APIEndpoint
+  - type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/shared.yaml#APIEndpoint
     name: api_endpoint
   - type: STACSearchSettings
     name: search_request

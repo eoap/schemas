@@ -41,7 +41,7 @@
 - type: record
   name: OCGProcesses
   fields:
-  - type: APIEndpoint
+  - type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/shared.yaml#APIEndpoint
     name: api_endpoint
   - type: OGCExecuteProcessSettings
     name: search_request
