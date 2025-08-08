@@ -19,7 +19,7 @@ requirements:
           ---
           ${ 
             const bbox = inputs.search_request?.bbox;
-            return (bbox && Array.isArray(bbox) && bbox.length >= 4) ? "--bbox " + bbox[0] + " " + bbox[1] + " " + bbox[2] + " " + bbox[3] + "";
+            return (bbox && Array.isArray(bbox) && bbox.length >= 4) ? "--bbox " + bbox.join(" ");
           }
 inputs:
   api_endpoint:
