@@ -4,20 +4,22 @@ label: "geo API - Processes"
 baseCommand: cat
 
 requirements:
-  - class: InlineJavascriptRequirement
-  - class: SchemaDefRequirement
-    types:
-    - $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/api-endpoint.yaml
-    - $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/process.yaml
-  - class: InitialWorkDirRequirement
-    listing:
-      - entryname: inputs.yaml
-        entry: |-
-          $(inputs.api_endpoint.url.value)
-          ---
-          $(inputs.execute_request.process_id)
-          ---
-          $(inputs.execute_request.inputs)
+- class: InlineJavascriptRequirement
+- class: SchemaDefRequirement
+  types:
+  - $import: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml
+  - $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/api-endpoint.yaml
+  - $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/process.yaml
+- class: InitialWorkDirRequirement
+  listing:
+  - entryname: inputs.yaml
+    entry: |-
+      $(inputs.api_endpoint.url.value)
+      ---
+      $(inputs.execute_request.process_id)
+      ---
+      $(inputs.execute_request.inputs)
+
 inputs:
   api_endpoint:
     type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/api-endpoint.yaml#APIEndpoint

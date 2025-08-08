@@ -1,26 +1,28 @@
 cwlVersion: v1.2
 class: CommandLineTool
-label: "geo API"
+label: "geo API - Discovery"
 baseCommand: cat
 
 requirements:
-  - class: InlineJavascriptRequirement
-  - class: SchemaDefRequirement
-    types:
-    - $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/api-endpoint.yaml
-    - $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/discovery.yaml
-  - class: InitialWorkDirRequirement
-    listing:
-      - entryname: inputs.yaml
-        entry: |-
-          ${inputs.api_endpoint.url.value}
-          ---
-          ${inputs.search_request.collections[0]}
-          ---
-          ${ 
-            const bbox = inputs.search_request?.bbox;
-            return (bbox && Array.isArray(bbox) && bbox.length >= 4) ? "--bbox " + bbox.join(" ");
-          }
+- class: InlineJavascriptRequirement
+- class: SchemaDefRequirement
+  types:
+  - $import: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml
+  - $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/api-endpoint.yaml
+  - $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/discovery.yaml
+- class: InitialWorkDirRequirement
+  listing:
+  - entryname: inputs.yaml
+    entry: |-
+      ${inputs.api_endpoint.url.value}
+      ---
+      ${inputs.search_request.collections[0]}
+      ---
+      ${ 
+        const bbox = inputs.search_request?.bbox;
+        return (bbox && Array.isArray(bbox) && bbox.length >= 4) ? "--bbox " + bbox.join(" ");
+      }
+
 inputs:
   api_endpoint:
     type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/api-endpoint.yaml#APIEndpoint
