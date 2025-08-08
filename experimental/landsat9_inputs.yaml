@@ -25,8 +25,8 @@
     name: url
   # add headers as list of key-value pairs
   - type:
-    - "null"
-    - type: 
+    - 'null'
+    - type:
         type: array
         items: KeyValuePair
     name: headers
@@ -53,7 +53,7 @@
       items: double
     name: aoi
   - type:
-    - "null"
+    - 'null'
     - type:
         type: array
         items: string
@@ -92,7 +92,7 @@
   - type: Any
     name: inputs
   - type:
-      - "null"
+      - 'null'
       - type:
           type: array
           items: Any
