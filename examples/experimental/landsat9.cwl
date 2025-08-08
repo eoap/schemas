@@ -8,7 +8,6 @@ requirements:
   - class: SchemaDefRequirement
     types:
     - $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/landsat9_inputs.yaml
-    - $import: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml
 
 inputs:
   stac_api:
