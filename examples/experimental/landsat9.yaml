@@ -32,3 +32,5 @@ ogc_processes:
       aoi: "-118.985,38.432,-118.183,38.938"
       bands: ["green", "nir08"]
       epsg: "EPSG:4326"
+
+process_id: f7e12cd2-5925-4359-83d9-42fb0a3557db
