@@ -26,9 +26,8 @@
   # add headers as list of key-value pairs
   - type:
     - 'null'
-    - type:
-        type: array
-        items: KeyValuePair
+    - type: array
+      items: KeyValuePair
     name: headers
 
 # STAC
@@ -54,9 +53,8 @@
     name: aoi
   - type:
     - 'null'
-    - type:
-        type: array
-        items: string
+    - type: array
+      items: string
     name: query
 
 - type: record
@@ -93,9 +91,8 @@
     name: inputs
   - type:
       - 'null'
-      - type:
-          type: array
-          items: Any
+      - type: array
+        items: Any          
     name: properties
 
 - type: record
