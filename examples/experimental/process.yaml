@@ -12,6 +12,8 @@ ogc_processes:
         class: "https://raw.githubusercontent.com/eoap/schemas/main/url.yaml#URL"
         value: "https://planetarycomputer.microsoft.com/api/stac/v1/collections/landsat-c2-l2/items/LC08_L2SP_042033_20231007_02_T1"
       aoi: "-118.985,38.432,-118.183,38.938"
-      bands: ["green", "nir08"]
+      bands:
+      - "green"
+      - "nir08"
       epsg: "EPSG:4326"
 
