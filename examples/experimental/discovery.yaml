@@ -5,11 +5,12 @@ stac_api:
     headers: []
 
   search_request:
-    collection: landsat-c2-l2
+    collections: 
+    - landsat-c2-l2
     datetime_interval:
       start: "2023-10-15T18:00:00"
       end: "2023-10-15T18:59:59"
-    aoi:
+    aoi: 
     - -118.985
     - 38.432
     - -118.183
