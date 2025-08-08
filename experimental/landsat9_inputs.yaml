@@ -90,9 +90,9 @@
   - type: Any
     name: inputs
   - type:
-      - 'null'
-      - type: array
-        items: Any          
+    - 'null'
+    - type: array
+      items: Any
     name: properties
 
 - type: record
