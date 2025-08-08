@@ -1,35 +1,34 @@
-stac_api_endpoint:
-  class: https://raw.githubusercontent.com/eoap/schemas/develop/experimental/landsat9_inputs.yaml#STACApiEndpoint
-  url: https://planetarycomputer.microsoft.com/api/stac/v1
-  headers: []
+stac_api:
+  api_endpoint:
+    url:
+      value: https://planetarycomputer.microsoft.com/api/stac/v1
+    headers: []
 
-stac_api_search_request:
-  class: https://raw.githubusercontent.com/eoap/schemas/develop/experimental/landsat9_inputs.yaml#STACSearchSettings
-  collection: landsat-c2-l2
-  datetime_interval:
-    start: "2023-10-15T18:00:00"
-    end: "2023-10-15T18:59:59"
-  aoi:
-  - -118.985
-  - 38.432
-  - -118.183
-  - 38.938
-  query:
-  - "eo:cloud_cover<10"
+  search_request:
+    collection: landsat-c2-l2
+    datetime_interval:
+      start: "2023-10-15T18:00:00"
+      end: "2023-10-15T18:59:59"
+    aoi:
+    - -118.985
+    - 38.432
+    - -118.183
+    - 38.938
+    query:
+    - "eo:cloud_cover<10"
 
-ogc_api_processes_endpoint:
-  class: https://raw.githubusercontent.com/eoap/schemas/develop/experimental/landsat9_inputs.yaml#OGCProcessesEndpoint
-  url: https://planetarycomputer.microsoft.com/api/ogc/processes/v1
-  headers: []
+ogc_processes:
+  api_endpoint:
+    url:
+      value: https://planetarycomputer.microsoft.com/api/ogc/processes/v1
+    headers: []
 
-ogc_api_processes_execute_request:
-  class: https://raw.githubusercontent.com/eoap/schemas/develop/experimental/landsat9_inputs.yaml#OGCExecuteProcessSettings
-  process_id: "water-body-detection"
-  inputs:
-    item:
-      class: "https://raw.githubusercontent.com/eoap/schemas/main/url.yaml#URL"
-      value: "https://planetarycomputer.microsoft.com/api/stac/v1/collections/landsat-c2-l2/items/LC08_L2SP_042033_20231007_02_T1"
-    aoi: "-118.985,38.432,-118.183,38.938"
-    bands: ["green", "nir08"]
-    epsg: "EPSG:4326"
-
+  search_request:
+    process_id: "water-body-detection"
+    inputs:
+      item:
+        class: "https://raw.githubusercontent.com/eoap/schemas/main/url.yaml#URL"
+        value: "https://planetarycomputer.microsoft.com/api/stac/v1/collections/landsat-c2-l2/items/LC08_L2SP_042033_20231007_02_T1"
+      aoi: "-118.985,38.432,-118.183,38.938"
+      bands: ["green", "nir08"]
+      epsg: "EPSG:4326"

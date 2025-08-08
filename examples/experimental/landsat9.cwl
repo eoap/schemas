@@ -11,22 +11,14 @@ requirements:
     - $import: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml
 
 inputs:
-  stac_api_endpoint:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/landsat9_inputs.yaml#STACApiEndpoint
-    label: "STAC API endpoint"
-    doc: "STAC API endpoint for Landsat-9 data"
-  stac_api_search_request:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/landsat9_inputs.yaml#STACSearchSettings
-    label: "STAC API search request"
-    doc: "STAC API search request"
-  ogc_api_processes_endpoint:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/landsat9_inputs.yaml#OGCApiProcessesEndpoint
-    label: "OGC API Processes endpoint"
-    doc: "OGC API Processes endpoint for Landsat-9 data"
-  ogc_api_processes_execute_request:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/landsat9_inputs.yaml#OGCExecuteProcessSettings
-    label: "OGC API Processes Execute request"
-    doc: "OGC API Processes Execute request"
+  stac_api:
+    type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/landsat9_inputs.yaml#STACAPI
+    label: "STAC API settings"
+    doc: "STAC API settings for Landsat-9 data"
+  ogc_processes:
+    type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/landsat9_inputs.yaml#OCGProcesses
+    label: "OGC API Processes settings"
+    doc: "OGC API Processes settings for Landsat-9 data"
   process_id:
     type: string
     label: "Process Id"

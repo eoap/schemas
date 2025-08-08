@@ -6,13 +6,7 @@
 # You should have received a copy of the license along with this work.
 # If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 
-- type: record
-  name: DatetimeInterval
-  fields:
-  - type: string
-    name: start
-  - type: string
-    name: end
+# commons shared
 
 - type: record
   name: KeyValuePair
@@ -23,7 +17,7 @@
     name: value
 
 - type: record
-  name: STACApiEndpoint
+  name: APIEndpoint
   fields:
   - type: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml#URI
     name: url
@@ -34,6 +28,16 @@
         type: array
         items: KeyValuePair
     name: headers
+
+# STAC
+
+- type: record
+  name: DatetimeInterval
+  fields:
+  - type: string
+    name: start
+  - type: string
+    name: end
 
 - type: record
   name: STACSearchSettings
@@ -53,6 +57,16 @@
         items: string
     name: query
 
+- type: record
+  name: STACAPI
+  fields:
+  - type: APIEndpoint
+    name: api_endpoint
+  - type: STACSearchSettings
+    name: search_request
+
+# OGC
+
 - type: enum
   name: Bands
   symbols:
@@ -69,19 +83,6 @@
   - tirs2
 
 - type: record
-  name: OGCApiProcessesEndpoint
-  fields:
-  - type: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml#URI
-    name: url
-  # add headers as list of key-value pairs
-  - type:
-    - "null"
-    - type:
-        type: array
-        items: KeyValuePair
-    name: headers
-
-- type: record
   name: OGCExecuteProcessSettings
   fields:
   - type: string
@@ -94,3 +95,11 @@
           type: array
           items: Any
     name: properties
+
+- type: record
+  name: OCGProcesses
+  fields:
+  - type: APIEndpoint
+    name: api_endpoint
+  - type: OGCExecuteProcessSettings
+    name: search_request
