@@ -1,21 +1,19 @@
-stac_api:
-  api_endpoint:
-    url:
-      value: https://planetarycomputer.microsoft.com/api/stac/v1
-    headers: []
+api_endpoint:
+  url:
+    value: https://planetarycomputer.microsoft.com/api/stac/v1
+  headers: []
 
-  search_request:
-    collections: 
-    - landsat-c2-l2
-    datetime_interval:
-      start: "2023-10-15T18:00:00"
-      end: "2023-10-15T18:59:59"
-    aoi: 
-    - -118.985
-    - 38.432
-    - -118.183
-    - 38.938
-    query:
-    - "eo:cloud_cover<10"
-
-
+search_request:
+  collections: 
+  - landsat-c2-l2
+  datetime_interval:
+    start: "2023-10-15T18:00:00"
+    end: "2023-10-15T18:59:59"
+  bbox: 
+  - -118.985
+  - 38.432
+  - -118.183
+  - 38.938
+  filter-lang: cql-text
+  filter:
+  - "eo:cloud_cover<10"

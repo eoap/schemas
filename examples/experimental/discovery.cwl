@@ -7,24 +7,27 @@ requirements:
   - class: InlineJavascriptRequirement
   - class: SchemaDefRequirement
     types:
-    - $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/geo-api.yaml
+    - $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/api-endpoint.yaml
+    - $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/discovery.yaml
   - class: InitialWorkDirRequirement
     listing:
       - entryname: inputs.yaml
         entry: |-
-          $(inputs.stac_api)
+          ${inputs.api_endpoint.url.value}
           ---
-          $(inputs.stac_api.api_endpoint.url.value)
-          ---
-          $(inputs.stac_api.search_request.collections[0])
+          ${inputs.search_request.collections[0]}
           ---
           ${ 
-            const aoi = inputs.stac_api?.search_request?.aoi;
-            return (Array.isArray(aoi) && aoi.length >= 4) ? "--bbox " + aoi[0] + " " + aoi[1] + " " + aoi[2] + " " + aoi[3] : "";
+            const bbox = inputs.search_request?.bbox;
+            return (bbox && Array.isArray(bbox) && bbox.length >= 4) ? "--bbox " + bbox[0] + " " + bbox[1] + " " + bbox[2] + " " + bbox[3] + "";
           }
 inputs:
-  stac_api:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/geo-api.yaml#STACAPI
+  api_endpoint:
+    type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/api-endpoint.yaml#APIEndpoint
+    label: "STAC API endpoint"
+    doc: "STAC API endpoint for Landsat-9 data"
+  search_request:
+    type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/discovery.yaml#STACSearchSettings
     label: "STAC API settings"
     doc: "STAC API settings for Landsat-9 data"
 

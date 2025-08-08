@@ -7,24 +7,26 @@ requirements:
   - class: InlineJavascriptRequirement
   - class: SchemaDefRequirement
     types:
-    - $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/geo-api.yaml
+    - $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/api-endpoint.yaml
+    - $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/process.yaml
   - class: InitialWorkDirRequirement
     listing:
       - entryname: inputs.yaml
         entry: |-
-          $(inputs.ogc_processes)
+          $(inputs.api_endpoint.url.value)
           ---
-          $(inputs.ogc_processes.api_endpoint.url.value)
+          $(inputs.execute_request.process_id)
           ---
-          $(inputs.ogc_processes.execute_request.process_id)
-          ---
-          $(inputs.ogc_processes.execute_request.inputs)
+          $(inputs.execute_request.inputs)
 inputs:
-  ogc_processes:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/geo-api.yaml#OCGProcesses 
+  api_endpoint:
+    type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/api-endpoint.yaml#APIEndpoint
+    label: "OGC API endpoint"
+    doc: "OGC API endpoint for Landsat-9 data"
+  execute_request:
+    type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/process.yaml#OGCExecuteProcessSettings 
     label: "OGC API Processes settings"
     doc: "OGC API Processes settings for Landsat-9 data"
-
 
 arguments:
 - inputs.yaml
