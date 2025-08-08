@@ -1,5 +1,5 @@
 # EOAP Schemas (c) 2024-2025
-# 
+#
 # EOAP Schemas is licensed under
 # Creative Commons Attribution-ShareAlike 4.0 International.
 #
@@ -9,50 +9,88 @@
 - type: record
   name: DatetimeInterval
   fields:
-  - type: string
-    name: start
-  - type: string
-    name: end
+    - type: string
+      name: start
+    - type: string
+      name: end
+
+- type: record
+  name: STACApiEndpoint
+  fields:
+    - type: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml#URI
+      name: url
+    # add headers as list of key-value pairs
+    - type:
+        - "null"
+        - type: array
+          items:
+            type: record
+            fields:
+              - type: string
+                name: key
+              - type: string
+                name: value
+      name: headers
 
 - type: record
   name: STACSearchSettings
   fields:
-  - type: string
-    name: collection
-  - type: DatetimeInterval
-    name: datetime_interval
-  - type:
-      type: array
-      items: double
-    name: aoi
+    - type: string
+      name: collection
+    - type: DatetimeInterval
+      name: datetime_interval
+    - type:
+        type: array
+        items: double
+      name: aoi
+    - type:
+        - "null"
+        - type: array
+          items: string
+      name: query
 
 - type: enum
   name: Bands
   symbols:
-  - crs_coastal_aerosol
-  - blue
-  - green
-  - red
-  - nir
-  - swir1
-  - swir2
-  - panchromatic
-  - cirrus
-  - tirs1
-  - tirs2
+    - crs_coastal_aerosol
+    - blue
+    - green
+    - red
+    - nir08
+    - swir1
+    - swir2
+    - panchromatic
+    - cirrus
+    - tirs1
+    - tirs2
 
 - type: record
-  name: OGCProcessSettings
+  name: OGCApiProcessesEndpoint
   fields:
-  - type:
-      type: array
-      items: string
-    name: stac_items
-  - type:
-      type: array
-      items: double
-    name: aoi
-  - type:
-      type: array
-      items: Bands
-    name: bands
+    - type: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml#URI
+      name: url
+    # add headers as list of key-value pairs
+    - type:
+        - "null"
+        - type: array
+          items:
+            type: record
+            fields:
+              - type: string
+                name: key
+              - type: string
+                name: value
+      name: headers
+
+- type: record
+  name: OGCExecuteProcessSettings
+  fields:
+    - type: string
+      name: process_id
+    - type: Any
+      name: inputs
+    - type:
+        - "null"
+        - type: array
+          items: Any
+      name: properties
