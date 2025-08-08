@@ -1,5 +1,5 @@
 # EOAP Schemas (c) 2024-2025
-# 
+#
 # EOAP Schemas is licensed under
 # Creative Commons Attribution-ShareAlike 4.0 International.
 #
@@ -15,6 +15,27 @@
     name: end
 
 - type: record
+  name: KeyValuePair
+  fields:
+  - type: string
+    name: key
+  - type: string
+    name: value
+
+- type: record
+  name: STACApiEndpoint
+  fields:
+  - type: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml#URI
+    name: url
+  # add headers as list of key-value pairs
+  - type:
+    - "null"
+    - type: 
+        type: array
+        items: KeyValuePair
+    name: headers
+
+- type: record
   name: STACSearchSettings
   fields:
   - type: string
@@ -25,6 +46,12 @@
       type: array
       items: double
     name: aoi
+  - type:
+    - "null"
+    - type:
+        type: array
+        items: string
+    name: query
 
 - type: enum
   name: Bands
@@ -33,7 +60,7 @@
   - blue
   - green
   - red
-  - nir
+  - nir08
   - swir1
   - swir2
   - panchromatic
@@ -42,17 +69,28 @@
   - tirs2
 
 - type: record
-  name: OGCProcessSettings
+  name: OGCApiProcessesEndpoint
   fields:
+  - type: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml#URI
+    name: url
+  # add headers as list of key-value pairs
   - type:
-      type: array
-      items: string
-    name: stac_items
+    - "null"
+    - type:
+        type: array
+        items: KeyValuePair
+    name: headers
+
+- type: record
+  name: OGCExecuteProcessSettings
+  fields:
+  - type: string
+    name: process_id
+  - type: Any
+    name: inputs
   - type:
-      type: array
-      items: double
-    name: aoi
-  - type:
-      type: array
-      items: Bands
-    name: bands
+      - "null"
+      - type:
+          type: array
+          items: Any
+    name: properties
