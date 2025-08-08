@@ -1,21 +1,3 @@
-stac_api:
-  api_endpoint:
-    url:
-      value: https://planetarycomputer.microsoft.com/api/stac/v1
-    headers: []
-
-  search_request:
-    collection: landsat-c2-l2
-    datetime_interval:
-      start: "2023-10-15T18:00:00"
-      end: "2023-10-15T18:59:59"
-    aoi:
-    - -118.985
-    - 38.432
-    - -118.183
-    - 38.938
-    query:
-    - "eo:cloud_cover<10"
 
 ogc_processes:
   api_endpoint:
@@ -23,7 +5,7 @@ ogc_processes:
       value: https://planetarycomputer.microsoft.com/api/ogc/processes/v1
     headers: []
 
-  search_request:
+  execute_request:
     process_id: "water-body-detection"
     inputs:
       item:
@@ -33,4 +15,3 @@ ogc_processes:
       bands: ["green", "nir08"]
       epsg: "EPSG:4326"
 
-process_id: f7e12cd2-5925-4359-83d9-42fb0a3557db
