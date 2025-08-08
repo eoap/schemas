@@ -178,4 +178,4 @@
   - type: APIEndpoint
     name: api_endpoint
   - type: OGCExecuteProcessSettings
-    name: search_request
+    name: execute_request
