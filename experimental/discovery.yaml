@@ -6,6 +6,9 @@
 # You should have received a copy of the license along with this work.
 # If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
 
+# This schema reflects the STAC items search with full-featured filtering
+# see https://api.stacspec.org/v1.0.0-beta.3/item-search/#tag/Item-Search/operation/postItemSearch
+
 - type: record
   name: DatetimeInterval
   fields:
@@ -110,3 +113,11 @@
     - type: array
       items: SortBy
     name: sortby
+
+- type: record
+  name: STACAPI
+  fields:
+  - type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/api-endpoint.yaml#APIEndpoint
+    name: api_endpoint
+  - type: STACSearchSettings
+    name: search_request
