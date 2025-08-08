@@ -1,0 +1,47 @@
+# EOAP Schemas (c) 2024-2025
+#
+# EOAP Schemas is licensed under
+# Creative Commons Attribution-ShareAlike 4.0 International.
+#
+# You should have received a copy of the license along with this work.
+# If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
+
+# commons shared
+
+- $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/shared.yaml
+
+- type: enum
+  name: Bands
+  symbols:
+  - crs_coastal_aerosol
+  - blue
+  - green
+  - red
+  - nir08
+  - swir1
+  - swir2
+  - panchromatic
+  - cirrus
+  - tirs1
+  - tirs2
+
+- type: record
+  name: OGCExecuteProcessSettings
+  fields:
+  - type: string
+    name: process_id
+  - type: Any
+    name: inputs
+  - type:
+    - 'null'
+    - type: array
+      items: Any
+    name: properties
+
+- type: record
+  name: OCGProcesses
+  fields:
+  - type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/shared.yaml#APIEndpoint
+    name: api_endpoint
+  - type: OGCExecuteProcessSettings
+    name: search_request
