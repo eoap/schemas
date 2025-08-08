@@ -45,4 +45,3 @@
     name: api_endpoint
   - type: OGCExecuteProcessSettings
     name: search_request
-
