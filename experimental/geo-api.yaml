@@ -9,6 +9,7 @@
 # commons shared
 
 - $import: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml
+- $import: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml
 
 - type: record
   name: KeyValuePair
@@ -41,21 +42,97 @@
     name: end
 
 - type: record
-  name: STACSearchSettings
+  name: Fields
   fields:
-  - type: string
-    name: collection
-  - type: DatetimeInterval
-    name: datetime_interval
-  - type:
-      type: array
-      items: double
-    name: aoi
   - type:
     - 'null'
     - type: array
       items: string
-    name: query
+    name: include
+  - type:
+    - 'null'
+    - type: array
+      items: string
+    name: exclude
+
+- type: enum
+  name: FilterLang
+  symbols:
+  - cql-text
+  - cql-json
+
+- type: enum
+  name: Direction
+  symbols:
+  - asc
+  - desc
+
+- type: record
+  name: SortBy
+  fields:
+  - type: string
+    name: field
+  - type: Direction
+    name: direction
+
+- type: record
+  name: STACSearchSettings
+  fields:
+  - type:
+    - 'null'
+    - type: array
+      items: double
+    name: bbox
+  - type:
+    - 'null'
+    - DatetimeInterval
+    name: datetime
+  - type:
+    - 'null'
+    - https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Point
+    - https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#MultiPoint
+    - https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#LineString
+    - https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#MultiLineString
+    - https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Polygon
+    - https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#MultiPolygon
+    - https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeometryCollection
+    name: intersects
+  - type:
+    - 'null'
+    - type: array
+      items: string
+    name: collections
+  - type:
+    - 'null'
+    - type: array
+      items: string
+    name: ids
+  - type:
+    - 'null'
+    - int
+    name: limit
+  - type:
+    - 'null'
+    - Fields
+    name: fields
+  - type:
+    - 'null'
+    - Any
+    name: filter
+  - type:
+    - 'null'
+    - FilterLang
+    name: filter-lang
+  - type:
+    - 'null'
+    - type: array
+      items: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml#URI
+    name: filter-crs
+  - type:
+    - 'null'
+    - type: array
+      items: SortBy
+    name: sortby
 
 - type: record
   name: STACAPI
