@@ -57,4 +57,4 @@ jobs:
         env:
           STAC_API_URL: ${{ env.STAC_API_URL }}
         run: |
-          cwltest --test experimental/tests/tests-stac-api-client.yaml --tool cwltool
+          cwltest --test experimental/tests/tests-stac-api-client.yaml --tool cwltool --verbose -- --no-container 
