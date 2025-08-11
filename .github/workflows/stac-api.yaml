@@ -30,9 +30,10 @@ jobs:
           pip install cwltool pystac-client cwltest  
       - name: Start STAC API (background)
         run: |
+          test -f "$STAC_FASTAPI_COLLECTIONS_HREF" && echo "Found $STAC_FASTAPI_COLLECTIONS_HREF" || { echo "Missing $STAC_FASTAPI_COLLECTIONS_HREF"; exit 1; }
           nohup uvicorn STAC_FASTAPI_COLLECTIONS_HREF=experimental/tests/data/collections.json stac_fastapi.geoparquet.main:app --host 127.0.0.1 --port 8000 > stac.log 2>&1 &
-          cat stac.log || true
           sleep 10
+          cat stac.log || true
           curl -v http://127.0.0.1:8000/collections/naip
     #   - name: Wait for STAC API
     #     run: |
