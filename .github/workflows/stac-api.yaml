@@ -1,0 +1,57 @@
+# .github/workflows/ci.yaml
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test-with-stac-fastapi:
+    runs-on: ubuntu-latest
+
+    env:
+      # Public demo GeoParquet (anonymous access)
+      STAC_FASTAPI_COLLECTIONS_HREF: experimental/tests/data/collections.json
+      STAC_API_URL: http://127.0.0.1:8000
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install server
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "stac-fastapi-geoparquet[serve]"
+
+      - name: Start STAC API (background)
+        run: |
+          nohup uvicorn STAC_FASTAPI_COLLECTIONS_HREF=experimental/tests/data/collections.json stac_fastapi.geoparquet.main:app > stac.log 2>&1 &
+
+      - name: Wait for STAC API
+        run: |
+          for i in {1..90}; do
+            if curl -fsS "$STAC_API_URL/" >/dev/null; then
+              echo "STAC API is up"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "STAC API failed to start"
+          echo "---- stac.log ----"; tail -n +1 stac.log || true
+          exit 1
+
+      # If your client needs the URL, it can read STAC_API_URL
+      - name: Install client deps
+        run: |
+          pip install cwltool pystac-client cwltest
+
+      - name: Run tests
+        env:
+          STAC_API_URL: ${{ env.STAC_API_URL }}
+        run: |
+          cwltest --test experimental/tests/test-descriptions.yml --tool cwl-runner

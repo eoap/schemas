@@ -1,0 +1,10 @@
+# A single test that calls the tool and expects a File output
+- id: naip-collection
+  doc: "GET /collections/naip"
+  tool: ../stac-api-client.cwl
+  job: tests/data/naip-collection.yaml
+  # We don't assert the JSON content here, just that a File was produced.
+  # You can add JSON checks later if you like.
+  output:
+    response:
+      class: File
