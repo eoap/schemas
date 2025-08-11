@@ -12,7 +12,7 @@ jobs:
     env:
       # Public demo GeoParquet (anonymous access)
       STAC_FASTAPI_COLLECTIONS_HREF: experimental/tests/data/collections.json
-      STAC_API_URL: http://0.0.0.0:8000
+      STAC_API_URL: http://127.0.0.1:8000
 
     steps:
       - name: Checkout
@@ -30,9 +30,10 @@ jobs:
           pip install cwltool pystac-client cwltest  
       - name: Start STAC API (background)
         run: |
-          nohup uvicorn STAC_FASTAPI_COLLECTIONS_HREF=experimental/tests/data/collections.json stac_fastapi.geoparquet.main:app --host 0.0.0.0 --port 8000 > stac.log 2>&1 &
+          nohup uvicorn STAC_FASTAPI_COLLECTIONS_HREF=experimental/tests/data/collections.json stac_fastapi.geoparquet.main:app --host 127.0.0.1 --port 8000 > stac.log 2>&1 &
           cat stac.log || true
-          curl -v -s http://0.0.0.0:8000/collections/naip 
+          sleep 10
+          curl -v -s http://127.0.0.1:8000/collections/naip
     #   - name: Wait for STAC API
     #     run: |
     #       for i in {1..90}; do
