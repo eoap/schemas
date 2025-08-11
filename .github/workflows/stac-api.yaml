@@ -31,6 +31,7 @@ jobs:
       - name: Start STAC API (background)
         run: |
           nohup uvicorn STAC_FASTAPI_COLLECTIONS_HREF=experimental/tests/data/collections.json stac_fastapi.geoparquet.main:app > stac.log 2>&1 &
+          cat stac.log || true
 
       - name: Wait for STAC API
         run: |
