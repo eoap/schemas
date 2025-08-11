@@ -77,7 +77,7 @@ nav:
       - string-format/datetime.ipynb
       - string-format/uri.ipynb
     - Experimental:
-      #- experimental/discovery.ipynb
+      - experimental/discovery.ipynb
       - experimental/process.ipynb
   - How-to define new types: 'newtypes.md'
 

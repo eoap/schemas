@@ -11,6 +11,7 @@ RUN apt-get update && \
 RUN useradd -u 1001 -r -g 100 -m -d ${HOME} -s /sbin/nologin \
         -c "Default neo User" neo
 
+        
 WORKDIR /home/neo
 
 USER neo
