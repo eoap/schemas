@@ -1,0 +1,11 @@
+api_endpoint:
+  url:
+    value: http://127.0.0.1:8000/
+  headers: []
+
+search_request:
+  collections:
+    - naip
+  ids:
+    - ne_m_4110264_sw_13_060_20220827
+    - ne_m_4110263_sw_13_060_20220820
