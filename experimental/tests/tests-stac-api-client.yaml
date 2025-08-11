@@ -1,7 +1,7 @@
-- id: naip-collection
-  doc: "GET /collections/naip"
-  tool: experimental/stac-api-client.cwl
-  job: experimental/tests/data/naip-collection.yaml
+- id: naip_collection
+  doc: "a test for the NAIP collection"
+  tool: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/experimental/stac-api-client.cwl
+  job: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/experimental/tests/data/naip-collection.yaml
   output:
     search_output:
       class: File
