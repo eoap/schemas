@@ -13,5 +13,7 @@
   job: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/experimental/tests/data/02-naip-ids.yaml
   output:
     search_output:
+      basename: discovery-output.json
       class: File
-      location: Any
+      checksum: "sha1$4c7ef6d4832619470909cbbf47df87c96c9767ac"
+      size: 6004
