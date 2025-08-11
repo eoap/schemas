@@ -33,7 +33,7 @@ jobs:
           nohup uvicorn STAC_FASTAPI_COLLECTIONS_HREF=experimental/tests/data/collections.json stac_fastapi.geoparquet.main:app --host 127.0.0.1 --port 8000 > stac.log 2>&1 &
           cat stac.log || true
           sleep 10
-          curl -v -s http://127.0.0.1:8000/collections/naip
+          curl -v http://127.0.0.1:8000/collections/naip
     #   - name: Wait for STAC API
     #     run: |
     #       for i in {1..90}; do
