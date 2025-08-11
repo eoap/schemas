@@ -15,13 +15,16 @@ requirements:
   listing:
   - entryname: inputs.yaml
     entry: |-
-      ${inputs.api_endpoint.url.value}
+      $(inputs.api_endpoint.url.value)
       ---
-      ${inputs.search_request.collections[0]}
+      $(inputs.search_request.collections[0])
       ---
       ${ 
         const bbox = inputs.search_request?.bbox;
-        return (bbox && Array.isArray(bbox) && bbox.length >= 4) ? "--bbox " + bbox.join(" ");
+        if (bbox && Array.isArray(bbox) && bbox.length >= 4) {
+          return "--bbox " + bbox.join(" ");
+        }
+        return "";
       }
 
 inputs:
