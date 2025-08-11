@@ -11,13 +11,18 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        step: [stac-api-client]
+
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
       with:
         python-version: 3.x
     - run: pip install cwltool
-    - run: cwltool --validate experimental/stac-api.cwl
+    - run: cwltool --validate experimental/${{ matrix.step }}.cwl
 
   version:
     needs: validate
