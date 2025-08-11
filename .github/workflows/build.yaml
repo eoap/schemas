@@ -42,7 +42,7 @@ jobs:
 
     strategy:
       matrix:
-        step: [stac-client]
+        step: [stac-api-client]
 
     steps:
     - uses: actions/checkout@v2
