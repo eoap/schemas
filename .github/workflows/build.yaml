@@ -85,7 +85,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
     - id: set-upload-url
-      run: echo "::echo name=upload_url::${{ steps.create_release.outputs.upload_url }}"
+      run: echo "upload_url=${{ steps.create_release.outputs.upload_url }}" >> $GITHUB_OUTPUT
 
   publish-artifacts:
 
