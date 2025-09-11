@@ -62,8 +62,8 @@ arguments:
       return args;
     }
   - ${ 
-      const maxItems = 5;
-      return ['--max-items', maxItems.toString()];
+      const maxItems = inputs.search_request?.maxItems;
+      return ['--max-items', (maxItems ?? 20).toString()];
     }
   - ${
       const args = [];

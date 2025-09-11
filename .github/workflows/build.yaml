@@ -18,8 +18,8 @@ jobs:
         step: [stac-api-client]
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
       with:
         python-version: 3.x
     - run: pip install cwltool
@@ -34,11 +34,11 @@ jobs:
       app-version: ${{ steps.set-version.outputs.version }}
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - run: echo "APP_VERSION=$(cat codemeta.json | jq -r .version )" >> $GITHUB_ENV
     - run: echo app version is $APP_VERSION
     - id: set-version
-      run: echo "::set-output name=version::$APP_VERSION"
+      run: echo "::echo name=version::$APP_VERSION"
 
   container-build:
 
@@ -51,7 +51,7 @@ jobs:
         step: [stac-api-client]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - run: echo version ${{needs.version.outputs.app-version}}
     - run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
     - name: build & push image
@@ -85,7 +85,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
     - id: set-upload-url
-      run: echo "::set-output name=upload_url::${{ steps.create_release.outputs.upload_url }}"
+      run: echo "::echo name=upload_url::${{ steps.create_release.outputs.upload_url }}"
 
   publish-artifacts:
 
@@ -100,7 +100,7 @@ jobs:
         step: ["stac-api-client"]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - run: |
         
         tag="ghcr.io/eoap/schemas/${{ matrix.step }}:${{needs.version.outputs.app-version}}"
