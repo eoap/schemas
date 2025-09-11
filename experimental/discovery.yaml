@@ -94,7 +94,7 @@
   - type:
     - 'null'
     - int
-    name: maxItems
+    name: max-items
   - type:
     - 'null'
     - Fields

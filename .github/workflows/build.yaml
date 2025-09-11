@@ -38,7 +38,7 @@ jobs:
     - run: echo "APP_VERSION=$(cat codemeta.json | jq -r .version )" >> $GITHUB_ENV
     - run: echo app version is $APP_VERSION
     - id: set-version
-      run: echo "::echo name=version::$APP_VERSION"
+      run: echo "{version}=${APP_VERSION}" >> $GITHUB_OUTPUT
 
   container-build:
 
