@@ -93,6 +93,10 @@
     name: limit
   - type:
     - 'null'
+    - int
+    name: maxItems
+  - type:
+    - 'null'
     - Fields
     name: fields
   - type:
