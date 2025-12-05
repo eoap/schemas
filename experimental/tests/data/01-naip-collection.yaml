@@ -1,0 +1,8 @@
+api_endpoint:
+  url:
+    value: http://127.0.0.1:8000/
+  headers: []
+
+search_request:
+  collections:
+    - naip

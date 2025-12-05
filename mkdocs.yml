@@ -95,7 +95,8 @@ nav:
       - string-format/datetime.ipynb
       - string-format/uri.ipynb
     - Experimental:
-      - experimental/landsat9_inputs.ipynb
+      - experimental/discovery.ipynb
+      - experimental/process.ipynb
   - How-to define new types: 'newtypes.md'
 
 copyright: <a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache%20License%202.0-blue"" alt="Apache License, Version 2.0" /></a>

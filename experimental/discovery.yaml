@@ -1,0 +1,127 @@
+# EOAP Schemas (c) 2024-2025
+#
+# EOAP Schemas is licensed under
+# Creative Commons Attribution-ShareAlike 4.0 International.
+#
+# You should have received a copy of the license along with this work.
+# If not, see <https://creativecommons.org/licenses/by-sa/4.0/>.
+
+# This schema reflects the STAC items search with full-featured filtering
+# see https://api.stacspec.org/v1.0.0-beta.3/item-search/#tag/Item-Search/operation/postItemSearch
+
+- type: record
+  name: DatetimeInterval
+  fields:
+  - type: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml#DateTime
+    name: start
+  - type: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml#DateTime
+    name: end
+
+- type: record
+  name: Fields
+  fields:
+  - type:
+    - 'null'
+    - type: array
+      items: string
+    name: include
+  - type:
+    - 'null'
+    - type: array
+      items: string
+    name: exclude
+
+- type: enum
+  name: FilterLang
+  symbols:
+  - cql2-text
+  - cql2-json
+
+- type: enum
+  name: Direction
+  symbols:
+  - asc
+  - desc
+
+- type: record
+  name: SortBy
+  fields:
+  - type: string
+    name: field
+  - type: Direction
+    name: direction
+
+- type: record
+  name: STACSearchSettings
+  fields:
+  - type:
+    - 'null'
+    - type: array
+      items: double
+    name: bbox
+  - type:
+    - 'null'
+    - https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml#DateTime
+    name: datetime
+  - type:
+    - 'null'
+    - DatetimeInterval
+    name: datetime-interval
+  - type:
+    - 'null'
+    - https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Point
+    - https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#MultiPoint
+    - https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#LineString
+    - https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#MultiLineString
+    - https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Polygon
+    - https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#MultiPolygon
+    - https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#GeometryCollection
+    name: intersects
+  - type:
+    - 'null'
+    - type: array
+      items: string
+    name: collections
+  - type:
+    - 'null'
+    - type: array
+      items: string
+    name: ids
+  - type:
+    - 'null'
+    - int
+    name: limit
+  - type:
+    - 'null'
+    - int
+    name: max-items
+  - type:
+    - 'null'
+    - Fields
+    name: fields
+  - type:
+    - 'null'
+    - Any
+    name: filter
+  - type:
+    - 'null'
+    - FilterLang
+    name: filter-lang
+  - type:
+    - 'null'
+    - type: array
+      items: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml#URI
+    name: filter-crs
+  - type:
+    - 'null'
+    - type: array
+      items: SortBy
+    name: sortby
+
+- type: record
+  name: STACAPI
+  fields:
+  - type: https://raw.githubusercontent.com/eoap/schemas/main/experimental/api-endpoint.yaml#APIEndpoint
+    name: api_endpoint
+  - type: STACSearchSettings
+    name: search_request

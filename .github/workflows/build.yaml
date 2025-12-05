@@ -1,0 +1,130 @@
+name: build
+on:
+  push:
+    branches:
+    - main
+
+    paths:
+    - .github/**
+    - experimental/**
+    - containers/**
+    - codemeta.json
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        step: [stac-api-client]
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: 3.x
+    - run: pip install cwltool
+    - run: cwltool --validate experimental/${{ matrix.step }}.cwl
+
+  version:
+    needs: validate
+
+    runs-on: ubuntu-latest
+
+    outputs:
+      app-version: ${{ steps.set-version.outputs.version }}
+
+    steps:
+    - uses: actions/checkout@v4
+    - run: echo "APP_VERSION=$(cat codemeta.json | jq -r .version )" >> $GITHUB_ENV
+    - run: echo app version is $APP_VERSION
+    - id: set-version
+      run: echo "version=${APP_VERSION}" >> $GITHUB_OUTPUT
+
+  container-build:
+
+    needs: version
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        step: [stac-api-client]
+
+    steps:
+    - uses: actions/checkout@v4
+    - run: echo version ${{needs.version.outputs.app-version}}
+    - run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+    - name: build & push image
+      run: |
+        IMAGE_ID=ghcr.io/eoap/schemas/${{ matrix.step }}
+        docker build containers/${{ matrix.step }} --file containers/${{ matrix.step }}/Dockerfile --tag ${{ matrix.step }}
+        docker tag ${{ matrix.step }} $IMAGE_ID:${{needs.version.outputs.app-version}}
+        docker push $IMAGE_ID:${{needs.version.outputs.app-version}}
+
+  create-release:
+
+    needs:
+    - container-build
+    - version
+
+    runs-on: ubuntu-latest
+
+    outputs:
+
+      upload_url: ${{ steps.set-upload-url.outputs.upload_url }}
+
+    steps:
+    - name: release
+      uses: actions/create-release@v1
+      id: create_release
+      with:
+        draft: false
+        prerelease: false
+        release_name: ${{needs.version.outputs.app-version}}
+        tag_name: ${{needs.version.outputs.app-version}}
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+    - id: set-upload-url
+      run: echo "upload_url=${{ steps.create_release.outputs.upload_url }}" >> $GITHUB_OUTPUT
+
+  publish-artifacts:
+
+    needs:
+    - create-release
+    - version
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        step: ["stac-api-client"]
+
+    steps:
+    - uses: actions/checkout@v4
+    - run: |
+        
+        tag="ghcr.io/eoap/schemas/${{ matrix.step }}:${{needs.version.outputs.app-version}}"
+        docker pull ${tag}
+        shatag=$( docker inspect ${tag} | yq -r '.[0]["RepoDigests"][0]' )
+        cwl="experimental/${{ matrix.step }}.cwl"      
+        t="${shatag}" yq -i eval '(.hints[] | select(.class == "DockerRequirement") | .dockerPull) = env(t)' experimental/${{ matrix.step }}.cwl 
+    - name: Cleanup downloads folder
+      run: rm -rf downloads/*
+    - run: |
+        mkdir downloads
+        cp experimental/${{ matrix.step }}.cwl downloads/${{ matrix.step }}.${{needs.version.outputs.app-version}}.cwl
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: application-package-${{matrix.step}}
+        path: downloads
+        overwrite: true
+    - name: upload linux artifact 1
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      with:
+        upload_url: ${{needs.create-release.outputs.upload_url}}
+        asset_path: downloads/${{matrix.step}}.${{needs.version.outputs.app-version}}.cwl
+        asset_name: ${{matrix.step}}.${{needs.version.outputs.app-version}}.cwl
+        asset_content_type: text/yaml
