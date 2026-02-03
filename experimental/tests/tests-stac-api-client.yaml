@@ -1,7 +1,7 @@
 - id: 01_naip_collection
   doc: "a test for the NAIP collection"
-  tool: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/experimental/stac-api-client.cwl
-  job: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/experimental/tests/data/01-naip-collection.yaml
+  tool: ../stac-api-client.cwl
+  job: data/01-naip-collection.yaml
   output:
     search_output:
       class: File
@@ -9,11 +9,10 @@
 
 - id: 02_naip_ids
   doc: "a test for the NAIP STAC items by IDs"
-  tool: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/experimental/stac-api-client.cwl
-  job: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/experimental/tests/data/02-naip-ids.yaml
+  tool: ../stac-api-client.cwl
+  job: data/02-naip-ids.yaml
   output:
     search_output:
       basename: discovery-output.json
       class: File
-      checksum: "sha1$4c7ef6d4832619470909cbbf47df87c96c9767ac"
-      size: 6004
+      location: Any

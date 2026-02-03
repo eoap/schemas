@@ -7,7 +7,7 @@ doc: |
   This tool uses the STAC Client to search for STAC items
 hints:
   - class: DockerRequirement
-    dockerPull: docker.io/library/stac-client 
+    dockerPull: ghcr.io/eoap/schemas/stac-api-client:0.2.0
 requirements:
   - class: InlineJavascriptRequirement
   - class: NetworkAccess

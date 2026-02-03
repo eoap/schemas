@@ -97,17 +97,20 @@ jobs:
 
     strategy:
       matrix:
-        step: ["stac-api-client"]
+        step: ["stac-api-client", "odata-client"]
 
     steps:
     - uses: actions/checkout@v4
     - run: |
+        if [ "${step}" == "stac-api-client" ]; then
+          echo "Using STAC API Client"
         
-        tag="ghcr.io/eoap/schemas/${{ matrix.step }}:${{needs.version.outputs.app-version}}"
-        docker pull ${tag}
-        shatag=$( docker inspect ${tag} | yq -r '.[0]["RepoDigests"][0]' )
-        cwl="experimental/${{ matrix.step }}.cwl"      
-        t="${shatag}" yq -i eval '(.hints[] | select(.class == "DockerRequirement") | .dockerPull) = env(t)' experimental/${{ matrix.step }}.cwl 
+          tag="ghcr.io/eoap/schemas/${{ matrix.step }}:${{needs.version.outputs.app-version}}"
+          docker pull ${tag}
+          shatag=$( docker inspect ${tag} | yq -r '.[0]["RepoDigests"][0]' )
+          cwl="experimental/${{ matrix.step }}.cwl"      
+          t="${shatag}" yq -i eval '(.hints[] | select(.class == "DockerRequirement") | .dockerPull) = env(t)' experimental/${{ matrix.step }}.cwl 
+        fi
     - name: Cleanup downloads folder
       run: rm -rf downloads/*
     - run: |

@@ -21,13 +21,13 @@ requirements:
       - $import: https://raw.githubusercontent.com/eoap/schemas/main/experimental/discovery.yaml 
 inputs:
   api_endpoint:
-    label: STAC API endpoint
-    doc: STAC API endpoint for Landsat-9 data
+    label: OData endpoint
+    doc: OData endpoint
     type: |-
       https://raw.githubusercontent.com/eoap/schemas/main/experimental/api-endpoint.yaml#APIEndpoint
   search_request:
-      label: STAC API settings
-      doc: STAC API settings for Landsat-9 data
+      label: Search settings
+      doc: Search settings for OData endpoint
       type: |-
         https://raw.githubusercontent.com/eoap/schemas/main/experimental/discovery.yaml#STACSearchSettings
 
