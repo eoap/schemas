@@ -7,7 +7,7 @@ doc: |
   This tool uses the OData Client to search for OData items
 hints:
   - class: DockerRequirement
-    dockerPull: ghcr.io/terradue/pygeofilter-odata-cdse:0.3.0
+    dockerPull: ghcr.io/terradue/pygeofilter-odata-cdse:0.4.0
 requirements:
   - class: InlineJavascriptRequirement
   - class: NetworkAccess
