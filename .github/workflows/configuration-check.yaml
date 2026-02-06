@@ -1,0 +1,59 @@
+name: Check pygeofilter-odata-cdse dependency
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # daily at 06:00 UTC
+  workflow_dispatch:
+
+jobs:
+  check-dependency:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get latest pygeofilter-odata-cdse release
+        id: pygeo
+        run: |
+          latest_tag=$(curl -s \
+            https://api.github.com/repos/Terradue/pygeofilter-odata-cdse/releases/latest \
+            | jq -r .tag_name)
+
+          echo "latest_tag=$latest_tag" >> $GITHUB_OUTPUT
+
+      - name: Get latest eoap/schemas release
+        id: schemas
+        run: |
+          latest_release=$(curl -s \
+            https://api.github.com/repos/eoap/schemas/releases/latest)
+
+          tag=$(echo "$latest_release" | jq -r .tag_name)
+
+          asset_url=$(echo "$latest_release" \
+            | jq -r '.assets[] | select(.name | endswith(".cwl")) | .browser_download_url')
+
+          echo "schemas_tag=$tag" >> $GITHUB_OUTPUT
+          echo "asset_url=$asset_url" >> $GITHUB_OUTPUT
+
+      - name: Download CWL release artifact
+        run: |
+          curl -L "${{ steps.schemas.outputs.asset_url }}" -o odata-client.cwl
+
+      - name: Extract dockerPull from CWL
+        id: cwl
+        run: |
+          docker_pull=$(yq '.requirements.DockerRequirement.dockerPull' odata-client.cwl)
+          echo "docker_pull=$docker_pull" >> $GITHUB_OUTPUT
+
+      - name: Compare versions
+        run: |
+          expected=":${{ steps.pygeo.outputs.latest_tag }}"
+          actual="${{ steps.cwl.outputs.docker_pull }}"
+
+          echo "Expected tag suffix: $expected"
+          echo "Actual dockerPull:  $actual"
+
+          if [[ "$actual" != *"$expected" ]]; then
+            echo "::error::CWL uses outdated pygeofilter-odata-cdse image"
+            exit 1
+          fi
+
+          echo "Dependency is up to date ✔"
