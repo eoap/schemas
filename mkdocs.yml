@@ -80,20 +80,28 @@ nav:
   - Schemas:
     - GeoJSON:
       - geojson/index.md
-      - geojson/point.ipynb
-      - geojson/feature.ipynb
+      - Schema Doc: geojson/schema.html
+      - Examples:
+        - geojson/point.ipynb
+        - geojson/feature.ipynb
     - OGC API Processes:
       - ogc/index.md
-      - ogc/bbox.ipynb
+      - Schema Doc: ogc/schema.html
+      - Examples:
+        - ogc/bbox.ipynb
     - STAC: 
       - stac/index.md
-      - stac/catalog.ipynb
-      - stac/collection.ipynb
-      - stac/item.ipynb
+      - Schema Doc: stac/schema.html
+      - Examples:
+        - stac/catalog.ipynb
+        - stac/collection.ipynb
+        - stac/item.ipynb
     - String format:
       - string-format/index.md
-      - string-format/datetime.ipynb
-      - string-format/uri.ipynb
+      - Schema Doc: string-format/schema.html
+      - Examples:
+        - string-format/datetime.ipynb
+        - string-format/uri.ipynb
     - Experimental:
       - experimental/discovery.ipynb
       - experimental/process.ipynb
