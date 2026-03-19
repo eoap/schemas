@@ -31,3 +31,15 @@ tasks:
     cmds:
     - for: ["geojson", "ogc", "stac"]
       cmd: cwltool --verbose --validate ./test/{{.ITEM}}.cwl
+
+  generate_doc:
+    cmds:
+    - for:
+      - 'geojson'
+      - 'ogc'
+      - 'stac'
+      - 'string_format'
+      # - 'experimental/api-endpoint'
+      # - 'experimental/discovery'
+      # - 'experimental/process'
+      cmd: schema-salad-doc ./{{ .ITEM }}.yaml > ./{{ .ITEM }}.html
