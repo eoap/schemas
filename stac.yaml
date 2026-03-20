@@ -17,6 +17,7 @@
 
 - type: enum
   name: StacVersion
+  doc: STAC version
   symbols:
   - '1.0.0'
 
@@ -25,112 +26,137 @@
   fields:
   - type: string
     name: href
+    doc: Link reference
   - type: string
     name: rel
+    doc: Link relation type
   - type:
     - 'null'
     - string
     name: title
+    doc: Link title
   - type:
     - 'null'
     - string
     name: type
+    doc: Link type
 
 - type: record
   name: Catalog
+  doc: This object represents Catalogs in a SpatioTemporal Asset Catalog.
   fields:
   - type: string
     name: description
+    doc: Description
   - type: string
     name: id
+    doc: Identifier
   - type:
       type: array
       items: Link
     name: links
+    doc: Links
   - type:
     - 'null'
     - type: array
       items: string
+      doc: Reference to a JSON Schema
     name: stac_extensions
+    doc: STAC extensions
   - type: StacVersion
     name: stac_version
+    doc: STAC version
   - type:
     - 'null'
     - string
     name: title
+    doc: Title
   - type: string
     name: type
+    doc: Type of STAC entity
 
 # https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/basics.json
 
 - type: record
   name: BasicDescriptiveFields
+  doc: Basic Descriptive Fields
   fields:
-  - type:
-    - 'null'
-    - string
+  - type: string
     name: title
-  - type:
-    - 'null'
-    - string
+    doc: A human-readable title describing the Item.
+  - type: string
     name: description
+    doc: Detailed multi-line description to fully explain the Item.
 
 # https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/datetime.json
 
 - type: record
   name: DateTime
+  doc: Date and Time Fields
   fields:
   - type:
     - 'null'
     - string
     name: datetime
+    doc: The searchable date/time of the assets, in UTC (Formatted in RFC 3339).
   - type:
     - 'null'
     - string
     name: start_datetime
+    doc: The searchable start date/time of the assets, in UTC (Formatted in RFC 3339).
   - type:
     - 'null'
     - string
     name: end_datetime
+    doc: The searchable end date/time of the assets, in UTC (Formatted in RFC 3339).
   - type:
     - 'null'
     - string
     name: created
+    doc: Creation Time
   - type:
     - 'null'
     - string
     name: updated
+    doc: Last Update Time
 
 # https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/instrument.json
 
 - type: record
   name: Instrument
+  doc: Instrument Fields
   fields:
   - type:
     - 'null'
     - string
     name: constellation
+    doc: Constellation
   - type:
     - 'null'
     - int
     name: gsd
+    doc: Ground Sample Distance
   - type:
       type: array
       items: string
     name: instruments
+    doc: Instruments
   - type:
     - 'null'
     - string
     name: mission
+    doc: Mission
   - type:
     - 'null'
     - string
     name: platform
+    doc: Platform
 
 # https://raw.githubusercontent.com/radiantearth/stac-api-spec/refs/tags/v1.0.0/stac-spec/item-spec/json-schema/licensing.json
 
 - type: record
   name: Licensing
+  doc: Licensing Fields
   fields:
   - type:
     - 'null'
@@ -141,6 +167,7 @@
 
 - type: enum
   name: OrganizationRole
+  doc: Organization roles
   symbols:
   - 'producer'
   - 'licensor'
@@ -149,22 +176,27 @@
 
 - type: record
   name: Provider
+  doc: Provider
   fields:
   - type:
     - 'null'
     - string
     name: description
+    doc: Organization description.
   - type: string
     name: name
+    doc: Organization name
   - type:
     - 'null'
     - type: array
       items: OrganizationRole
     name: roles
+    doc: Organization roles.
   - type:
     - 'null'
     - string
     name: url
+    doc: Organization homepage.
 
 - type: record
   name: Providers
@@ -174,6 +206,7 @@
     - type: array
       items: Provider
     name: providers
+    doc: Providers
 
 # Geometry
 # https://geojson.org/schema/Geometry.json
@@ -185,6 +218,7 @@
 
 - type: record
   name: Point
+  doc: GeoJSON Point
   fields:
   - type: PointType
     name: type
@@ -204,6 +238,7 @@
 
 - type: record
   name: LineString
+  doc: GeoJSON LineString
   fields:
   - type: LineStringType
     name: type
@@ -223,6 +258,7 @@
 
 - type: record
   name: Polygon
+  doc: GeoJSON Polygon
   fields:
   - type: PolygonType
     name: type
@@ -244,6 +280,7 @@
 
 - type: record
   name: MultiPoint
+  doc: GeoJSON MultiPoint
   fields:
   - type: MultiPointType
     name: type
@@ -265,6 +302,7 @@
 
 - type: record
   name: MultiLineString
+  doc: GeoJSON MultiLineString
   fields:
   - type: MultiLineStringType
     name: type
@@ -288,6 +326,7 @@
 
 - type: record
   name: MultiPolygon
+  doc: GeoJSON MultiPolygon
   fields:
   - type: MultiPolygonType
     name: type
@@ -316,6 +355,7 @@
 
 - type: record
   name: Feature
+  doc: GeoJSON Feature
   fields:
   - type: FeatureType
     name: type
@@ -342,6 +382,7 @@
 
 - type: record
   name: GeometryCollection
+  doc: GeoJSON GeometryCollection
   fields:
   - type: GeometryCollectionType
     name: type
@@ -371,65 +412,79 @@
     - 'null'
     - string
     name: title
+    doc: A human-readable title describing the Item.
   - type:
     - 'null'
     - string
     name: description
+    doc: Detailed multi-line description to fully explain the Item.
   # "$ref": "datetime.json"
   - type:
     - 'null'
     - string
     name: datetime
+    doc: The searchable date/time of the assets, in UTC (Formatted in RFC 3339).
   - type:
     - 'null'
     - string
     name: start_datetime
+    doc: The searchable start date/time of the assets, in UTC (Formatted in RFC 3339).
   - type:
     - 'null'
     - string
     name: end_datetime
+    doc: The searchable end date/time of the assets, in UTC (Formatted in RFC 3339).
   - type:
     - 'null'
     - string
     name: created
+    doc: Creation Time
   - type:
     - 'null'
     - string
     name: updated
+    doc: Last Update Time
   # "$ref": "licensing.json"
   - type:
     - 'null'
     - string
     name: license
+    doc: Licensing Fields
   # "$ref": "provider.json"
   - type:
     - 'null'
     - type: array
       items: Provider
     name: providers
+    doc: Providers
 
 - type: record
   name: Asset
   fields:
   - type: string
     name: href
+    doc: Asset reference
   - type:
     - 'null'
     - string
     name: title
+    doc: Asset title
   - type:
     - 'null'
     - string
     name: description
+    doc: Asset description
   - type:
     - 'null'
     - string
     name: type
+    doc: Asset type
   - type:
     - 'null'
     - type: array
       items: string
     name: roles
+    doc: Asset roles
   # "allOf": "$ref": "#/definitions/common_metadata"
   # $ref": "basics.json"
   # title and description previously defined
@@ -438,35 +493,43 @@
     - 'null'
     - string
     name: datetime
+    doc: The searchable date/time of the assets, in UTC (Formatted in RFC 3339).
   - type:
     - 'null'
     - string
     name: start_datetime
+    doc: The searchable start date/time of the assets, in UTC (Formatted in RFC 3339).
   - type:
     - 'null'
     - string
     name: end_datetime
+    doc: The searchable end date/time of the assets, in UTC (Formatted in RFC 3339).
   - type:
     - 'null'
     - string
     name: created
+    doc: Creation Time
   - type:
     - 'null'
     - string
     name: updated
+    doc: Last Update Time
   # "$ref": "licensing.json"
   - type:
     - 'null'
     - string
     name: license
+    doc: Licensing Fields
   # "$ref": "provider.json"
   - type:
     - type: array
       items: Provider
     name: providers
+    doc: Providers
 
 - type: record
   name: Item
+  doc: This object represents the metadata for an item in a SpatioTemporal Asset Catalog.
   fields:
   # "allOf": [ { "$ref": "Feature.json"
   - type: FeatureType
@@ -489,15 +552,19 @@
   # core
   - type: StacVersion
     name: stac_version
+    doc: STAC version
   - type:
     - 'null'
     - type: array
       items: string
+      doc: Reference to a JSON Schema
     name: stac_extensions
+    doc: STAC extensions
   - type:
       type: array
       items: Link
     name: links
+    doc: Links to item relations
   # The map type is not part of the CWL v1.0 core schema — it's a CWL v1.2+ extension.
   #- type:
   #  - type: map
@@ -516,6 +583,7 @@
 
 - type: record
   name: Spatial
+  doc: Spatial extent
   fields:
   - name: bbox
     type:
@@ -523,9 +591,11 @@
       items:
         type: array
         items: double
+    doc: Spatial extent
 
 - type: record
   name: Temporal
+  doc: Temporal extent
   fields:
   - name: interval
     type:
@@ -533,14 +603,18 @@
       items:
         type: array
         items: string
+    doc: Temporal extent
 
 - type: record
   name: Extents
+  doc: Extents
   fields:
   - type: Spatial
     name: spatial
+    doc: Spatial extent object
   - type: Temporal
     name: temporal
+    doc: Temporal extent object
 
 - type: record
   name: Range
@@ -556,36 +630,58 @@
 
 - type: record
   name: Collection
+  doc: These are the fields specific to a STAC Collection. All other fields are inherited from STAC Catalog.
   fields:
   - type: StacVersion
     name: stac_version
+    doc: STAC version
   - type:
     - 'null'
     - type: array
       items: string
+      doc: Reference to a JSON Schema
     name: stac_extensions
+    doc: STAC extensions
   - type: CollectionType
     name: type
+    doc: Type of STAC entity
+  - type: string
+    name: id
+    doc: Identifier
   - type:
     - 'null'
     - string
     name: title
+    doc: Title
+  - type: string
+    name: description
+    doc: Description
   - type:
     - 'null'
     - type: array
       items: string
     name: keywords
+    doc: Keywords
   - type: string
     name: license
+    doc: Collection License Name
   - type:
       - 'null'
       - Provider
     name: providers
+    doc: Providers
   - type:
       type: array
       items: Link
     name: links
+    doc: Links
+  - type: Extents
+    name: extent
+    doc: Extents
   - type:
     - 'null'
     - Range
+    - type: array
+      items: string
     name: summaries
+    doc: Set of values
