@@ -16,30 +16,74 @@ version: '3'
 
 tasks:
 
-  conditional-pip-install:
-    internal: true
-    status:
-    - command -v {{.LIB}}
-    cmds:
-    - pip install {{.LIB}}
-
   test:
-    deps:
-    - task: conditional-pip-install
-      vars:
-        COMMAND: cwltool
     cmds:
     - for: ["geojson", "ogc", "stac"]
-      cmd: cwltool --verbose --validate ./test/{{.ITEM}}.cwl
+      cmd: |
+        uv run \
+        --no-cache \
+        --with cwltool \
+        cwltool \
+        --verbose \
+        --validate \
+        ./test/{{.ITEM}}.cwl
+
+  generate_schema:
+    internal: true
+    cmds:
+    - |
+      uv run \
+      --no-cache \
+      --with json-schema2salad \
+      json-schema2salad \
+      --output {{.OUTPUT}} \
+      {{.SCHEMAS}}
+    - schema-salad-tool --print-pre {{.OUTPUT}} | yq -P
+
+  generate_schemas:
+    cmds:
+    - for:
+      - '1.0.0'
+      - '1.1.0'
+      task: generate_schema
+      vars:
+        SCHEMAS: 'https://schemas.stacspec.org/v{{ .ITEM }}/item-spec/json-schema/item.json https://schemas.stacspec.org/v{{ .ITEM }}/collection-spec/json-schema/collection.json https://schemas.stacspec.org/v{{ .ITEM }}/catalog-spec/json-schema/catalog.json'
+        OUTPUT: 'stac_v{{ .ITEM }}.yaml'
+    - task: generate_schema
+      vars:
+        SCHEMAS: 'https://geojson.org/schema/Geometry.json https://geojson.org/schema/Feature.json https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/featureCollectionGeoJSON.yaml'
+        OUTPUT: 'geojson.yaml'
+
+  generate_schema_doc:
+    internal: true
+    cmds:
+    - mkdir -p ./docs/{{ .TARGET }}
+    - |
+       uv run \
+       --no-cache \
+       --with schema-salad \
+       schema-salad-doc \
+       ./{{ .SCHEMA }}.yaml > ./docs/{{ .TARGET }}/schema.html
 
   generate_schemas_doc:
     cmds:
-    - for:
-      - 'geojson'
-      - 'ogc'
-      - 'stac'
-      - 'string_format'
-      # - 'experimental/api-endpoint'
-      # - 'experimental/discovery'
-      # - 'experimental/process'
-      cmd: schema-salad-doc ./{{ .ITEM }}.yaml > ./docs/{{ .ITEM }}/schema.html
+    - task: generate_schema_doc
+      vars:
+        SCHEMA: 'geojson'
+        TARGET: 'geojson'
+    - task: generate_schema_doc
+      vars:
+        SCHEMA: 'ogc'
+        TARGET: 'ogc'
+    - task: generate_schema_doc
+      vars:
+        SCHEMA: 'stac_v1.0.0'
+        TARGET: 'stac/1.0.0'
+    - task: generate_schema_doc
+      vars:
+        SCHEMA: 'stac_v1.1.0'
+        TARGET: 'stac/1.1.0'
+    - task: generate_schema_doc
+      vars:
+        SCHEMA: 'string_format'
+        TARGET: 'string-format'

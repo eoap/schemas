@@ -1,0 +1,647 @@
+$namespaces:
+  sld: https://w3id.org/cwl/salad#
+  string_format: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/string_format.yaml#
+$graph:
+- $import: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/string_format.yaml
+- type: enum
+  name: GeoJSON_Feature_type
+  symbols:
+  - Feature
+- type: record
+  name: GeoJSON_Feature_properties2_properties
+  fields: []
+- type: enum
+  name: GeoJSON_Point_type
+  symbols:
+  - Point
+- type: record
+  name: GeoJSON_Point
+  fields:
+  - name: type
+    type: GeoJSON_Point_type
+  - name: coordinates
+    type:
+      type: array
+      items: float
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON Point
+- type: enum
+  name: GeoJSON_LineString_type
+  symbols:
+  - LineString
+- type: record
+  name: GeoJSON_LineString
+  fields:
+  - name: type
+    type: GeoJSON_LineString_type
+  - name: coordinates
+    type:
+      type: array
+      items:
+        type: array
+        items: float
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON LineString
+- type: enum
+  name: GeoJSON_Polygon_type
+  symbols:
+  - Polygon
+- type: record
+  name: GeoJSON_Polygon
+  fields:
+  - name: type
+    type: GeoJSON_Polygon_type
+  - name: coordinates
+    type:
+      type: array
+      items:
+        type: array
+        items:
+          type: array
+          items: float
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON Polygon
+- type: enum
+  name: GeoJSON_MultiPoint_type
+  symbols:
+  - MultiPoint
+- type: record
+  name: GeoJSON_MultiPoint
+  fields:
+  - name: type
+    type: GeoJSON_MultiPoint_type
+  - name: coordinates
+    type:
+      type: array
+      items:
+        type: array
+        items: float
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON MultiPoint
+- type: enum
+  name: GeoJSON_MultiLineString_type
+  symbols:
+  - MultiLineString
+- type: record
+  name: GeoJSON_MultiLineString
+  fields:
+  - name: type
+    type: GeoJSON_MultiLineString_type
+  - name: coordinates
+    type:
+      type: array
+      items:
+        type: array
+        items:
+          type: array
+          items: float
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON MultiLineString
+- type: enum
+  name: GeoJSON_MultiPolygon_type
+  symbols:
+  - MultiPolygon
+- type: record
+  name: GeoJSON_MultiPolygon
+  fields:
+  - name: type
+    type: GeoJSON_MultiPolygon_type
+  - name: coordinates
+    type:
+      type: array
+      items:
+        type: array
+        items:
+          type: array
+          items:
+            type: array
+            items: float
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON MultiPolygon
+- type: enum
+  name: GeoJSON_GeometryCollection_type
+  symbols:
+  - GeometryCollection
+- type: record
+  name: GeoJSON_GeometryCollection
+  fields:
+  - name: type
+    type: GeoJSON_GeometryCollection_type
+  - name: geometries
+    type:
+      type: array
+      items:
+      - GeoJSON_Point
+      - GeoJSON_LineString
+      - GeoJSON_Polygon
+      - GeoJSON_MultiPoint
+      - GeoJSON_MultiLineString
+      - GeoJSON_MultiPolygon
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON GeometryCollection
+- type: record
+  name: GeoJSON_Feature
+  fields:
+  - name: type
+    type: GeoJSON_Feature_type
+  - name: id
+    type:
+    - 'null'
+    - float
+    - string
+  - name: properties
+    type:
+    - 'null'
+    - GeoJSON_Feature_properties2_properties
+  - name: geometry
+    type:
+    - 'null'
+    - GeoJSON_Point
+    - GeoJSON_LineString
+    - GeoJSON_Polygon
+    - GeoJSON_MultiPoint
+    - GeoJSON_MultiLineString
+    - GeoJSON_MultiPolygon
+    - GeoJSON_GeometryCollection
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON Feature
+- type: record
+  name: Basic_Descriptive_Fields
+  fields:
+  - name: title
+    type:
+    - 'null'
+    - string
+    doc: A human-readable title describing the entity.
+  - name: description
+    type:
+    - 'null'
+    - string
+    doc: Detailed multi-line description to fully explain the entity.
+  - name: keywords
+    type:
+    - 'null'
+    - type: array
+      items: string
+    doc: List of keywords describing the entity.
+  - name: roles
+    type:
+    - 'null'
+    - type: array
+      items: string
+    doc: Roles
+  doc: Basic Descriptive Fields
+- type: record
+  name: Bands_Field_bands
+  fields: []
+  extends: STAC_Common_Metadata
+- type: record
+  name: Bands_Field
+  fields:
+  - name: bands
+    type:
+    - 'null'
+    - type: array
+      items: Bands_Field_bands
+  doc: Bands Field
+- type: record
+  name: Date_and_Time_Fields
+  fields:
+  - name: datetime
+    type:
+    - string_format:DateTime
+    - 'null'
+    doc: The searchable date/time of the data, in UTC (Formatted in RFC 3339)
+  - name: start_datetime
+    type:
+    - 'null'
+    - string_format:DateTime
+    doc: The searchable start date/time of the data, in UTC (Formatted in RFC 3339)
+  - name: end_datetime
+    type:
+    - 'null'
+    - string_format:DateTime
+    doc: The searchable end date/time of the data, in UTC (Formatted in RFC 3339)
+  - name: created
+    type:
+    - 'null'
+    - string_format:DateTime
+    doc: Creation Time
+  - name: updated
+    type:
+    - 'null'
+    - string_format:DateTime
+    doc: Last Update Time
+  doc: Date and Time Fields
+- type: enum
+  name: Fields_related_to_data_values_data_type
+  symbols:
+  - int8
+  - int16
+  - int32
+  - int64
+  - uint8
+  - uint16
+  - uint32
+  - uint64
+  - float16
+  - float32
+  - float64
+  - cint16
+  - cint32
+  - cfloat32
+  - cfloat64
+  - other
+  doc: Data type of the values
+- type: enum
+  name: Fields_related_to_data_values_nodata2_nodata
+  symbols:
+  - nan
+  - inf
+  - -inf
+- type: record
+  name: Statistics
+  fields:
+  - name: minimum
+    type:
+    - 'null'
+    - float
+    doc: Minimum value of all the data values
+  - name: maximum
+    type:
+    - 'null'
+    - float
+    doc: Maximum value of all the data values
+  - name: mean
+    type:
+    - 'null'
+    - float
+    doc: Mean value of all the data values
+  - name: stddev
+    type:
+    - 'null'
+    - float
+    doc: Standard deviation value of all the data values
+  - name: count
+    type:
+    - 'null'
+    - int
+    doc: Total number of all data values
+  - name: valid_percent
+    type:
+    - 'null'
+    - float
+    doc: Percentage of valid (not nodata) values
+  doc: Statistics
+- type: record
+  name: Fields_related_to_data_values
+  fields:
+  - name: data_type
+    type:
+    - 'null'
+    - Fields_related_to_data_values_data_type
+    doc: Data type of the values
+  - name: nodata
+    type:
+    - 'null'
+    - float
+    - Fields_related_to_data_values_nodata2_nodata
+    doc: No data value
+  - name: statistics
+    type:
+    - 'null'
+    - Statistics
+    doc: Statistics
+  - name: unit
+    type:
+    - 'null'
+    - string
+    doc: Unit denomination of the data value
+  doc: Fields related to data values
+- type: record
+  name: Instrument_Fields
+  fields:
+  - name: platform
+    type:
+    - 'null'
+    - string
+    doc: Platform
+  - name: instruments
+    type:
+    - 'null'
+    - type: array
+      items: string
+    doc: Instruments
+  - name: constellation
+    type:
+    - 'null'
+    - string
+    doc: Constellation
+  - name: mission
+    type:
+    - 'null'
+    - string
+    doc: Mission
+  - name: gsd
+    type:
+    - 'null'
+    - float
+    doc: Ground Sample Distance
+  doc: Instrument Fields
+- type: record
+  name: Licensing_Fields
+  fields:
+  - name: license
+    type:
+    - 'null'
+    - string
+  doc: Licensing Fields
+- type: enum
+  name: Provider_Fields_providers_roles
+  symbols:
+  - producer
+  - licensor
+  - processor
+  - host
+- type: record
+  name: Provider_Fields_providers
+  fields:
+  - name: name
+    type: string
+    doc: Organization name
+  - name: description
+    type:
+    - 'null'
+    - string
+    doc: Organization description
+  - name: roles
+    type:
+    - 'null'
+    - type: array
+      items: Provider_Fields_providers_roles
+    doc: Organization roles
+  - name: url
+    type:
+    - 'null'
+    - string_format:IRI
+    doc: Organization homepage
+- type: record
+  name: Provider_Fields
+  fields:
+  - name: providers
+    type:
+    - 'null'
+    - type: array
+      items: Provider_Fields_providers
+    doc: Providers
+  doc: Provider Fields
+- type: record
+  name: STAC_Common_Metadata
+  fields: []
+  doc: This schema includes all common metadata fields.
+  extends:
+  - Basic_Descriptive_Fields
+  - Bands_Field
+  - Date_and_Time_Fields
+  - Fields_related_to_data_values
+  - Instrument_Fields
+  - Licensing_Fields
+  - Provider_Fields
+- type: record
+  name: DefinitionsCore
+  fields:
+  - name: value
+    type: Any
+    doc: Lossy fallback for unsupported allOf branch composition.
+- type: record
+  name: DefinitionsLinks
+  fields:
+  - name: value
+    type:
+      type: array
+      items: DefinitionsLink
+    doc: Links to item relations
+  doc: Links to item relations
+- type: record
+  name: Link_headers
+  fields: []
+  doc: Link headers
+- type: record
+  name: DefinitionsLink
+  fields:
+  - name: href
+    type: string_format:IRIReference
+    doc: Link reference
+  - name: rel
+    type: string
+    doc: Link relation type
+  - name: type
+    type:
+    - 'null'
+    - string
+    doc: Link type
+  - name: title
+    type:
+    - 'null'
+    - string
+    doc: Link title
+  - name: method
+    type:
+    - 'null'
+    - string
+    doc: Link method
+    default: GET
+  - name: headers
+    type:
+    - 'null'
+    - Link_headers
+    doc: Link headers
+  - name: body
+    type:
+    - 'null'
+    - Any
+    doc: Link body
+  extends: STAC_Common_Metadata
+- type: record
+  name: Asset_links
+  fields: []
+  doc: Links to assets
+- type: record
+  name: DefinitionsAsset
+  fields:
+  - name: href
+    type: string_format:IRIReference
+    doc: Asset reference
+  - name: title
+    type:
+    - 'null'
+    - string
+    doc: Asset title
+  - name: description
+    type:
+    - 'null'
+    - string
+    doc: Asset description
+  - name: type
+    type:
+    - 'null'
+    - string
+    doc: Asset type
+  - name: roles
+    type:
+    - 'null'
+    - type: array
+      items: string
+    doc: Asset roles
+  extends: STAC_Common_Metadata
+- type: record
+  name: STAC_Item
+  fields: []
+  doc: This object represents the metadata for an item in a SpatioTemporal Asset Catalog.
+  extends: DefinitionsCore
+- type: record
+  name: Spatial_extent_object
+  fields:
+  - name: bbox
+    type:
+    - Any
+    doc: Spatial extents
+  doc: Spatial extent object
+- type: record
+  name: Temporal_extent_object
+  fields:
+  - name: interval
+    type:
+      type: array
+      items:
+        type: array
+        items:
+        - string_format:DateTime
+        - 'null'
+    doc: Temporal extents
+  doc: Temporal extent object
+- type: record
+  name: Extents
+  fields:
+  - name: spatial
+    type: Spatial_extent_object
+    doc: Spatial extent object
+  - name: temporal
+    type: Temporal_extent_object
+    doc: Temporal extent object
+  doc: Extents
+- type: record
+  name: STAC_Collection
+  fields:
+  - name: stac_version
+    type: string
+    doc: STAC version
+  - name: stac_extensions
+    type:
+    - 'null'
+    - type: array
+      items: string_format:IRI
+    doc: STAC extensions
+  - name: type
+    type: Any
+    doc: Type of STAC entity
+  - name: id
+    type: string
+    doc: Identifier
+  - name: extent
+    type: Extents
+    doc: Extents
+  - name: assets
+    type:
+    - 'null'
+    - Asset_links
+  - name: item_assets
+    type:
+    - 'null'
+    - Any
+  - name: links
+    type: DefinitionsLinks
+  - name: summaries
+    type:
+    - 'null'
+    - DefinitionsSummaries
+  doc: These are the fields specific to a STAC Collection.
+- type: record
+  name: DefinitionsSummaries
+  fields: []
+- type: record
+  name: STAC_Collection_Specification
+  fields: []
+  doc: This object represents Collections in a SpatioTemporal Asset Catalog.
+  extends:
+  - STAC_Collection
+  - STAC_Common_Metadata
+- type: record
+  name: STAC_Catalog
+  fields:
+  - name: stac_version
+    type: string
+    doc: STAC version
+  - name: stac_extensions
+    type:
+    - 'null'
+    - type: array
+      items: string_format:IRI
+    doc: STAC extensions
+  - name: type
+    type: Any
+    doc: Type of STAC entity
+  - name: id
+    type: string
+    doc: Identifier
+  - name: links
+    type: DefinitionsLinks
+  doc: STAC Catalog
+- type: record
+  name: STAC_Catalog_Specification
+  fields: []
+  doc: This object represents Catalogs in a SpatioTemporal Asset Catalog.
+  extends:
+  - STAC_Catalog
+  - STAC_Common_Metadata
+# this last element was manually added only to work around the schema-salad-doc `KeyError`
+- type: documentation
+  name: sld:Any
+  doc: |
+    # Any
+
+    Any JSON-compatible value.
+$comment: 'Warnings: https://schemas.stacspec.org/v1.1.0/item-spec/json-schema/item.json:
+  Unsupported non-object allOf branch under record DefinitionsCore'

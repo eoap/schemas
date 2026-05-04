@@ -1,136 +1,126 @@
-# Copyright 2025 Terradue
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-# Geometry
-# https://geojson.org/schema/Geometry.json
-
+$namespaces:
+  sld: https://w3id.org/cwl/salad#
+  string_format: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/string_format.yaml#
+$graph:
+- $import: https://raw.githubusercontent.com/eoap/schemas/refs/heads/main/string_format.yaml
 - type: enum
-  name: PointType
+  name: GeoJSON_Point_type
   symbols:
   - Point
-
 - type: record
-  name: Point
+  name: GeoJSON_Point
   fields:
-  - type: PointType
-    name: type
-  - type:
+  - name: type
+    type: GeoJSON_Point_type
+  - name: coordinates
+    type:
       type: array
-      items: double
-    name: coordinates
-  - type:
-      type: array
-      items: double
-    name: bbox
-
+      items: float
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON Point
 - type: enum
-  name: LineStringType
+  name: GeoJSON_LineString_type
   symbols:
   - LineString
-
 - type: record
-  name: LineString
+  name: GeoJSON_LineString
   fields:
-  - type: LineStringType
-    name: type
-  - type:
+  - name: type
+    type: GeoJSON_LineString_type
+  - name: coordinates
+    type:
       type: array
-      items: double
-    name: coordinates
-  - type:
-      type: array
-      items: double
-    name: bbox
-
+      items:
+        type: array
+        items: float
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON LineString
 - type: enum
-  name: PolygonType
+  name: GeoJSON_Polygon_type
   symbols:
   - Polygon
-
 - type: record
-  name: Polygon
+  name: GeoJSON_Polygon
   fields:
-  - type: PolygonType
-    name: type
-  - type:
+  - name: type
+    type: GeoJSON_Polygon_type
+  - name: coordinates
+    type:
       type: array
       items:
         type: array
         items:
           type: array
-          items: double
-    name: coordinates
-  - type:
-      type: array
-      items: double
-    name: bbox
-
+          items: float
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON Polygon
 - type: enum
-  name: MultiPointType
+  name: GeoJSON_MultiPoint_type
   symbols:
   - MultiPoint
-
 - type: record
-  name: MultiPoint
+  name: GeoJSON_MultiPoint
   fields:
-  - type: MultiPointType
-    name: type
-  - type:
+  - name: type
+    type: GeoJSON_MultiPoint_type
+  - name: coordinates
+    type:
       type: array
       items:
         type: array
-        items: double
-    name: coordinates
-  - type:
-      type: array
-      items: double
-    name: bbox
-
+        items: float
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON MultiPoint
 - type: enum
-  name: MultiLineStringType
+  name: GeoJSON_MultiLineString_type
   symbols:
   - MultiLineString
-
 - type: record
-  name: MultiLineString
+  name: GeoJSON_MultiLineString
   fields:
-  - type: MultiLineStringType
-    name: type
-  - type:
+  - name: type
+    type: GeoJSON_MultiLineString_type
+  - name: coordinates
+    type:
       type: array
       items:
         type: array
         items:
           type: array
-          items: double
-    name: coordinates
-  - type:
-      type: array
-      items: double
-    name: bbox
-
+          items: float
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON MultiLineString
 - type: enum
-  name: MultiPolygonType
+  name: GeoJSON_MultiPolygon_type
   symbols:
   - MultiPolygon
-
 - type: record
-  name: MultiPolygon
+  name: GeoJSON_MultiPolygon
   fields:
-  - type: MultiPolygonType
-    name: type
-  - type:
+  - name: type
+    type: GeoJSON_MultiPolygon_type
+  - name: coordinates
+    type:
       type: array
       items:
         type: array
@@ -138,113 +128,423 @@
           type: array
           items:
             type: array
-            items: double
-    name: coordinates
-  - type:
-      type: array
-      items: double
-    name: bbox
-
-# Feature
-# https://geojson.org/schema/Feature.json
-
+            items: float
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON MultiPolygon
+- type: record
+  name: GeoJSON_Geometry
+  fields:
+  - name: value
+    type:
+    - GeoJSON_Point
+    - GeoJSON_LineString
+    - GeoJSON_Polygon
+    - GeoJSON_MultiPoint
+    - GeoJSON_MultiLineString
+    - GeoJSON_MultiPolygon
+    doc: GeoJSON Geometry
+  doc: GeoJSON Geometry
 - type: enum
-  name: FeatureType
+  name: GeoJSON_Feature_type
   symbols:
   - Feature
-
 - type: record
-  name: Feature
-  fields:
-  - type: FeatureType
-    name: type
-  - name: id
-    type: string
-    doc: "Identifier"
-  - type:
-    - Point
-    - LineString
-    - Polygon
-    - MultiPoint
-    - MultiLineString
-    - MultiPolygon
-    name: geometry
-  - type:
-      type: array
-      items: double
-    name: bbox
-
+  name: GeoJSON_Feature_properties2_properties
+  fields: []
 - type: enum
-  name: GeometryCollectionType
+  name: GeoJSON_Point2_type
   symbols:
-  - GeometryCollection
-
+  - Point
 - type: record
-  name: GeometryCollection
+  name: GeoJSON_Point2
   fields:
-  - type: GeometryCollectionType
-    name: type
-  - type:
+  - name: type
+    type: GeoJSON_Point2_type
+  - name: coordinates
+    type:
+      type: array
+      items: float
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON Point
+- type: enum
+  name: GeoJSON_LineString2_type
+  symbols:
+  - LineString
+- type: record
+  name: GeoJSON_LineString2
+  fields:
+  - name: type
+    type: GeoJSON_LineString2_type
+  - name: coordinates
+    type:
       type: array
       items:
-      - Point
-      - LineString
-      - Polygon
-      - MultiPoint
-      - MultiLineString
-      - MultiPolygon
-    name: geometries
-  - type:
+        type: array
+        items: float
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON LineString
+- type: enum
+  name: GeoJSON_Polygon2_type
+  symbols:
+  - Polygon
+- type: record
+  name: GeoJSON_Polygon2
+  fields:
+  - name: type
+    type: GeoJSON_Polygon2_type
+  - name: coordinates
+    type:
       type: array
-      items: double
-    name: bbox
-
-# from https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/link.yaml
-
+      items:
+        type: array
+        items:
+          type: array
+          items: float
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON Polygon
+- type: enum
+  name: GeoJSON_MultiPoint2_type
+  symbols:
+  - MultiPoint
+- type: record
+  name: GeoJSON_MultiPoint2
+  fields:
+  - name: type
+    type: GeoJSON_MultiPoint2_type
+  - name: coordinates
+    type:
+      type: array
+      items:
+        type: array
+        items: float
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON MultiPoint
+- type: enum
+  name: GeoJSON_MultiLineString2_type
+  symbols:
+  - MultiLineString
+- type: record
+  name: GeoJSON_MultiLineString2
+  fields:
+  - name: type
+    type: GeoJSON_MultiLineString2_type
+  - name: coordinates
+    type:
+      type: array
+      items:
+        type: array
+        items:
+          type: array
+          items: float
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON MultiLineString
+- type: enum
+  name: GeoJSON_MultiPolygon2_type
+  symbols:
+  - MultiPolygon
+- type: record
+  name: GeoJSON_MultiPolygon2
+  fields:
+  - name: type
+    type: GeoJSON_MultiPolygon2_type
+  - name: coordinates
+    type:
+      type: array
+      items:
+        type: array
+        items:
+          type: array
+          items:
+            type: array
+            items: float
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON MultiPolygon
+- type: enum
+  name: GeoJSON_GeometryCollection_type
+  symbols:
+  - GeometryCollection
+- type: record
+  name: GeoJSON_GeometryCollection
+  fields:
+  - name: type
+    type: GeoJSON_GeometryCollection_type
+  - name: geometries
+    type:
+      type: array
+      items:
+      - GeoJSON_Point2
+      - GeoJSON_LineString2
+      - GeoJSON_Polygon2
+      - GeoJSON_MultiPoint2
+      - GeoJSON_MultiLineString2
+      - GeoJSON_MultiPolygon2
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON GeometryCollection
+- type: record
+  name: GeoJSON_Feature
+  fields:
+  - name: type
+    type: GeoJSON_Feature_type
+  - name: id
+    type:
+    - 'null'
+    - float
+    - string
+  - name: properties
+    type:
+    - 'null'
+    - GeoJSON_Feature_properties2_properties
+  - name: geometry
+    type:
+    - 'null'
+    - GeoJSON_Point2
+    - GeoJSON_LineString2
+    - GeoJSON_Polygon2
+    - GeoJSON_MultiPoint2
+    - GeoJSON_MultiLineString2
+    - GeoJSON_MultiPolygon2
+    - GeoJSON_GeometryCollection
+  - name: bbox
+    type:
+    - 'null'
+    - type: array
+      items: float
+  doc: GeoJSON Feature
+- type: enum
+  name: PointGeoJSON_type
+  symbols:
+  - Point
+- type: record
+  name: PointGeoJSON
+  fields:
+  - name: type
+    type: PointGeoJSON_type
+  - name: coordinates
+    type:
+      type: array
+      items: float
+- type: enum
+  name: MultipointGeoJSON_type
+  symbols:
+  - MultiPoint
+- type: record
+  name: MultipointGeoJSON
+  fields:
+  - name: type
+    type: MultipointGeoJSON_type
+  - name: coordinates
+    type:
+      type: array
+      items:
+        type: array
+        items: float
+- type: enum
+  name: LinestringGeoJSON_type
+  symbols:
+  - LineString
+- type: record
+  name: LinestringGeoJSON
+  fields:
+  - name: type
+    type: LinestringGeoJSON_type
+  - name: coordinates
+    type:
+      type: array
+      items:
+        type: array
+        items: float
+- type: enum
+  name: MultilinestringGeoJSON_type
+  symbols:
+  - MultiLineString
+- type: record
+  name: MultilinestringGeoJSON
+  fields:
+  - name: type
+    type: MultilinestringGeoJSON_type
+  - name: coordinates
+    type:
+      type: array
+      items:
+        type: array
+        items:
+          type: array
+          items: float
+- type: enum
+  name: PolygonGeoJSON_type
+  symbols:
+  - Polygon
+- type: record
+  name: PolygonGeoJSON
+  fields:
+  - name: type
+    type: PolygonGeoJSON_type
+  - name: coordinates
+    type:
+      type: array
+      items:
+        type: array
+        items:
+          type: array
+          items: float
+- type: enum
+  name: MultipolygonGeoJSON_type
+  symbols:
+  - MultiPolygon
+- type: record
+  name: MultipolygonGeoJSON
+  fields:
+  - name: type
+    type: MultipolygonGeoJSON_type
+  - name: coordinates
+    type:
+      type: array
+      items:
+        type: array
+        items:
+          type: array
+          items:
+            type: array
+            items: float
+- type: enum
+  name: GeometrycollectionGeoJSON_type
+  symbols:
+  - GeometryCollection
+- type: record
+  name: GeometrycollectionGeoJSON
+  fields:
+  - name: type
+    type: GeometrycollectionGeoJSON_type
+  - name: geometries
+    type:
+      type: array
+      items: GeometryGeoJSON
+- type: record
+  name: GeometryGeoJSON
+  fields:
+  - name: value
+    type:
+    - PointGeoJSON
+    - MultipointGeoJSON
+    - LinestringGeoJSON
+    - MultilinestringGeoJSON
+    - PolygonGeoJSON
+    - MultipolygonGeoJSON
+    - GeometrycollectionGeoJSON
+  doc: Wrapped non-object root schema
 - type: record
   name: Link
   fields:
-  - type: string
-    name: href
-    doc: "i.e. http://data.example.com/buildings/123"
-  - type: string
-    name: rel
-    doc: "i.e. alternate"
-  - type: string
-    name: type
-    doc: "i.e. application/geo+json"
-  - type: string
-    name: hreflang
-    doc: "i.e. en"
-  - type: string
-    name: title
-    doc: "i.e. Trierer Strasse 70, 53115 Bonn"
-  - type: int
-    name: length
-
-# from https://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/featureCollectionGeoJSON.yaml
-
+  - name: href
+    type: string
+    doc: 'Example: http://data.example.com/buildings/123'
+  - name: rel
+    type: string
+    doc: 'Example: alternate'
+  - name: type
+    type:
+    - 'null'
+    - string
+    doc: 'Example: application/geo+json'
+  - name: hreflang
+    type:
+    - 'null'
+    - string
+    doc: 'Example: en'
+  - name: title
+    type:
+    - 'null'
+    - string
+    doc: 'Example: Trierer Strasse 70, 53115 Bonn'
+  - name: length
+    type:
+    - 'null'
+    - int
 - type: enum
-  name: FeatureCollectionType
+  name: FeatureGeoJSON_type
+  symbols:
+  - Feature
+- type: record
+  name: FeatureGeoJSON_properties
+  fields: []
+- type: record
+  name: FeatureGeoJSON
+  fields:
+  - name: type
+    type: FeatureGeoJSON_type
+  - name: geometry
+    type: GeometryGeoJSON
+  - name: properties
+    type: FeatureGeoJSON_properties
+  - name: id
+    type:
+    - 'null'
+    - string
+    - int
+  - name: links
+    type:
+    - 'null'
+    - type: array
+      items: Link
+- type: enum
+  name: FeatureCollectionGeoJSON_type
   symbols:
   - FeatureCollection
-
 - type: record
-  name: FeatureCollection
+  name: FeatureCollectionGeoJSON
   fields:
-  - type: FeatureCollectionType
-    name: type
-  - type:
+  - name: type
+    type: FeatureCollectionGeoJSON_type
+  - name: features
+    type:
       type: array
-      items: Feature
-    name: features
-  - type:
-      type: array
+      items: FeatureGeoJSON
+  - name: links
+    type:
+    - 'null'
+    - type: array
       items: Link
-    name: links
-  - type: string
-    name: timeStamp
-  - type: int
-    name: numberMatched
-  - type: int
-    name: numberReturned
+  - name: timeStamp
+    type:
+    - 'null'
+    - string_format:DateTime
+  - name: numberMatched
+    type:
+    - 'null'
+    - int
+  - name: numberReturned
+    type:
+    - 'null'
+    - int

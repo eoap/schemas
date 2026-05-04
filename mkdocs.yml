@@ -91,7 +91,9 @@ nav:
         - ogc/bbox.ipynb
     - STAC: 
       - stac/index.md
-      - Schema Doc: stac/schema.html
+      - Schema Doc:
+        - 1.0.0: stac/1.0.0/schema.html
+        - 1.1.0: stac/1.1.0/schema.html
       - Examples:
         - stac/catalog.ipynb
         - stac/collection.ipynb
