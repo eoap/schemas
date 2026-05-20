@@ -222,3 +222,17 @@
   - name: value
     type: string
     doc: A time in the `hh:mm:ss.sTZD` format.
+
+# type: string
+# pattern: ^pattern$
+
+- type: record
+  name: Pattern
+  doc: Validate string value against a regular expression syntax based on the ECMA 262 (JavaScript) dialect.
+  fields:
+  - name: value
+    type: string
+    doc: A generic string value.
+  - name: pattern
+    type: string
+    doc: A regular expression syntax based on the ECMA 262 (JavaScript) dialect.
