@@ -1,91 +1,66 @@
-# How to define new Input/Output types
+# Define new input and output types
 
-Defining new Input/Output is a smooth process:
+Use this guide to add a reusable record type to a CWL tool. You need an existing CWL tool and `cwltool` installed; the [first-input tutorial](tutorials/first-input.md) covers environment setup.
 
-- Define a `*.yaml` file that will contain the new Input/Output data schema/format, i.e.`geojson.yaml`;
-- New objects format has to be defined inside an array element;
-- Each new type has few fields that have to be fulfilled:
-    * `name` is the new element name to uniquely identify it inside the new schema;
-    * `type` is a self-explanatory field, for the native supported type please refer to the official [documentation](https://www.commonwl.org/v1.2/CommandLineTool.html#SchemaDefRequirement);
-    * `fields` here is where new fields are itemized;
+## Define the schema
+
+Create `custom.yaml` beside your tool. The file contains an array of named type definitions. For each record, provide a `name`, `type: record`, and its `fields`:
 
 ```yaml
-- name: Point
+- name: Observation
   type: record
+  doc: An observation with a label and numeric measurements.
   fields:
-```
-
-- Users can now define their own types (please have a deep look at the array definition):
-
-```yaml
-- name: Item
-  type: record
-  doc: "This object represents the metadata for an item in a SpatioTemporal Asset Catalog"
-  fields:
-    - name: stac_version
+    - name: label
       type: string
-      doc: "STAC version"
-    - stac_extensions
+    - name: measurements
       type:
-      - type: array
-        items: string
-      doc: "STAC extensions"
-    - name: collection
-      type:
-      - type: array
-        items: string
-      doc: "The ID of the STAC Collection this Item references to."
-    - name: links
-      type:
-      - type: array
-        items: Link
-      doc: "Links"
-    - name: assets
-      type:
-      - type: array
-        items: Asset
+        type: array
+        items: double
 ```
 
-where fields can be defined as complex types:
+Each field needs a name and type. Arrays specify their element type with `items`. You can define additional named records in the same schema and refer to those names from field types.
+
+## Import the schema
+
+Add the schema to your tool's `SchemaDefRequirement`, preserving any requirements it already has:
 
 ```yaml
-- name: BasicDescriptiveFields
-  ...
-
-- name: DateTime
-  ...
-
-- name: Instrument
-  ...
-
-- name: Licensing
-  ...
-
-- name: Provider
-  ...
-
-- name: Link
-  ...
-
-- name: Asset
-  ...
-```
-
-- Users can now use the new defined type as a validated input, importing first the schema in the CWL description;
-- Then define an input of `type` `https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Feature`:
-
-```yaml
-cwlVersion: v1.2
-class: CommandLineTool
 requirements:
-  ...
   SchemaDefRequirement:
     types:
-    - $import: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml
-
-inputs:
-  feature:
-    type: https://raw.githubusercontent.com/eoap/schemas/main/geojson.yaml#Feature
-    label: " Feature Input"
-    doc: "Input is a Feature."
+      - $import: custom.yaml
 ```
+
+## Declare an input
+
+Reference the schema file and type name in your tool's inputs:
+
+```yaml
+inputs:
+  observation:
+    type: custom.yaml#Observation
+```
+
+Add the bindings needed to consume this record in your command. The [GeoJSON Point example](geojson/point.ipynb) demonstrates reading record fields in an input binding.
+
+Create `inputs.yaml` with values for your new input:
+
+```yaml
+observation:
+  label: sample
+  measurements: [1.0, 2.5]
+```
+
+## Validate the tool and input
+
+Run these commands beside `tool.cwl`, `custom.yaml`, and `inputs.yaml`:
+
+```bash
+cwltool --validate tool.cwl
+cwltool tool.cwl inputs.yaml
+```
+
+The first command checks the complete tool definition; the second also loads the input and executes the tool. For an output record, use the same type identifier in an output declaration and supply an output binding that produces the matching structure.
+
+Compare your definitions with the [schema reference](reference/index.md). See [custom types and their limits](explanation/custom-types.md) for validation constraints.

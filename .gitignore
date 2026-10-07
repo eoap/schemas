@@ -6,3 +6,5 @@ output.json
 echo_output.txt
 discovery-output.yaml
 process-output.yaml
+.task
+.codex

@@ -6,7 +6,7 @@ The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/s
 |-----------------------|-----------------------------------------------------------|
 | `Date`                | `{ "type": "string", "format": "date" }`                  |
 | `DateTime`            | `{ "type": "string", "format": "date-time" }`             |
-| `Duration`            | `{ "type": "string", "format": "duration}`                |
+| `Duration`            | `{ "type": "string", "format": "duration" }`                |
 | `Email`               | `{ "type": "string", "format": "email" }`                 |
 | `Hostname`            | `{ "type": "string", "format": "hostname" }`              |
 | `IDNEmail`            | `{ "type": "string", "format": "idn-email" }`             |
@@ -23,19 +23,11 @@ The schema is available at https://raw.githubusercontent.com/eoap/schemas/main/s
 | `URITemplate`         | `{ "type": "string", "format": "uri-template" }`          |
 | `Time`                | `{ "type": "string", "format": "time" }`                  |
 
-[!WARNING]
-Due to CWL Inputs/Outputs schema limitations,  `{ "type": "string", "format": "regex" }` aside to `pattern` cannot be supported.
+The schema does not provide `regex` or `pattern` constraints. Format records wrap a string in a `value` field; they do not themselves enforce its lexical format.
 
-## How to use this schema
+## Related documentation
 
-Import the schema in the CWL description:
-
-```yaml
-cwlVersion: v1.2
-class: CommandLineTool
-requirements:
-  ...
-  SchemaDefRequirement:
-    types:
-    - $import: https://raw.githubusercontent.com/eoap/schemas/main/string_format.yaml
-```
+- [Generated schema details](schema.html).
+- [Use an existing schema](../how-to/use-schema.md).
+- [Worked examples](../tutorials/index.md).
+- [Custom types and their limits](../explanation/custom-types.md).

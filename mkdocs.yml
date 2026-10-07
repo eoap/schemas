@@ -20,7 +20,7 @@ repo_name: eoap/schemas
 
 theme:
   logo: imgs/icon-eoap.png
-  name: material
+  name: readthedocs
 
   palette:
   - media: "(prefers-color-scheme: light)"
@@ -75,27 +75,43 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 nav:
-  - Introduction: 'index.md'
-  - Schemas:
+  - Home: index.md
+  - Tutorials:
+    - Overview: tutorials/index.md
+    - Your first custom-type input: tutorials/first-input.md
     - GeoJSON:
-      - geojson/index.md
-      - geojson/point.ipynb
-      - geojson/feature.ipynb
-    - OGC API Processes:
-      - ogc/index.md
-      - ogc/bbox.ipynb
-    - STAC: 
-      - stac/index.md
-      - stac/catalog.ipynb
-      - stac/collection.ipynb
-      - stac/item.ipynb
-    - String format:
-      - string-format/index.md
-      - string-format/datetime.ipynb
-      - string-format/uri.ipynb
+      - Point: geojson/point.ipynb
+      - Feature: geojson/feature.ipynb
+    - OGC bounding box: ogc/bbox.ipynb
+    - STAC:
+      - Catalog: stac/catalog.ipynb
+      - Collection: stac/collection.ipynb
+      - Item: stac/item.ipynb
+    - String formats:
+      - Date and time: string-format/datetime.ipynb
+      - URI: string-format/uri.ipynb
     - Experimental:
-      - experimental/discovery.ipynb
-      - experimental/process.ipynb
-  - How-to define new types: 'newtypes.md'
+      - Discovery inputs: experimental/discovery.ipynb
+      - Process inputs: experimental/process.ipynb
+  - How-to guides:
+    - Overview: how-to/index.md
+    - Use an existing schema: how-to/use-schema.md
+    - Define new types: newtypes.md
+  - Reference:
+    - Overview: reference/index.md
+    - GeoJSON:
+      - Types: geojson/index.md
+      - Schema details: geojson/schema.html
+    - OGC API Processes:
+      - Types: ogc/index.md
+      - Schema details: ogc/schema.html
+    - STAC:
+      - Types: stac/index.md
+      - Schema details: stac/schema.html
+    - String formats:
+      - Types: string-format/index.md
+      - Schema details: string-format/schema.html
+  - Explanation:
+    - Custom types and their limits: explanation/custom-types.md
 
 copyright: <a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache%20License%202.0-blue"" alt="Apache License, Version 2.0" /></a>

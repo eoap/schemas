@@ -26,32 +26,34 @@ jobs:
       - name: Install server
         run: |
           python -m pip install --upgrade pip
-          python -m pip install "stac-fastapi-geoparquet[serve]"
-          pip install cwltool pystac-client cwltest  
+          # GeoParquet 0.0.6 needs the extension modules from before the 6.3 reorganization.
+          python -m pip install \
+            "stac-fastapi-geoparquet[serve]==0.0.6" \
+            "stac-fastapi-api==6.2.1" \
+            "stac-fastapi-extensions==6.2.1" \
+            "stac-fastapi-types==6.2.1"
+          python -m pip install cwltool pystac-client cwltest
+
       - name: Start STAC API (background)
         run: |
           test -f "$STAC_FASTAPI_COLLECTIONS_HREF" && echo "Found $STAC_FASTAPI_COLLECTIONS_HREF" || { echo "Missing $STAC_FASTAPI_COLLECTIONS_HREF"; exit 1; }
-          STAC_FASTAPI_COLLECTIONS_HREF=experimental/tests/data/collections.json nohup uvicorn stac_fastapi.geoparquet.main:app --host 127.0.0.1 --port 8000 > stac.log 2>&1 &
-          sleep 10
-          cat stac.log || true
-          curl -v http://127.0.0.1:8000/collections/naip
-    #   - name: Wait for STAC API
-    #     run: |
-    #       for i in {1..90}; do
-    #         if curl -fsS "$STAC_API_URL/" >/dev/null; then
-    #           echo "STAC API is up"
-    #           exit 0
-    #         fi
-    #         sleep 1
-    #       done
-    #       echo "STAC API failed to start"
-    #       echo "---- stac.log ----"; tail -n +1 stac.log || true
-    #       exit 1
-
-    #   # If your client needs the URL, it can read STAC_API_URL
-    #   - name: Install client deps
-    #     run: |
-         
+          nohup uvicorn stac_fastapi.geoparquet.main:app --host 127.0.0.1 --port 8000 > stac.log 2>&1 &
+          server_pid=$!
+          for i in {1..60}; do
+            if ! kill -0 "$server_pid" 2>/dev/null; then
+              echo "::error::STAC API exited during startup"
+              cat stac.log
+              exit 1
+            fi
+            if curl -fsS --max-time 2 "$STAC_API_URL/collections/naip" >/dev/null 2>&1; then
+              echo "STAC API is ready"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "::error::Timed out waiting for STAC API"
+          cat stac.log
+          exit 1
 
       - name: Run tests
         env:

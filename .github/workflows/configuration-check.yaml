@@ -8,39 +8,43 @@ on:
 jobs:
   check-dependency:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
 
     steps:
       - name: Get latest pygeofilter-odata-cdse release
         id: pygeo
         run: |
-          latest_tag=$(curl -s \
+          latest_tag=$(curl -fsSL \
             https://api.github.com/repos/Terradue/pygeofilter-odata-cdse/releases/latest \
-            | jq -r .tag_name)
+            | jq -er .tag_name)
 
           echo "latest_tag=$latest_tag" >> $GITHUB_OUTPUT
 
       - name: Get latest eoap/schemas release
         id: schemas
         run: |
-          latest_release=$(curl -s \
+          latest_release=$(curl -fsSL \
             https://api.github.com/repos/eoap/schemas/releases/latest)
 
-          tag=$(echo "$latest_release" | jq -r .tag_name)
+          tag=$(echo "$latest_release" | jq -er .tag_name)
 
           asset_url=$(echo "$latest_release" \
-            | jq -r '.assets[] | select(.name | endswith(".cwl")) | .browser_download_url')
+            | jq -er --arg name "odata-client.${tag}.cwl" \
+              '.assets[] | select(.name == $name) | .browser_download_url')
 
           echo "schemas_tag=$tag" >> $GITHUB_OUTPUT
           echo "asset_url=$asset_url" >> $GITHUB_OUTPUT
 
       - name: Download CWL release artifact
         run: |
-          curl -L "${{ steps.schemas.outputs.asset_url }}" -o odata-client.cwl
+          curl -fsSL "${{ steps.schemas.outputs.asset_url }}" -o odata-client.cwl
 
       - name: Extract dockerPull from CWL
         id: cwl
         run: |
-          docker_pull=$(yq '.requirements.DockerRequirement.dockerPull' odata-client.cwl)
+          docker_pull=$(yq -er '.hints[] | select(.class == "DockerRequirement") | .dockerPull' odata-client.cwl)
           echo "docker_pull=$docker_pull" >> $GITHUB_OUTPUT
 
       - name: Compare versions
