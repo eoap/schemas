@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Fabrice Brito, Simone Tripodi" /><link rel="canonical" href="https://eoap.github.io/schemas/newtypes/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Define new types - EOAP schemas</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../styles/css/app.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Define new types";
+        var mkdocs_page_input_path = "newtypes.md";
+        var mkdocs_page_url = "/schemas/newtypes/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../imgs/icon-eoap.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../tutorials/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tutorials/first-input/">Your first custom-type input</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >GeoJSON</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../geojson/point/">GeoJSON Point</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../geojson/feature/">GeoJSON Feature</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ogc/bbox/">OGC Bounding Box</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >STAC</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../stac/catalog/">STAC Catalog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../stac/collection/">STAC Collection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../stac/item/">STAC Item</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >String formats</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../string-format/datetime/">Datetime</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../string-format/uri/">URI</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Experimental</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../experimental/discovery/">Experimental Discovery Inputs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../experimental/process/">Experimental Process Inputs</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How-to guides</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../how-to/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../how-to/use-schema/">Use an existing schema</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Define new types</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#define-the-schema">Define the schema</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#import-the-schema">Import the schema</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#declare-an-input">Declare an input</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#validate-the-tool-and-input">Validate the tool and input</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../reference/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >GeoJSON</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../geojson/">Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../geojson/schema.html">Schema details</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >OGC API Processes</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../ogc/">Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ogc/schema.html">Schema details</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >STAC</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../stac/">Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../stac/schema.html">Schema details</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >String formats</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../string-format/">Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../string-format/schema.html">Schema details</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Explanation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../explanation/custom-types/">Custom types and their limits</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">EOAP schemas</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">How-to guides</li>
+      <li class="breadcrumb-item active">Define new types</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/eoap/schemas/edit/master/docs/newtypes.md">Edit on eoap/schemas</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="define-new-input-and-output-types">Define new input and output types</h1>
+<p>Use this guide to add a reusable record type to a CWL tool. You need an existing CWL tool and <code>cwltool</code> installed; the <a href="../tutorials/first-input/">first-input tutorial</a> covers environment setup.</p>
+<h2 id="define-the-schema">Define the schema</h2>
+<p>Create <code>custom.yaml</code> beside your tool. The file contains an array of named type definitions. For each record, provide a <code>name</code>, <code>type: record</code>, and its <code>fields</code>:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Observation</span>
+</span><span id="__span-0-2"><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">record</span>
+</span><span id="__span-0-3"><span class="w">  </span><span class="nt">doc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An observation with a label and numeric measurements.</span>
+</span><span id="__span-0-4"><span class="w">  </span><span class="nt">fields</span><span class="p">:</span>
+</span><span id="__span-0-5"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">label</span>
+</span><span id="__span-0-6"><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+</span><span id="__span-0-7"><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">measurements</span>
+</span><span id="__span-0-8"><span class="w">      </span><span class="nt">type</span><span class="p">:</span>
+</span><span id="__span-0-9"><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
+</span><span id="__span-0-10"><span class="w">        </span><span class="nt">items</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">double</span>
+</span></code></pre></div>
+<p>Each field needs a name and type. Arrays specify their element type with <code>items</code>. You can define additional named records in the same schema and refer to those names from field types.</p>
+<h2 id="import-the-schema">Import the schema</h2>
+<p>Add the schema to your tool's <code>SchemaDefRequirement</code>, preserving any requirements it already has:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><span class="nt">requirements</span><span class="p">:</span>
+</span><span id="__span-1-2"><span class="w">  </span><span class="nt">SchemaDefRequirement</span><span class="p">:</span>
+</span><span id="__span-1-3"><span class="w">    </span><span class="nt">types</span><span class="p">:</span>
+</span><span id="__span-1-4"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">$import</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom.yaml</span>
+</span></code></pre></div>
+<h2 id="declare-an-input">Declare an input</h2>
+<p>Reference the schema file and type name in your tool's inputs:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><span class="nt">inputs</span><span class="p">:</span>
+</span><span id="__span-2-2"><span class="w">  </span><span class="nt">observation</span><span class="p">:</span>
+</span><span id="__span-2-3"><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom.yaml#Observation</span>
+</span></code></pre></div>
+<p>Add the bindings needed to consume this record in your command. The <a href="../geojson/point/">GeoJSON Point example</a> demonstrates reading record fields in an input binding.</p>
+<p>Create <code>inputs.yaml</code> with values for your new input:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><span class="nt">observation</span><span class="p">:</span>
+</span><span id="__span-3-2"><span class="w">  </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample</span>
+</span><span id="__span-3-3"><span class="w">  </span><span class="nt">measurements</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1.0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">2.5</span><span class="p p-Indicator">]</span>
+</span></code></pre></div>
+<h2 id="validate-the-tool-and-input">Validate the tool and input</h2>
+<p>Run these commands beside <code>tool.cwl</code>, <code>custom.yaml</code>, and <code>inputs.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-4-1">cwltool<span class="w"> </span>--validate<span class="w"> </span>tool.cwl
+</span><span id="__span-4-2">cwltool<span class="w"> </span>tool.cwl<span class="w"> </span>inputs.yaml
+</span></code></pre></div>
+<p>The first command checks the complete tool definition; the second also loads the input and executes the tool. For an output record, use the same type identifier in an output declaration and supply an output binding that produces the matching structure.</p>
+<p>Compare your definitions with the <a href="../reference/">schema reference</a>. See <a href="../explanation/custom-types/">custom types and their limits</a> for validation constraints.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../how-to/use-schema/" class="btn btn-neutral float-left" title="Use an existing schema"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../reference/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache%20License%202.0-blue"" alt="Apache License, Version 2.0" /></a></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/eoap/schemas/" class="fa fa-code-fork" style="color: #fcfcfc"> eoap/schemas</a>
+        </span>
+    
+    
+      <span><a href="../how-to/use-schema/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../reference/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/config.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

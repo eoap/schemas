@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Fabrice Brito, Simone Tripodi" /><link rel="canonical" href="https://eoap.github.io/schemas/tutorials/first-input/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Your first custom-type input - EOAP schemas</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../styles/css/app.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Your first custom-type input";
+        var mkdocs_page_input_path = "tutorials/first-input.md";
+        var mkdocs_page_url = "/schemas/tutorials/first-input/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../imgs/icon-eoap.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Your first custom-type input</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#prepare-your-environment">Prepare your environment</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#inspect-the-input">Inspect the input</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#run-the-tool">Run the tool</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#continue-learning">Continue learning</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >GeoJSON</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../geojson/point/">GeoJSON Point</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../geojson/feature/">GeoJSON Feature</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../ogc/bbox/">OGC Bounding Box</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >STAC</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../stac/catalog/">STAC Catalog</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../stac/collection/">STAC Collection</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../stac/item/">STAC Item</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >String formats</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../string-format/datetime/">Datetime</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../string-format/uri/">URI</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >Experimental</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../experimental/discovery/">Experimental Discovery Inputs</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../experimental/process/">Experimental Process Inputs</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How-to guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../how-to/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../how-to/use-schema/">Use an existing schema</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../newtypes/">Define new types</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >GeoJSON</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../geojson/">Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../geojson/schema.html">Schema details</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >OGC API Processes</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../ogc/">Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../ogc/schema.html">Schema details</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >STAC</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../stac/">Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../stac/schema.html">Schema details</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >String formats</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../string-format/">Types</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../string-format/schema.html">Schema details</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Explanation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../explanation/custom-types/">Custom types and their limits</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">EOAP schemas</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Tutorials</li>
+      <li class="breadcrumb-item active">Your first custom-type input</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/eoap/schemas/edit/master/docs/tutorials/first-input.md">Edit on eoap/schemas</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="your-first-custom-type-input">Your first custom-type input</h1>
+<p>In this tutorial, you will run a CWL tool that accepts a GeoJSON Point and prints its coordinates. You will see how a schema, an input document, and a tool fit together.</p>
+<h2 id="prepare-your-environment">Prepare your environment</h2>
+<p>You need Git, Python 3 with virtual environment support, Node.js for CWL JavaScript expressions, and internet access to resolve the imported schema. Run these commands in a terminal:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1">git<span class="w"> </span>clone<span class="w"> </span>https://github.com/eoap/schemas.git
+</span><span id="__span-0-2"><span class="nb">cd</span><span class="w"> </span>schemas
+</span><span id="__span-0-3">python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+</span><span id="__span-0-4">.<span class="w"> </span>.venv/bin/activate
+</span><span id="__span-0-5">python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>cwltool
+</span></code></pre></div>
+<p>If you already have a checkout, start from its root directory. Keep that directory as your working directory for the remaining steps.</p>
+<h2 id="inspect-the-input">Inspect the input</h2>
+<p>Open <code>examples/geojson/point.yaml</code>. It contains a <code>point_of_interest</code> with the GeoJSON type <code>Point</code>, coordinates <code>[125.6, 10.1]</code>, and a bounding box.</p>
+<p>Open <code>examples/geojson/point.cwl</code>. Its <code>SchemaDefRequirement</code> imports <code>geojson.yaml</code>, and its <code>point_of_interest</code> input selects the <code>Point</code> type from that schema. The input binding reads the coordinates and formats them for <code>echo</code>.</p>
+<h2 id="run-the-tool">Run the tool</h2>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1">cwltool<span class="w"> </span>examples/geojson/point.cwl<span class="w"> </span>examples/geojson/point.yaml
+</span></code></pre></div>
+<p>The runner logs its progress and prints a JSON output object containing <code>echo_output</code>, a reference to the file created by the tool.</p>
+<p>Read that file:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1">cat<span class="w"> </span>echo_output.txt
+</span></code></pre></div>
+<p>You should see:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-3-1">Point Coordinates: 125.6, 10.1
+</span></code></pre></div>
+<p>You have passed a structured record to a CWL tool and used its fields in a command.</p>
+<h2 id="continue-learning">Continue learning</h2>
+<p>Follow the <a href="../../geojson/feature/">GeoJSON Feature example</a> to try a richer input. To apply the same import pattern to your own tool, see <a href="../../how-to/use-schema/">use an existing schema</a>. The <a href="../../geojson/">GeoJSON reference</a> lists the available types.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../geojson/point/" class="btn btn-neutral float-right" title="GeoJSON Point">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache%20License%202.0-blue"" alt="Apache License, Version 2.0" /></a></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/eoap/schemas/" class="fa fa-code-fork" style="color: #fcfcfc"> eoap/schemas</a>
+        </span>
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../geojson/point/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../javascripts/config.js"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
