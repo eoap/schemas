@@ -9,6 +9,12 @@ on:
     - experimental/**
     - containers/**
     - codemeta.json
+
+# Serialize publishing so two pushes cannot create the same release concurrently.
+concurrency:
+  group: schemas-release-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -32,6 +38,7 @@ jobs:
 
     outputs:
       app-version: ${{ steps.set-version.outputs.version }}
+      publish: ${{ steps.check-release.outputs.publish }}
 
     steps:
     - uses: actions/checkout@v4
@@ -39,10 +46,34 @@ jobs:
     - run: echo app version is $APP_VERSION
     - id: set-version
       run: echo "version=${APP_VERSION}" >> $GITHUB_OUTPUT
+    - name: Check whether this version is already released
+      id: check-release
+      env:
+        GH_TOKEN: ${{ github.token }}
+      shell: bash
+      run: |
+        status=$(curl -sS -o release.json -w '%{http_code}' \
+          -H "Authorization: Bearer $GH_TOKEN" \
+          -H "Accept: application/vnd.github+json" \
+          "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/releases/tags/$APP_VERSION")
+        case "$status" in
+          200)
+            echo "Release $APP_VERSION already exists; skipping publishing."
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+            ;;
+          404)
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+            ;;
+          *)
+            echo "::error::Could not check release $APP_VERSION (HTTP $status)"
+            exit 1
+            ;;
+        esac
 
   container-build:
 
     needs: version
+    if: needs.version.outputs.publish == 'true'
 
     runs-on: ubuntu-latest
 
