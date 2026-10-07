@@ -1,6 +1,5 @@
 # EOAP CWL custom types schemas
 
-[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/eoap/schemas/build.yaml?branch=develop&event=push&label=build&logo=githubactions)](https://github.com/eoap/schemas/actions/workflows/build.yaml?query=branch%3Adevelop)
 [![STAC API integration tests](https://img.shields.io/github/actions/workflow/status/eoap/schemas/stac-api.yaml?branch=develop&event=push&label=build&logo=githubactions)](https://github.com/eoap/schemas/actions/workflows/stac-api.yaml?query=branch%3Adevelop)
 
 This documentation contains proposals for the adoption of CWL custom types to define Earth Observation Application Packages inputs and outputs: 
