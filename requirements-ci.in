@@ -4,7 +4,7 @@ stac-fastapi-api==6.2.1
 stac-fastapi-extensions==6.2.1
 stac-fastapi-types==6.2.1
 # FastAPI 0.145 removed **extra, including the settings argument used by this server.
-fastapi<0.145
+fastapi<0.162
 cwltool
 pystac-client
 cwltest
