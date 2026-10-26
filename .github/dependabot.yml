@@ -15,7 +15,9 @@
 version: 2
 updates:
   - package-ecosystem: "pip"
-    directory: "/"
+    directories:
+      - "/"
+      - "/containers/stac-api-client"
     schedule:
       interval: "daily"
       time: "06:00"
