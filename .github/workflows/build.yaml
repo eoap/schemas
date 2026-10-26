@@ -172,7 +172,7 @@ jobs:
         mkdir downloads
         cp experimental/${{ matrix.step }}.cwl downloads/${{ matrix.step }}.${{needs.version.outputs.app-version}}.cwl
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v7
       with:
         name: application-package-${{matrix.step}}
         path: downloads
