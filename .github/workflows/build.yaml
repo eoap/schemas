@@ -38,7 +38,7 @@ jobs:
         step: [stac-api-client]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - uses: actions/setup-python@v7
       with:
         python-version: 3.x
@@ -65,7 +65,7 @@ jobs:
       publish: ${{ steps.check-release.outputs.publish }}
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - run: echo "APP_VERSION=$(cat codemeta.json | jq -r .version )" >> $GITHUB_ENV
     - run: echo app version is $APP_VERSION
     - id: set-version
@@ -106,7 +106,7 @@ jobs:
         step: [stac-api-client]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - run: echo version ${{needs.version.outputs.app-version}}
     - run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
     - name: build & push image
@@ -155,7 +155,7 @@ jobs:
         step: ["stac-api-client", "odata-client"]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - run: |
         if [ "${step}" == "stac-api-client" ]; then
           echo "Using STAC API Client"
