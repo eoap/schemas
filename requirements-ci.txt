@@ -16,8 +16,10 @@ brotli==1.2.1
     # via brotli-asgi
 brotli-asgi==1.6.0
     # via stac-fastapi-api
-cachecontrol==0.14.4
-    # via schema-salad
+cachecontrol[filecache]==0.14.4
+    # via
+    #   cachecontrol
+    #   schema-salad
 certifi==2026.10.23
     # via requests
 charset-normalizer==3.5.2
@@ -238,7 +240,7 @@ six==1.17.0
     #   python-dateutil
 spython==0.3.14
     # via cwltool
-stac-fastapi-api==6.2.1
+stac-fastapi-api==6.3.2
     # via
     #   -r requirements-ci.in
     #   stac-fastapi-extensions
@@ -247,7 +249,7 @@ stac-fastapi-extensions==6.2.1
     # via
     #   -r requirements-ci.in
     #   stac-fastapi-geoparquet
-stac-fastapi-geoparquet==0.0.6
+stac-fastapi-geoparquet[serve]==0.0.6
     # via -r requirements-ci.in
 stac-fastapi-types==6.2.1
     # via
@@ -267,12 +269,10 @@ typing-extensions==4.16.0
     #   cwl-utils
     #   cwltool
     #   fastapi
-    #   obstore
     #   opentelemetry-api
     #   pydantic
     #   pydantic-core
     #   pydantic-settings
-    #   starlette
     #   typing-inspection
 typing-inspection==0.4.4
     # via
