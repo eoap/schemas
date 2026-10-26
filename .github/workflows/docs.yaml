@@ -24,6 +24,7 @@ on:
       - 'README.md'
       - 'docs/**'
       - 'mkdocs.yml'
+      - 'requirements-docs.txt'
       - .github/**
 
 jobs:
@@ -44,7 +45,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: 3.12
-      - run: pip install mkdocs-material mkdocs-mermaid2-plugin mkdocs-jupyter bash_kernel cwltool pystac-client
+      - run: pip install -r requirements-docs.txt
       - run: sudo apt update && sudo apt install -y graphviz wget
       - run: |
             sudo wget https://github.com/mikefarah/yq/releases/download/v4.44.6/yq_linux_386 -O /usr/bin/yq &&\

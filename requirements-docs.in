@@ -1,0 +1,6 @@
+mkdocs-material
+mkdocs-mermaid2-plugin
+mkdocs-jupyter
+bash_kernel
+cwltool
+pystac-client
