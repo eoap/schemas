@@ -245,7 +245,7 @@ stac-fastapi-api==6.3.2
     #   -r requirements-ci.in
     #   stac-fastapi-extensions
     #   stac-fastapi-geoparquet
-stac-fastapi-extensions==6.2.1
+stac-fastapi-extensions==6.3.2
     # via
     #   -r requirements-ci.in
     #   stac-fastapi-geoparquet
