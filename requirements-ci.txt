@@ -249,7 +249,7 @@ stac-fastapi-extensions==6.2.1
     # via
     #   -r requirements-ci.in
     #   stac-fastapi-geoparquet
-stac-fastapi-geoparquet[serve]==0.0.6
+stac-fastapi-geoparquet[serve]==0.0.7
     # via -r requirements-ci.in
 stac-fastapi-types==6.2.1
     # via
