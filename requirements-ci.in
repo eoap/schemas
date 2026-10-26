@@ -2,7 +2,7 @@
 stac-fastapi-geoparquet[serve]==0.0.6
 stac-fastapi-api==6.3.2
 stac-fastapi-extensions==6.2.1
-stac-fastapi-types==6.2.1
+stac-fastapi-types==6.6.0
 # FastAPI 0.145 removed **extra, including the settings argument used by this server.
 fastapi<0.145
 cwltool

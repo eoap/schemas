@@ -251,7 +251,7 @@ stac-fastapi-extensions==6.2.1
     #   stac-fastapi-geoparquet
 stac-fastapi-geoparquet[serve]==0.0.6
     # via -r requirements-ci.in
-stac-fastapi-types==6.2.1
+stac-fastapi-types==6.6.0
     # via
     #   -r requirements-ci.in
     #   stac-fastapi-api
@@ -263,6 +263,7 @@ starlette==1.10.0
     # via
     #   brotli-asgi
     #   fastapi
+    #   stac-fastapi-types
 typing-extensions==4.16.0
     # via
     #   anyio
