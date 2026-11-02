@@ -225,7 +225,7 @@ ruamel-yaml==0.19.1
     #   cwl-utils
     #   cwltool
     #   schema-salad
-rustac==0.9.17
+rustac==0.9.19
     # via stac-fastapi-geoparquet
 schema-salad==8.10.20260825112551
     # via
@@ -249,7 +249,7 @@ stac-fastapi-extensions==6.2.1
     # via
     #   -r requirements-ci.in
     #   stac-fastapi-geoparquet
-stac-fastapi-geoparquet[serve]==0.0.6
+stac-fastapi-geoparquet[serve]==0.0.8
     # via -r requirements-ci.in
 stac-fastapi-types==6.2.1
     # via
