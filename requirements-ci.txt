@@ -240,7 +240,7 @@ six==1.17.0
     #   python-dateutil
 spython==0.3.14
     # via cwltool
-stac-fastapi-api==6.3.2
+stac-fastapi-api==6.6.0
     # via
     #   -r requirements-ci.in
     #   stac-fastapi-extensions
@@ -266,7 +266,6 @@ starlette==1.10.0
     #   stac-fastapi-types
 typing-extensions==4.16.0
     # via
-    #   anyio
     #   cwl-utils
     #   cwltool
     #   fastapi
