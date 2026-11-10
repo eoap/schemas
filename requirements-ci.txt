@@ -34,7 +34,7 @@ cwl-upgrader==1.2.15
     # via cwl-utils
 cwl-utils==0.45
     # via cwltool
-cwltest==2.7.20260814150058
+cwltest==2.7.20261106145043
     # via -r requirements-ci.in
 cwltool==3.3.20260925135507
     # via -r requirements-ci.in
@@ -266,7 +266,6 @@ starlette==1.10.0
     #   stac-fastapi-types
 typing-extensions==4.16.0
     # via
-    #   anyio
     #   cwl-utils
     #   cwltool
     #   fastapi
