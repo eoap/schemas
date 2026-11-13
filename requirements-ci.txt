@@ -79,7 +79,7 @@ networkx==3.6.1
     # via prov
 obstore==0.12.0
     # via stac-fastapi-geoparquet
-opentelemetry-api==1.45.1
+opentelemetry-api==1.45.2
     # via fastapi
 packaging==26.3
     # via cwl-utils
@@ -266,7 +266,6 @@ starlette==1.10.0
     #   stac-fastapi-types
 typing-extensions==4.16.0
     # via
-    #   anyio
     #   cwl-utils
     #   cwltool
     #   fastapi
