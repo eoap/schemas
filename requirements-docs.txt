@@ -19,10 +19,12 @@ beautifulsoup4==4.15.0
     #   mkdocs-jupyter
     #   mkdocs-mermaid2-plugin
     #   nbconvert
-bleach==6.4.0
+bleach[css]==6.4.0
     # via nbconvert
-cachecontrol==0.14.4
-    # via schema-salad
+cachecontrol[filecache]==0.14.4
+    # via
+    #   cachecontrol
+    #   schema-salad
 certifi==2026.10.23
     # via requests
 charset-normalizer==3.5.2
@@ -363,13 +365,11 @@ schema-salad==8.10.20260825112551
     #   cwl-upgrader
     #   cwl-utils
     #   cwltool
-setuptools==84.2.1
-    # via mkdocs-mermaid2-plugin
 six==1.17.0
     # via
     #   prov
     #   python-dateutil
-soupsieve==3.0.4
+soupsieve==4.0
     # via beautifulsoup4
 spython==0.3.14
     # via cwltool
@@ -397,7 +397,6 @@ typing-extensions==4.16.0
     #   cwl-utils
     #   cwltool
     #   jupyter-client
-    #   referencing
 tzdata==2026.5
     # via python-dateutil
 urllib3==2.8.0
