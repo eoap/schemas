@@ -5,7 +5,9 @@ annotated-doc==0.0.5
 annotated-types==0.8.0
     # via pydantic
 anyio==4.15.1
-    # via starlette
+    # via
+    #   fastapi
+    #   starlette
 argcomplete==3.7.2
     # via cwltool
 attr==0.3.2
@@ -38,7 +40,7 @@ cwltest==2.7.20260814150058
     # via -r requirements-ci.in
 cwltool==3.3.20260925135507
     # via -r requirements-ci.in
-fastapi==0.144.0
+fastapi==0.163.1
     # via
     #   -r requirements-ci.in
     #   stac-fastapi-geoparquet
@@ -266,7 +268,6 @@ starlette==1.10.0
     #   stac-fastapi-types
 typing-extensions==4.16.0
     # via
-    #   anyio
     #   cwl-utils
     #   cwltool
     #   fastapi
